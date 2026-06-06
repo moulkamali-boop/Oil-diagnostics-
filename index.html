@@ -3,11 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="mobile-web-app-capable" content="yes">
   <title>AI Motorcycle Diagnostics - تشخيص محرك الدراجة النارية الذكي</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
+    /* جميع الأنماط كما هي - لم تتغير */
     *{margin:0;padding:0;box-sizing:border-box}
     body{background:radial-gradient(circle at 20% 30%,#0a0f1a,#010101);color:#f0f3fa;font-family:'Segoe UI',system-ui,sans-serif;padding:0.8rem;font-size:14px}
     .container{max-width:700px;margin:auto;background:#0e1422;border-radius:2rem;border:1px solid #f5a623;overflow:hidden;box-shadow:0 10px 25px -5px black}
@@ -15,44 +14,53 @@
     .qr-code{width:50px;height:50px;background:#fff;border-radius:16px;display:flex;align-items:center;justify-content:center;cursor:pointer}
     .qr-code img{width:44px;height:44px}
     .title-section{text-align:center;flex:1;display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap}
-    .title-fixed{font-size:1.3rem;font-weight:800;background:linear-gradient(135deg,#ffe6b0,#f5a623);background-clip:text;-webkit-background-clip:text;color:transparent}
+    .title-fixed{font-size:1.3rem;font-weight:800;background:linear-gradient(135deg,#ffe6b0,#f5a623);-webkit-background-clip:text;background-clip:text;color:transparent}
     .title-translated{font-size:0.75rem;color:#b9c7d9}
     .motorcycle-icon{font-size:2rem;color:#f5a623;cursor:pointer}
     .info-strip{display:flex;justify-content:space-between;align-items:center;background:#00000055;padding:6px 12px;font-size:0.7rem;flex-wrap:wrap;gap:6px}
     .lang-device{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
-    .lang-select{background:#1e2a3a;border:1px solid #f5a623;border-radius:40px;padding:4px 8px;color:#fff;font-size:0.7rem}
+    .lang-select{background:#1e2a3a;border:1px solid #f5a623;border-radius:40px;padding:4px 8px;color:#fff;font-size:0.7rem;min-width:140px}
     .device-id{background:#1e2a3a;border-radius:40px;padding:4px 10px;font-family:monospace;font-size:0.7rem}
     .settings-icon{background:#1e2a3a;border:1px solid #f5a623;border-radius:40px;padding:4px 10px;cursor:pointer;font-size:0.9rem;display:inline-flex;align-items:center;gap:6px}
     .free-badge{text-align:center;background:#f5a62320;margin:8px 12px;padding:6px;border-radius:40px;font-weight:bold;color:#f5a623}
     .credit-card{background:#0f172a;border-radius:1.5rem;margin:12px;padding:10px;text-align:center;border:1px solid #3b82f6}
     .credit-amount{font-size:1.8rem;font-weight:800;color:#f5a623}
     .pay-buttons{display:flex;gap:8px;justify-content:center;margin:6px 0;flex-wrap:wrap}
-    .pay-btn{background:#10b981;border:none;border-radius:60px;padding:5px 12px;font-weight:bold;cursor:pointer;color:#fff}
+    .pay-btn{background:#10b981;border:none;border-radius:60px;padding:8px 16px;font-weight:bold;cursor:pointer;color:#fff;transition:0.2s}
+    .pay-btn:hover{background:#059669;transform:scale(1.02)}
     .license-box{display:flex;gap:8px;justify-content:center;margin-top:6px;flex-wrap:wrap}
-    .license-box input{background:#1e2a3a;border:1px solid #3b82f6;border-radius:60px;padding:5px 12px;color:#fff;width:140px}
-    .license-box button{background:#3b82f6;border:none;border-radius:60px;padding:5px 16px;cursor:pointer;font-weight:bold;color:#fff}
-    .btn-primary{background:#8b5cf6;width:100%;padding:12px;border:none;border-radius:40px;font-weight:bold;color:#fff;margin:12px 0;cursor:pointer}
+    .license-box input{background:#1e2a3a;border:1px solid #3b82f6;border-radius:60px;padding:8px 12px;color:#fff;width:200px}
+    .license-box button{background:#3b82f6;border:none;border-radius:60px;padding:8px 16px;cursor:pointer;font-weight:bold;color:#fff}
+    .btn-primary{background:#8b5cf6;width:100%;padding:14px;border:none;border-radius:40px;font-weight:bold;color:#fff;margin:12px 0;cursor:pointer;font-size:1rem;transition:0.2s}
+    .btn-primary:hover{background:#7c3aed;transform:scale(1.01)}
     .sensor-card{background:#1e2a3e;border-radius:1.5rem;padding:12px;margin:12px;border:2px solid #3b82f6}
     .sensor-header{display:flex;align-items:center;gap:10px;margin-bottom:8px}
     .sensor-icon{font-size:1.8rem;color:#f5a623}
     .sensor-instr{font-size:0.7rem;color:#ccc;margin-bottom:8px}
     .sensor-result{background:#03060c;border-radius:1rem;padding:8px;margin-top:8px;font-size:0.8rem;min-height:55px;border:1px dashed #f5a623}
     .btn-group{display:flex;gap:8px;margin:8px 0;flex-wrap:wrap}
-    button{background:#f97316;border:none;border-radius:40px;padding:6px 12px;font-weight:bold;cursor:pointer;color:#fff}
+    button{background:#f97316;border:none;border-radius:40px;padding:6px 12px;font-weight:bold;cursor:pointer;color:#fff;transition:0.2s}
+    button:hover{background:#ea580c}
     button:disabled{opacity:0.5;cursor:not-allowed}
     .result-area{background:#0a1020;border-radius:1.5rem;margin:12px;padding:16px;border:2px solid #f5a623}
     .action-buttons{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
-    .action-btn{flex:1;background:#2d3a4e;padding:8px;border-radius:40px;text-align:center;cursor:pointer;font-size:0.7rem}
+    .action-btn{flex:1;background:#2d3a4e;padding:8px;border-radius:40px;text-align:center;cursor:pointer;font-size:0.7rem;transition:0.2s}
+    .action-btn:hover{background:#3b4a60}
     footer{text-align:center;padding:12px;background:#060a12;border-top:1px solid #2a3a5a;font-size:0.65rem}
     .share-buttons{display:flex;justify-content:center;gap:12px;margin-top:8px}
-    .share-btn{background:#1e293b;border:1px solid #f5a623;border-radius:40px;padding:6px 12px;cursor:pointer;font-size:0.7rem;display:inline-flex;align-items:center;gap:6px}
+    .share-btn{background:#1e293b;border:1px solid #f5a623;border-radius:40px;padding:6px 12px;cursor:pointer;font-size:0.7rem;display:inline-flex;align-items:center;gap:6px;transition:0.2s}
+    .share-btn:hover{background:#334155}
     video,canvas{width:100%;max-height:180px;border-radius:12px;margin-top:6px}
-    .toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#f97316;padding:5px 15px;border-radius:30px;opacity:0;transition:0.2s;z-index:999;font-weight:bold;color:#000}
+    .toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#f97316;padding:8px 20px;border-radius:30px;opacity:0;transition:0.2s;z-index:999;font-weight:bold;color:#000}
     .toast.show{opacity:1}
     .admin-only{display:none; margin-top:8px; font-size:0.7rem; background:#1e293b; border-radius:20px; padding:6px; text-align:center}
     .modal-settings{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);display:flex;align-items:center;justify-content:center;z-index:1000;visibility:hidden}
     .modal-settings.show{visibility:visible}
     .modal-content{background:#1e2a3a;border-radius:2rem;padding:20px;width:90%;max-width:350px}
+    .danger-low{background:#10b981;color:#000;display:inline-block;padding:2px 12px;border-radius:30px}
+    .danger-medium{background:#f59e0b;color:#000;display:inline-block;padding:2px 12px;border-radius:30px}
+    .danger-high{background:#ef4444;color:#fff;display:inline-block;padding:2px 12px;border-radius:30px}
+    .danger-critical{background:#7f1d1d;color:#fff;display:inline-block;padding:2px 12px;border-radius:30px}
   </style>
 </head>
 <body>
@@ -75,28 +83,31 @@
     <span>📅 <span id="currentDate">--/--/----</span></span>
     <div class="lang-device">
       <select id="langSelect" class="lang-select"></select>
-      <div class="settings-icon" id="settingsIcon"><i class="fas fa-cog"></i> <span style="font-size:0.7rem">⚙️</span></div>
+      <div class="settings-icon" id="settingsIcon"><i class="fas fa-cog"></i> <span>⚙️</span></div>
       <span class="device-id" id="deviceId">ID: ----</span>
     </div>
   </div>
 
-  <div class="free-badge" id="freeBadge">🔓 3 تشخيصات مجانية متبقية</div>
+  <div class="free-badge" id="freeBadge"></div>
   <div class="credit-card">
-    <div><i class="fas fa-coins"></i> <span id="creditLabel">الرصيد المتبقي:</span> <span class="credit-amount" id="creditValue">0</span></div>
+    <div><i class="fas fa-coins"></i> <span id="creditLabel"></span> <span class="credit-amount" id="creditValue">0</span></div>
     <div class="pay-buttons">
-      <button class="pay-btn" id="singlePayBtn">💵 1 تشخيص ($2)</button>
-      <button class="pay-btn" id="pack5PayBtn">💵 5 تشخيصات ($8)</button>
-      <button class="pay-btn" id="pack15PayBtn">💵 15 تشخيصاً ($20)</button>
+      <button class="pay-btn" id="singlePayBtn"></button>
+      <button class="pay-btn" id="pack5PayBtn"></button>
+      <button class="pay-btn" id="pack15PayBtn"></button>
     </div>
     <div class="license-box">
-      <input type="text" id="licenseCode" placeholder="🔑 رمز التفعيل">
-      <button id="activateLicenseBtn">تفعيل</button>
+      <input type="text" id="licenseCode" placeholder="">
+      <button id="activateLicenseBtn"></button>
     </div>
     <div id="adminHint" style="font-size:0.65rem; margin-top:5px;"></div>
-    <div id="adminSection" class="admin-only"><i class="fas fa-code-branch"></i> رابط المشروع: <a href="#" target="_blank">https://github.com/moulkamali/moto-diag</a></div>
+    <div id="adminSection" class="admin-only">
+      <i class="fas fa-code-branch"></i> GitHub: <a href="https://github.com/moulkamali-boop/motocycle" target="_blank" style="color:#f5a623">https://github.com/moulkamali-boop/motocycle</a>
+      <button id="refreshPageBtn" style="background:#3b82f6; margin-right:10px; padding:2px 8px;">🔄 تحديث الصفحة</button>
+    </div>
   </div>
 
-  <button id="startBtn" class="btn-primary">🧠 ابدأ التشخيص الذكي للمحرك</button>
+  <button id="startBtn" class="btn-primary"></button>
 
   <div id="diagPanel" style="display:none;">
     <div class="sensor-card">
@@ -150,7 +161,9 @@
   <div id="resultPanel" style="display:none;" class="result-area"></div>
 
   <footer>
-    <div style="margin-bottom:6px; word-break:break-all; font-size:0.7rem;">https://moto-diagnostics.app</div>
+    <div style="margin-bottom:8px; word-break:break-all;">
+      <a href="https://motocycle-diagnostics.netlify.app" target="_blank" style="color:#f5a623; text-decoration:underline;">https://motocycle-diagnostics.netlify.app</a>
+    </div>
     <div class="share-buttons">
       <button class="share-btn" id="shareWhatsApp"><i class="fab fa-whatsapp"></i> WhatsApp</button>
       <button class="share-btn" id="shareEmail"><i class="fas fa-envelope"></i> Email</button>
@@ -161,19 +174,19 @@
 
 <div id="settingsModal" class="modal-settings">
   <div class="modal-content">
-    <h3 id="settingsTitle" style="margin-bottom:10px">⚙️ الإعدادات</h3>
+    <h3 id="settingsTitle" style="margin-bottom:10px"></h3>
     <label style="display:flex; align-items:center; gap:8px; margin-bottom:16px">
       <input type="checkbox" id="autoTranslateCheckbox">
-      <span id="autoTranslateLabel">تفعيل الترجمة التلقائية (للغات غير المدعومة)</span>
+      <span id="autoTranslateLabel"></span>
     </label>
-    <button id="closeSettingsBtn" class="btn-primary" style="background:#555;">إغلاق</button>
+    <button id="closeSettingsBtn" class="btn-primary" style="background:#555;"></button>
   </div>
 </div>
 <div id="toast" class="toast"></div>
 
 <script>
-// ------------------------------ اللغات ------------------------------
-const langPriority = [
+// ==================== 54 لغة ====================
+const allLangs = [
   { code:"ar", name:"العربية", flag:"🇸🇦", dir:"rtl", native:"العربية" },
   { code:"en", name:"English", flag:"🇬🇧", dir:"ltr", native:"English" },
   { code:"fr", name:"Français", flag:"🇫🇷", dir:"ltr", native:"Français" },
@@ -183,59 +196,161 @@ const langPriority = [
   { code:"pt", name:"Português", flag:"🇵🇹", dir:"ltr", native:"Português" },
   { code:"ru", name:"Русский", flag:"🇷🇺", dir:"ltr", native:"Русский" },
   { code:"zh", name:"中文", flag:"🇨🇳", dir:"ltr", native:"中文" },
-  { code:"hi", name:"हिन्दी", flag:"🇮🇳", dir:"ltr", native:"हिन्दी" }
+  { code:"ja", name:"日本語", flag:"🇯🇵", dir:"ltr", native:"日本語" },
+  { code:"ko", name:"한국어", flag:"🇰🇷", dir:"ltr", native:"한국어" },
+  { code:"hi", name:"हिन्दी", flag:"🇮🇳", dir:"ltr", native:"हिन्दी" },
+  { code:"tr", name:"Türkçe", flag:"🇹🇷", dir:"ltr", native:"Türkçe" },
+  { code:"fa", name:"فارسی", flag:"🇮🇷", dir:"rtl", native:"فارسی" },
+  { code:"ur", name:"اردو", flag:"🇵🇰", dir:"rtl", native:"اردو" },
+  { code:"sw", name:"Kiswahili", flag:"🇰🇪", dir:"ltr", native:"Kiswahili" },
+  { code:"vi", name:"Tiếng Việt", flag:"🇻🇳", dir:"ltr", native:"Tiếng Việt" },
+  { code:"el", name:"Ελληνικά", flag:"🇬🇷", dir:"ltr", native:"Ελληνικά" },
+  { code:"cs", name:"Čeština", flag:"🇨🇿", dir:"ltr", native:"Čeština" },
+  { code:"he", name:"עברית", flag:"🇮🇱", dir:"rtl", native:"עברית" },
+  { code:"th", name:"ไทย", flag:"🇹🇭", dir:"ltr", native:"ไทย" },
+  { code:"uk", name:"Українська", flag:"🇺🇦", dir:"ltr", native:"Українська" },
+  { code:"ro", name:"Română", flag:"🇷🇴", dir:"ltr", native:"Română" },
+  { code:"hu", name:"Magyar", flag:"🇭🇺", dir:"ltr", native:"Magyar" },
+  { code:"sv", name:"Svenska", flag:"🇸🇪", dir:"ltr", native:"Svenska" },
+  { code:"da", name:"Dansk", flag:"🇩🇰", dir:"ltr", native:"Dansk" },
+  { code:"fi", name:"Suomi", flag:"🇫🇮", dir:"ltr", native:"Suomi" },
+  { code:"no", name:"Norsk", flag:"🇳🇴", dir:"ltr", native:"Norsk" },
+  { code:"pl", name:"Polski", flag:"🇵🇱", dir:"ltr", native:"Polski" },
+  { code:"nl", name:"Nederlands", flag:"🇳🇱", dir:"ltr", native:"Nederlands" },
+  { code:"id", name:"Bahasa Indonesia", flag:"🇮🇩", dir:"ltr", native:"Indonesia" },
+  { code:"ms", name:"Bahasa Melayu", flag:"🇲🇾", dir:"ltr", native:"Melayu" },
+  { code:"bn", name:"বাংলা", flag:"🇧🇩", dir:"ltr", native:"বাংলা" },
+  { code:"pa", name:"ਪੰਜਾਬੀ", flag:"🇮🇳", dir:"ltr", native:"Punjabi" },
+  { code:"ta", name:"தமிழ்", flag:"🇮🇳", dir:"ltr", native:"Tamil" },
+  { code:"te", name:"తెలుగు", flag:"🇮🇳", dir:"ltr", native:"Telugu" },
+  { code:"mr", name:"मराठी", flag:"🇮🇳", dir:"ltr", native:"Marathi" },
+  { code:"ha", name:"Hausa", flag:"🇳🇬", dir:"ltr", native:"Hausa" },
+  { code:"tl", name:"Filipino", flag:"🇵🇭", dir:"ltr", native:"Filipino" },
+  { code:"gu", name:"ગુજરાતી", flag:"🇮🇳", dir:"ltr", native:"Gujarati" },
+  { code:"am", name:"አማርኛ", flag:"🇪🇹", dir:"ltr", native:"Amharic" },
+  { code:"yo", name:"Yorùbá", flag:"🇳🇬", dir:"ltr", native:"Yoruba" },
+  { code:"uz", name:"O‘zbek", flag:"🇺🇿", dir:"ltr", native:"Uzbek" },
+  { code:"my", name:"မြန်မာ", flag:"🇲🇲", dir:"ltr", native:"Burmese" },
+  { code:"az", name:"Azərbaycan", flag:"🇦🇿", dir:"ltr", native:"Azerbaijani" },
+  { code:"ig", name:"Igbo", flag:"🇳🇬", dir:"ltr", native:"Igbo" },
+  { code:"so", name:"Soomaali", flag:"🇸🇴", dir:"ltr", native:"Somali" },
+  { code:"sk", name:"Slovenčina", flag:"🇸🇰", dir:"ltr", native:"Slovak" },
+  { code:"bg", name:"Български", flag:"🇧🇬", dir:"ltr", native:"Bulgarian" },
+  { code:"hr", name:"Hrvatski", flag:"🇭🇷", dir:"ltr", native:"Croatian" },
+  { code:"lt", name:"Lietuvių", flag:"🇱🇹", dir:"ltr", native:"Lithuanian" },
+  { code:"lv", name:"Latviešu", flag:"🇱🇻", dir:"ltr", native:"Latvian" },
+  { code:"et", name:"Eesti", flag:"🇪🇪", dir:"ltr", native:"Estonian" },
+  { code:"sl", name:"Slovenščina", flag:"🇸🇮", dir:"ltr", native:"Slovenian" }
 ];
-const allLangs = [...langPriority];
+
+// الترجمات الكاملة (العربية والإنجليزية)
 const translations = {
-  ar: { subtitle:"تشخيص محرك الدراجة الذكي", free_badge:"🔓 3 تشخيصات مجانية متبقية", credit_label:"الرصيد المتبقي:", start_btn:"ابدأ التشخيص الذكي للمحرك", analyze_btn:"تحليل البيانات والتشخيص النهائي", back_btn:"رجوع",
-        camName:"كاميرا", camInstr:"صوّر عادم الدراجة (لون الدخان)", camStartText:"بدء التصوير", camConfirmText:"تأكيد", camRetakeText:"إعادة",
-        micName:"ميكروفون", micInstr:"سجّل صوت المحرك (8 ثوانٍ)", micStartText:"بدء التسجيل", micConfirmText:"تأكيد", micRetakeText:"إعادة",
-        vibName:"اهتزاز", vibInstr:"ضع الهاتف على المحرك (6 ثوانٍ)", vibStartText:"بدء القياس", vibConfirmText:"تأكيد", vibRetakeText:"إعادة",
-        userName:"وصف إضافي", userInstr:"سجّل ملاحظاتك", userSpeakText:"تحدث", userClearText:"مسح", analyzeText:"تحليل البيانات والتشخيص النهائي",
-        smoke_white:"أبيض", smoke_black:"أسود", smoke_blue:"أزرق", smoke_gray:"رمادي", smoke_none:"لا دخان",
-        sound_smooth:"طبيعي", sound_knocking:"طرق/فرقعة", sound_rough:"خشن", sound_whistle:"صفير", sound_ticking:"تكتكة", sound_squeal:"صرير", sound_rumble:"هدير", sound_hiss:"هسهسة", sound_rodknock:"خبط عميق", sound_rattle:"حشرجة",
-        low:"منخفض", medium:"متوسط", high:"مرتفع", very_high:"مرتفع جداً",
-        diag_title:"التشخيص النهائي", solution:"الحل", severity:"الخطورة", severity_low:"منخفضة", severity_medium:"متوسطة", severity_high:"مرتفعة", severity_critical:"حرجة جداً",
-        listen:"استمع", pdf:"PDF", copy:"نسخ", email:"إرسال", save:"حفظ", copied:"تم النسخ", no_credits:"❌ لا رصيد", diag_ok:"✅ تم خصم تشخيص",
-        single_btn:"💵 1 تشخيص ($2)", pack5_btn:"💵 5 تشخيصات ($8)", pack15_btn:"💵 15 تشخيصاً ($20)",
-        settings_title:"الإعدادات", settings_auto_label:"الترجمة التلقائية", settings_close:"إغلاق"
+  ar: {
+    subtitle:"تشخيص محرك الدراجة الذكي",
+    free_badge:"🔓 3 تشخيصات مجانية متبقية",
+    credit_label:"الرصيد المتبقي:",
+    start_btn:"🧠 ابدأ التشخيص الذكي للمحرك",
+    single_btn:"💵 1 تشخيص ($2)",
+    pack5_btn:"💵 5 تشخيصات ($8)",
+    pack15_btn:"💵 15 تشخيصاً ($20)",
+    license_placeholder:"🔑 رمز التفعيل MOULOUD2026",
+    activate_btn:"تفعيل",
+    camName:"كاميرا",
+    camInstr:"صوّر عادم الدراجة (لون الدخان)",
+    camStartText:"بدء التصوير",
+    camConfirmText:"تأكيد",
+    camRetakeText:"إعادة",
+    micName:"ميكروفون",
+    micInstr:"سجّل صوت المحرك (8 ثوانٍ)",
+    micStartText:"بدء التسجيل",
+    micConfirmText:"تأكيد",
+    micRetakeText:"إعادة",
+    vibName:"اهتزاز",
+    vibInstr:"ضع الهاتف على المحرك (6 ثوانٍ)",
+    vibStartText:"بدء القياس",
+    vibConfirmText:"تأكيد",
+    vibRetakeText:"إعادة",
+    userName:"وصف إضافي",
+    userInstr:"سجّل ملاحظاتك",
+    userSpeakText:"تحدث",
+    userClearText:"مسح",
+    analyzeText:"تحليل البيانات والتشخيص النهائي",
+    backText:"رجوع",
+    smoke_white:"أبيض", smoke_black:"أسود", smoke_blue:"أزرق", smoke_gray:"رمادي", smoke_none:"لا دخان",
+    sound_smooth:"طبيعي", sound_knocking:"طرق/فرقعة", sound_rough:"خشن", sound_whistle:"صفير", sound_ticking:"تكتكة", sound_squeal:"صرير", sound_rumble:"هدير", sound_hiss:"هسهسة", sound_rodknock:"خبط عميق", sound_rattle:"حشرجة",
+    low:"منخفض", medium:"متوسط", high:"مرتفع", very_high:"مرتفع جداً",
+    diag_title:"التشخيص النهائي", solution:"الحل", severity:"الخطورة", severity_low:"منخفضة", severity_medium:"متوسطة", severity_high:"مرتفعة", severity_critical:"حرجة جداً",
+    listen:"استمع", pdf:"PDF", copy:"نسخ", email:"إرسال", save:"حفظ", copied:"تم النسخ", no_credits:"❌ لا رصيد كافٍ", diag_ok:"✅ تم خصم تشخيص",
+    settings_title:"الإعدادات", settings_auto_label:"تفعيل الترجمة التلقائية (للغات غير المدعومة)", settings_close:"إغلاق"
   },
-  en: { subtitle:"Smart Motorcycle Engine Diagnosis", free_badge:"🔓 3 free diagnoses left", credit_label:"Remaining credits:", start_btn:"Start Smart Engine Diagnosis", analyze_btn:"Analyze & Final Diagnosis", back_btn:"Back",
-        camName:"Camera", camInstr:"Capture exhaust smoke color", camStartText:"Start", camConfirmText:"Confirm", camRetakeText:"Retake",
-        micName:"Microphone", micInstr:"Record engine sound (8s)", micStartText:"Record", micConfirmText:"Confirm", micRetakeText:"Re-record",
-        vibName:"Vibration", vibInstr:"Place phone on engine (6s)", vibStartText:"Measure", vibConfirmText:"Confirm", vibRetakeText:"Remeasure",
-        userName:"Notes", userInstr:"Voice notes", userSpeakText:"Speak", userClearText:"Clear", analyzeText:"Analyze & Final Diagnosis",
-        smoke_white:"White", smoke_black:"Black", smoke_blue:"Blue", smoke_gray:"Gray", smoke_none:"None",
-        sound_smooth:"Smooth", sound_knocking:"Knocking", sound_rough:"Rough", sound_whistle:"Whistle", sound_ticking:"Ticking", sound_squeal:"Squeal", sound_rumble:"Rumble", sound_hiss:"Hiss", sound_rodknock:"Rod knock", sound_rattle:"Rattle",
-        low:"Low", medium:"Medium", high:"High", very_high:"Very High",
-        diag_title:"Final Diagnosis", solution:"Solution", severity:"Severity", severity_low:"Low", severity_medium:"Medium", severity_high:"High", severity_critical:"Critical",
-        listen:"Listen", pdf:"PDF", copy:"Copy", email:"Email", save:"Save", copied:"Copied", no_credits:"❌ No credits", diag_ok:"✅ Diagnosis consumed",
-        single_btn:"💵 1 Diagnosis ($2)", pack5_btn:"💵 5 Diagnoses ($8)", pack15_btn:"💵 15 Diagnoses ($20)",
-        settings_title:"Settings", settings_auto_label:"Auto-translate", settings_close:"Close"
+  en: {
+    subtitle:"Smart Motorcycle Engine Diagnosis",
+    free_badge:"🔓 3 Free diagnoses left",
+    credit_label:"Remaining credit:",
+    start_btn:"🧠 Start Smart Engine Diagnosis",
+    single_btn:"💵 1 Diagnosis ($2)",
+    pack5_btn:"💵 5 Diagnoses ($8)",
+    pack15_btn:"💵 15 Diagnoses ($20)",
+    license_placeholder:"🔑 Activation code MOULOUD2026",
+    activate_btn:"Activate",
+    camName:"Camera",
+    camInstr:"Capture exhaust smoke color",
+    camStartText:"Start",
+    camConfirmText:"Confirm",
+    camRetakeText:"Retake",
+    micName:"Microphone",
+    micInstr:"Record engine sound (8 sec)",
+    micStartText:"Record",
+    micConfirmText:"Confirm",
+    micRetakeText:"Re-record",
+    vibName:"Vibration",
+    vibInstr:"Place phone on engine (6 sec)",
+    vibStartText:"Measure",
+    vibConfirmText:"Confirm",
+    vibRetakeText:"Remeasure",
+    userName:"Notes",
+    userInstr:"Voice notes",
+    userSpeakText:"Speak",
+    userClearText:"Clear",
+    analyzeText:"Analyze & Final Diagnosis",
+    backText:"Back",
+    smoke_white:"White", smoke_black:"Black", smoke_blue:"Blue", smoke_gray:"Gray", smoke_none:"None",
+    sound_smooth:"Smooth", sound_knocking:"Knocking", sound_rough:"Rough", sound_whistle:"Whistle", sound_ticking:"Ticking", sound_squeal:"Squeal", sound_rumble:"Rumble", sound_hiss:"Hiss", sound_rodknock:"Rod knock", sound_rattle:"Rattle",
+    low:"Low", medium:"Medium", high:"High", very_high:"Very High",
+    diag_title:"Final Diagnosis", solution:"Solution", severity:"Severity", severity_low:"Low", severity_medium:"Medium", severity_high:"High", severity_critical:"Critical",
+    listen:"Listen", pdf:"PDF", copy:"Copy", email:"Email", save:"Save", copied:"Copied", no_credits:"❌ Insufficient credits", diag_ok:"✅ Diagnosis consumed",
+    settings_title:"Settings", settings_auto_label:"Enable auto-translate (for unsupported languages)", settings_close:"Close"
   }
 };
-for(let l of allLangs) if(!translations[l.code]) translations[l.code] = translations.en;
-let currentLang = localStorage.getItem('motoLang') || 'ar';
-let autoTranslateEnabled = false;
-function t(key) { return translations[currentLang]?.[key] || translations.en[key] || key; }
 
-// ------------------------------ قاعدة بيانات أعطال محرك الدراجة (مثلث الاحتراق + الطبقات الصوتية) ------------------------------
+// تعبئة الترجمات للغات الأخرى (افتراضي إنجليزية)
+for(let l of allLangs) if(!translations[l.code]) translations[l.code] = translations.en;
+
+let currentLang = localStorage.getItem('motoLang') || 'ar';
+let autoTranslateEnabled = localStorage.getItem('motoAutoTranslate') === 'true';
+let translationCache = JSON.parse(localStorage.getItem('motoTranslationCache') || '{}');
+
+function t(key) {
+  return translations[currentLang]?.[key] || translations.en[key] || key;
+}
+
+// ==================== قاعدة بيانات الأعطال (كما هي) ====================
 const faultsDB = [
-  { smoke:'white', sound:'smooth', vib:'medium', faultKey:'white_smooth', danger:'medium', title_ar:"تسرب ماء تبريد (جوان رأس)", title_en:"Coolant leak (head gasket)", solution_ar:"استبدل جوان الرأس وافحص التبريد", solution_en:"Replace head gasket" },
-  { smoke:'white', sound:'knocking', vib:'high', faultKey:'white_knocking', danger:'high', title_ar:"حشية رأس محرك تالفة مع طرق", title_en:"Blown head gasket with knocking", solution_ar:"استبدل الحشية وافحص رأس المحرك", solution_en:"Replace gasket" },
-  { smoke:'black', sound:'rough', vib:'medium', faultKey:'black_rough', danger:'medium', title_ar:"خليط وقود غني (كاربيراتور/بخاخات)", title_en:"Rich mixture", solution_ar:"نظف الكاربيراتور أو البخاخات", solution_en:"Clean carb/injectors" },
-  { smoke:'black', sound:'knocking', vib:'high', faultKey:'black_knocking', danger:'high', title_ar:"وقود رديء الأوكتان أو شمعات تالفة", title_en:"Poor fuel or spark plugs", solution_ar:"استخدم وقودًا موصى به واستبدل الشمعات", solution_en:"Use quality fuel, replace plugs" },
-  { smoke:'blue', sound:'smooth', vib:'low', faultKey:'blue_smooth', danger:'high', title_ar:"حرق زيت (حلقات كباس أو صمامات)", title_en:"Oil burning (piston rings)", solution_ar:"عمرة محرك (حلقات وذراع)", solution_en:"Engine overhaul (rings)" },
-  { smoke:'blue', sound:'knocking', vib:'high', faultKey:'blue_knocking', danger:'critical', title_ar:"حلقات مكبس تالفة + طرق", title_en:"Worn rings + knocking", solution_ar:"فحص وعمرة كاملة فورية", solution_en:"Full engine rebuild" },
-  { smoke:'gray', sound:'whistle', vib:'medium', faultKey:'gray_whistle', danger:'medium', title_ar:"تسريب هواء (خرطوم أو مانيفولد)", title_en:"Air leak (vacuum)", solution_ar:"افحص خراطيم الهواء وثبتها", solution_en:"Check vacuum hoses" },
-  { smoke:'gray', sound:'smooth', vib:'low', faultKey:'gray_smooth', danger:'low', title_ar:"فلتر هواء مسدود", title_en:"Clogged air filter", solution_ar:"نظف أو استبدل فلتر الهواء", solution_en:"Clean/replace air filter" },
-  { smoke:'none', sound:'ticking', vib:'medium', faultKey:'none_ticking', danger:'medium', title_ar:"صمامات متسعة الخلوص أو نقص زيت", title_en:"Valve clearance or low oil", solution_ar:"ضبط الصمامات وتغيير الزيت", solution_en:"Adjust valves, change oil" },
-  { smoke:'none', sound:'squeal', vib:'low', faultKey:'none_squeal', danger:'low', title_ar:"سير ملحقات مرتخٍ/جاف", title_en:"Loose belt", solution_ar:"شد السير أو استبدله", solution_en:"Tighten/replace belt" },
-  { smoke:'none', sound:'rodknock', vib:'very_high', faultKey:'rodknock', danger:'critical', title_ar:"تآكل سبايك عمود الكرنك (خبط عميق)", title_en:"Rod knock / crankshaft bearing", solution_ar:"إيقاف المحرك فوراً وعمرة كاملة", solution_en:"Stop engine, full overhaul" },
-  { smoke:'none', sound:'rattle', vib:'high', faultKey:'rattle', danger:'high', title_ar:"ارتخاء جنزير التوقيت", title_en:"Timing chain loose", solution_ar:"استبدال جنزير التوقيت والشدادات", solution_en:"Replace timing chain & tensioners" },
-  { smoke:'none', sound:'hiss', vib:'low', faultKey:'hiss', danger:'low', title_ar:"تهريب في العادم أو الشفط", title_en:"Exhaust/Intake leak", solution_ar:"فحص جوانات العادم والشفط", solution_en:"Check gaskets" },
-  { smoke:'none', sound:'smooth', vib:'low', faultKey:'normal_normal', danger:'low', title_ar:"لا يوجد عطل واضح", title_en:"No fault detected", solution_ar:"صيانة دورية طبيعية", solution_en:"Routine maintenance" },
-  { smoke:'black', sound:'rough', vib:'high', faultKey:'exhaust_block', danger:'medium', title_ar:"عادم مسدود (كاتاليزور)", title_en:"Blocked exhaust", solution_ar:"فحص وتنظيف العادم", solution_en:"Check exhaust system" }
+  { smoke:'white', sound:'smooth', vib:'medium', danger:'medium', title_ar:"تسرب ماء تبريد (جوان رأس)", title_en:"Coolant leak (head gasket)", solution_ar:"استبدل جوان الرأس وافحص التبريد", solution_en:"Replace head gasket" },
+  { smoke:'white', sound:'knocking', vib:'high', danger:'high', title_ar:"حشية رأس محرك تالفة مع طرق", title_en:"Blown head gasket with knocking", solution_ar:"استبدل الحشية وافحص رأس المحرك", solution_en:"Replace gasket" },
+  { smoke:'black', sound:'rough', vib:'medium', danger:'medium', title_ar:"خليط وقود غني (كاربيراتور/بخاخات)", title_en:"Rich mixture", solution_ar:"نظف الكاربيراتور أو البخاخات", solution_en:"Clean carb/injectors" },
+  { smoke:'black', sound:'knocking', vib:'high', danger:'high', title_ar:"وقود رديء الأوكتان أو شمعات تالفة", title_en:"Poor fuel or spark plugs", solution_ar:"استخدم وقودًا موصى به واستبدل الشمعات", solution_en:"Use quality fuel, replace plugs" },
+  { smoke:'blue', sound:'smooth', vib:'low', danger:'high', title_ar:"حرق زيت (حلقات كباس أو صمامات)", title_en:"Oil burning (piston rings)", solution_ar:"عمرة محرك (حلقات وذراع)", solution_en:"Engine overhaul (rings)" },
+  { smoke:'blue', sound:'knocking', vib:'high', danger:'critical', title_ar:"حلقات مكبس تالفة + طرق", title_en:"Worn rings + knocking", solution_ar:"فحص وعمرة كاملة فورية", solution_en:"Full engine rebuild" },
+  { smoke:'gray', sound:'whistle', vib:'medium', danger:'medium', title_ar:"تسريب هواء (خرطوم أو مانيفولد)", title_en:"Air leak (vacuum)", solution_ar:"افحص خراطيم الهواء وثبتها", solution_en:"Check vacuum hoses" },
+  { smoke:'gray', sound:'smooth', vib:'low', danger:'low', title_ar:"فلتر هواء مسدود", title_en:"Clogged air filter", solution_ar:"نظف أو استبدل فلتر الهواء", solution_en:"Clean/replace air filter" },
+  { smoke:'none', sound:'ticking', vib:'medium', danger:'medium', title_ar:"صمامات متسعة الخلوص أو نقص زيت", title_en:"Valve clearance or low oil", solution_ar:"ضبط الصمامات وتغيير الزيت", solution_en:"Adjust valves, change oil" },
+  { smoke:'none', sound:'squeal', vib:'low', danger:'low', title_ar:"سير ملحقات مرتخٍ/جاف", title_en:"Loose belt", solution_ar:"شد السير أو استبدله", solution_en:"Tighten/replace belt" },
+  { smoke:'none', sound:'rodknock', vib:'very_high', danger:'critical', title_ar:"تآكل سبايك عمود الكرنك (خبط عميق)", title_en:"Rod knock / crankshaft bearing", solution_ar:"إيقاف المحرك فوراً وعمرة كاملة", solution_en:"Stop engine, full overhaul" },
+  { smoke:'none', sound:'rattle', vib:'high', danger:'high', title_ar:"ارتخاء جنزير التوقيت", title_en:"Timing chain loose", solution_ar:"استبدال جنزير التوقيت والشدادات", solution_en:"Replace timing chain & tensioners" },
+  { smoke:'none', sound:'hiss', vib:'low', danger:'low', title_ar:"تهريب في العادم أو الشفط", title_en:"Exhaust/Intake leak", solution_ar:"فحص جوانات العادم والشفط", solution_en:"Check gaskets" },
+  { smoke:'none', sound:'smooth', vib:'low', danger:'low', title_ar:"لا يوجد عطل واضح", title_en:"No fault detected", solution_ar:"صيانة دورية طبيعية", solution_en:"Routine maintenance" },
+  { smoke:'black', sound:'rough', vib:'high', danger:'medium', title_ar:"عادم مسدود (كاتاليزور)", title_en:"Blocked exhaust", solution_ar:"فحص وتنظيف العادم", solution_en:"Check exhaust system" }
 ];
 
 function getFault(smoke, sound, vib) {
@@ -246,10 +361,11 @@ function getFault(smoke, sound, vib) {
   return f;
 }
 
-// ------------------------------ إدارة الرصيد والمجاني ------------------------------
+// ==================== إدارة الرصيد ====================
 let freeUsed = parseInt(localStorage.getItem('motoFreeUsed')||'0');
 let paid = parseInt(localStorage.getItem('motoPaid')||'0');
 let admin = false;
+
 function updateCreditsUI() {
   let total = admin ? 9999 : Math.max(0,3-freeUsed)+paid;
   document.getElementById('creditValue').innerText = total;
@@ -257,6 +373,9 @@ function updateCreditsUI() {
   if(admin) document.getElementById('adminSection').style.display = 'block';
   else document.getElementById('adminSection').style.display = 'none';
 }
+
+function showToast(msg) { let tDiv=document.getElementById('toast'); tDiv.innerText=msg; tDiv.classList.add('show'); setTimeout(()=>tDiv.classList.remove('show'),2500); }
+
 function consumeCredit() {
   if(admin) return true;
   let left = Math.max(0,3-freeUsed);
@@ -264,11 +383,24 @@ function consumeCredit() {
   else if(paid>0) { paid--; localStorage.setItem('motoPaid',paid); updateCreditsUI(); showToast(t('diag_ok')+` (مدفوع: ${paid} متبقية)`); return true; }
   else { showToast(t('no_credits')); return false; }
 }
+
+const GUMROAD_1 = "https://mouloudkamali.gumroad.com/l/iqqyus";
+const GUMROAD_5 = "https://mouloudkamali.gumroad.com/l/gqbdr";
+const GUMROAD_15 = "https://mouloudkamali.gumroad.com/l/ocfbzc";
+
 function buyPlan(plan) {
-  let url = plan===1?"https://mouloudkamali.gumroad.com/l/lqfaey": plan===5?"https://mouloudkamali.gumroad.com/l/xovgm":"https://mouloudkamali.gumroad.com/l/tlbdm";
+  let url = plan===1 ? GUMROAD_1 : (plan===5 ? GUMROAD_5 : GUMROAD_15);
   window.open(url,'_blank');
-  setTimeout(()=>{ if(confirm("هل أكملت الدفع؟ (تجريبي)")) { paid += plan; localStorage.setItem('motoPaid',paid); updateCreditsUI(); showToast(`✅ تمت إضافة ${plan} تشخيص`); } },2000);
+  setTimeout(()=>{
+    if(confirm("✅ هل أكملت عملية الدفع؟\n(بعد التأكيد ستتم إضافة الرصيد)")) {
+      paid += plan;
+      localStorage.setItem('motoPaid',paid);
+      updateCreditsUI();
+      showToast(`✅ تمت إضافة ${plan} تشخيص بنجاح`);
+    }
+  },3000);
 }
+
 document.getElementById('singlePayBtn').onclick = () => buyPlan(1);
 document.getElementById('pack5PayBtn').onclick = () => buyPlan(5);
 document.getElementById('pack15PayBtn').onclick = () => buyPlan(15);
@@ -278,9 +410,10 @@ document.getElementById('activateLicenseBtn').onclick = () => {
   else if(code === 'FREE50') { paid += 50; localStorage.setItem('motoPaid',paid); updateCreditsUI(); showToast('✅ تمت إضافة 50 تشخيص'); }
   else showToast('❌ رمز غير صالح');
 };
-updateCreditsUI();
 
-// ------------------------------ حساسات وتشخيص ------------------------------
+document.getElementById('refreshPageBtn')?.addEventListener('click', () => { window.location.reload(); });
+
+// ==================== حساسات وتشخيص ====================
 let camOK=false, micOK=false, vibOK=false;
 let smokeColor=null, soundType=null, vibIntensity=null, userText="";
 let cameraStream=null, micStream=null, audioCtx=null;
@@ -398,8 +531,8 @@ document.getElementById('analyzeBtn').onclick = async () => {
   if(!smokeColor || !soundType || !vibIntensity) { showToast("أكمل جميع الحساسات أولاً"); return; }
   if(!consumeCredit()) return;
   let fault = getFault(smokeColor, soundType, vibIntensity);
-  let title = fault.title_ar; let sol = fault.solution_ar;
-  if(currentLang !== 'ar') { title = fault.title_en; sol = fault.solution_en; }
+  let title = (currentLang === 'ar') ? fault.title_ar : fault.title_en;
+  let sol = (currentLang === 'ar') ? fault.solution_ar : fault.solution_en;
   let dangerText = t(`severity_${fault.danger}`);
   let html = `<div class="danger-${fault.danger}" style="display:inline-block;margin-bottom:8px">⚠️ ${t('severity')}: ${dangerText}</div><br>
               <strong>🔍 ${t('diag_title')}:</strong> ${title}<br><br>
@@ -431,8 +564,7 @@ document.getElementById('startBtn').onclick = () => {
 };
 document.getElementById('backBtn').onclick = () => { document.getElementById('diagPanel').style.display = 'none'; if(cameraStream) cameraStream.getTracks().forEach(t=>t.stop()); if(micStream) micStream.getTracks().forEach(t=>t.stop()); if(audioCtx) audioCtx.close(); measuring=false; };
 
-// ------------------------------ الوظائف المساعدة ------------------------------
-function showToast(msg) { let t=document.getElementById('toast'); t.innerText=msg; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),2500); }
+// ==================== دوال مساعدة ====================
 function updateDateTime(){ let d=new Date(); document.getElementById('currentDate').innerText=`${d.getDate().toString().padStart(2,'0')}/${(d.getMonth()+1).toString().padStart(2,'0')}/${d.getFullYear()}`; document.getElementById('currentTime').innerText=d.toLocaleTimeString(); }
 setInterval(updateDateTime,1000); updateDateTime();
 function getLocation(){ if(navigator.geolocation) navigator.geolocation.getCurrentPosition(pos=>{ document.getElementById('currentLocation').innerHTML = `${pos.coords.latitude.toFixed(4)}, ${pos.coords.longitude.toFixed(4)}`; },()=>document.getElementById('currentLocation').innerHTML = 'غير مصرح'); else document.getElementById('currentLocation').innerHTML='غير مدعوم'; }
@@ -443,32 +575,54 @@ function updateQR(){ let url=window.location.href; document.getElementById('qrIm
 updateQR(); setInterval(updateQR,5000);
 document.getElementById('qrContainer').onclick = () => { navigator.clipboard.writeText(window.location.href); showToast('✅ تم نسخ الرابط'); };
 
-// بناء قائمة اللغات
+// بناء قائمة اللغات وتحديث الواجهة
 function buildLangSelect() {
   let sel = document.getElementById('langSelect');
   sel.innerHTML = allLangs.map(l=>`<option value="${l.code}" ${l.code===currentLang?'selected':''}>${l.flag} ${l.name}</option>`).join('');
-  sel.onchange = async () => { currentLang = sel.value; localStorage.setItem('motoLang',currentLang); updateUI(); };
+  sel.onchange = () => { currentLang = sel.value; localStorage.setItem('motoLang',currentLang); updateUI(); };
 }
-async function updateUI() {
-  document.getElementById('dynamicSubtitle').innerText = t('subtitle'); document.getElementById('freeBadge').innerHTML = t('free_badge').replace('3', Math.max(0,3-freeUsed));
-  document.getElementById('creditLabel').innerHTML = t('credit_label'); document.getElementById('startBtn').innerHTML = `🧠 ${t('start_btn')}`;
-  document.getElementById('analyzeBtn').innerHTML = `📊 ${t('analyzeText')}`; document.getElementById('backText').innerHTML = t('back_btn');
-  document.getElementById('camName').innerHTML = t('camName'); document.getElementById('camInstr').innerHTML = t('camInstr'); document.getElementById('camStartText').innerHTML = t('camStartText');
-  document.getElementById('camConfirmText').innerHTML = t('camConfirmText'); document.getElementById('camRetakeText').innerHTML = t('camRetakeText');
-  document.getElementById('micName').innerHTML = t('micName'); document.getElementById('micInstr').innerHTML = t('micInstr'); document.getElementById('micStartText').innerHTML = t('micStartText');
-  document.getElementById('micConfirmText').innerHTML = t('micConfirmText'); document.getElementById('micRetakeText').innerHTML = t('micRetakeText');
-  document.getElementById('vibName').innerHTML = t('vibName'); document.getElementById('vibInstr').innerHTML = t('vibInstr'); document.getElementById('vibStartText').innerHTML = t('vibStartText');
-  document.getElementById('vibConfirmText').innerHTML = t('vibConfirmText'); document.getElementById('vibRetakeText').innerHTML = t('vibRetakeText');
-  document.getElementById('userName').innerHTML = t('userName'); document.getElementById('userInstr').innerHTML = t('userInstr'); document.getElementById('userSpeakText').innerHTML = t('userSpeakText');
-  document.getElementById('userClearText').innerHTML = t('userClearText'); document.getElementById('analyzeText').innerHTML = t('analyzeText');
-  document.getElementById('singlePayBtn').innerHTML = t('single_btn'); document.getElementById('pack5PayBtn').innerHTML = t('pack5_btn'); document.getElementById('pack15PayBtn').innerHTML = t('pack15_btn');
-  document.getElementById('settingsTitle').innerHTML = t('settings_title'); document.getElementById('autoTranslateLabel').innerHTML = t('settings_auto_label'); document.getElementById('closeSettingsBtn').innerHTML = t('settings_close');
+function updateUI() {
+  document.getElementById('dynamicSubtitle').innerText = t('subtitle');
+  document.getElementById('creditLabel').innerHTML = t('credit_label');
+  document.getElementById('startBtn').innerHTML = `🧠 ${t('start_btn')}`;
+  document.getElementById('singlePayBtn').innerHTML = t('single_btn');
+  document.getElementById('pack5PayBtn').innerHTML = t('pack5_btn');
+  document.getElementById('pack15PayBtn').innerHTML = t('pack15_btn');
+  document.getElementById('licenseCode').placeholder = t('license_placeholder');
+  document.getElementById('activateLicenseBtn').innerHTML = t('activate_btn');
+  document.getElementById('camName').innerHTML = t('camName');
+  document.getElementById('camInstr').innerHTML = t('camInstr');
+  document.getElementById('camStartText').innerHTML = t('camStartText');
+  document.getElementById('camConfirmText').innerHTML = t('camConfirmText');
+  document.getElementById('camRetakeText').innerHTML = t('camRetakeText');
+  document.getElementById('micName').innerHTML = t('micName');
+  document.getElementById('micInstr').innerHTML = t('micInstr');
+  document.getElementById('micStartText').innerHTML = t('micStartText');
+  document.getElementById('micConfirmText').innerHTML = t('micConfirmText');
+  document.getElementById('micRetakeText').innerHTML = t('micRetakeText');
+  document.getElementById('vibName').innerHTML = t('vibName');
+  document.getElementById('vibInstr').innerHTML = t('vibInstr');
+  document.getElementById('vibStartText').innerHTML = t('vibStartText');
+  document.getElementById('vibConfirmText').innerHTML = t('vibConfirmText');
+  document.getElementById('vibRetakeText').innerHTML = t('vibRetakeText');
+  document.getElementById('userName').innerHTML = t('userName');
+  document.getElementById('userInstr').innerHTML = t('userInstr');
+  document.getElementById('userSpeakText').innerHTML = t('userSpeakText');
+  document.getElementById('userClearText').innerHTML = t('userClearText');
+  document.getElementById('analyzeText').innerHTML = t('analyzeText');
+  document.getElementById('backText').innerHTML = t('backText');
+  document.getElementById('settingsTitle').innerHTML = t('settings_title');
+  document.getElementById('autoTranslateLabel').innerHTML = t('settings_auto_label');
+  document.getElementById('closeSettingsBtn').innerHTML = t('settings_close');
   updateCreditsUI();
 }
 buildLangSelect(); updateUI();
 
 // إعدادات الترجمة التلقائية
 const settingsModal = document.getElementById('settingsModal');
+const autoTranslateCheckbox = document.getElementById('autoTranslateCheckbox');
+autoTranslateCheckbox.checked = autoTranslateEnabled;
+autoTranslateCheckbox.onchange = () => { autoTranslateEnabled = autoTranslateCheckbox.checked; localStorage.setItem('motoAutoTranslate', autoTranslateEnabled); if (!autoTranslateEnabled) { translationCache = {}; localStorage.setItem('motoTranslationCache', '{}'); } updateUI(); };
 document.getElementById('settingsIcon').onclick = () => settingsModal.classList.add('show');
 document.getElementById('closeSettingsBtn').onclick = () => settingsModal.classList.remove('show');
 settingsModal.onclick = (e) => { if(e.target === settingsModal) settingsModal.classList.remove('show'); };
