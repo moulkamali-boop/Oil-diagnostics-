@@ -7,8 +7,6 @@
 <title>🛢️ Physics Lab Oil</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230a0f1a'/%3E%3Ctext x='50' y='68' font-size='58' text-anchor='middle'%3E%F0%9F%9B%A2%EF%B8%8F%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.15.0/dist/tf.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet@2.1.1/dist/mobilenet.min.js"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:#0a0f1a;color:#e2e8f0;font-family:'Segoe UI',system-ui,sans-serif;padding:.8rem;min-height:100vh;display:flex;justify-content:center;align-items:flex-start}
@@ -192,49 +190,6 @@ body{background:#0a0f1a;color:#e2e8f0;font-family:'Segoe UI',system-ui,sans-seri
 .btn-print-pdf{background:#dc2626;color:#fff}
 .btn-close-report{background:#6b7280;color:#fff}
 /* ═══ DEEP LAYER CSS ═══ */
-.deep-panel{background:#0a0f1a;border:2px solid #06b6d4;border-radius:16px;padding:14px;margin:12px 0;animation:slideDeep .3s ease-out;text-align:right;direction:rtl}
-@keyframes slideDeep{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
-.deep-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #334155}
-.deep-title{font-size:.85rem;font-weight:700;color:#06b6d4}
-.deep-close{background:transparent;border:none;color:#94a3b8;cursor:pointer;font-size:1rem;padding:4px 8px;border-radius:50%;font-family:inherit}
-.deep-section{margin-bottom:12px}
-.deep-metric{display:flex;justify-content:space-between;font-size:.75rem;color:#cbd5e1;margin-bottom:4px}
-.deep-val{font-family:monospace;color:#06b6d4;font-weight:700}
-.deep-bar{background:#1e293b;height:6px;border-radius:3px;overflow:hidden}
-.deep-bar-fill{height:100%;background:linear-gradient(90deg,#06b6d4,#0891b2);transition:width .4s ease;border-radius:3px}
-.deep-bar-fill.warn{background:linear-gradient(90deg,#f59e0b,#d97706)}
-.deep-bar-fill.danger{background:linear-gradient(90deg,#ef4444,#dc2626)}
-.deep-bar-fill.oil{background:linear-gradient(90deg,#f5b81b,#e67e22)}
-.deep-subtitle{font-size:.72rem;color:#94a3b8;font-weight:600;margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px}
-.family-row{display:flex;align-items:center;gap:8px;padding:6px 8px;background:#1e293b;border-radius:8px;margin-bottom:4px;font-size:.75rem}
-.family-row .fam-icon{font-size:1.1rem}
-.family-row .fam-name{flex:1;color:#e2e8f0}
-.family-row .fam-pct{font-family:monospace;color:#06b6d4;font-weight:700;min-width:45px;text-align:right}
-.family-row.primary{background:linear-gradient(90deg,#92400e 0%,#1e293b 100%);border-left:3px solid #f5b81b}
-.family-row .fam-mini-bar{width:60px;height:4px;background:#0f172a;border-radius:2px;overflow:hidden}
-.family-row .fam-mini-fill{height:100%;background:#f5b81b;border-radius:2px;transition:width .3s}
-.xai-row{display:flex;justify-content:space-between;font-size:.7rem;color:#94a3b8;padding:4px 0;border-bottom:1px dashed #334155}
-.xai-row span:last-child{color:#06b6d4;font-family:monospace}
-.anomaly-box{padding:8px 10px;border-radius:8px;font-size:.75rem;background:#7c3aed22;border:1px solid #8b5cf6;color:#c4b5fd;margin-top:6px}
-.anomaly-box.high{background:#7f1d1d33;border-color:#ef4444;color:#fca5a5}
-.anomaly-box.medium{background:#78350f33;border-color:#f59e0b;color:#fcd34d}
-.deep-actions{margin-top:12px;padding-top:12px;border-top:1px solid #334155;text-align:center}
-.deep-btn{background:linear-gradient(135deg,#8b5cf6,#7c3aed);border:none;border-radius:30px;padding:10px 20px;color:#fff;font-weight:700;cursor:pointer;font-size:.8rem;transition:transform .2s;font-family:inherit}
-.deep-btn:disabled{opacity:.5;cursor:not-allowed}
-.twin-status{display:flex;align-items:center;gap:8px;background:linear-gradient(135deg,#1e1b4b,#312e81);border:1px solid #8b5cf6;border-radius:30px;padding:6px 12px;margin:8px 0;font-size:.72rem;color:#e9d5ff}
-.twin-status button{background:transparent;border:none;color:#c4b5fd;cursor:pointer;font-size:.9rem;padding:2px 6px;border-radius:50%;font-family:inherit}
-.train-overlay{position:fixed;inset:0;background:rgba(0,0,0,.95);display:none;align-items:center;justify-content:center;z-index:5000;backdrop-filter:blur(6px);padding:20px}
-.train-overlay.show{display:flex}
-.train-box{background:#1e293b;border:2px solid #8b5cf6;border-radius:20px;padding:24px;max-width:400px;width:100%;text-align:center}
-.train-box h3{color:#a78bfa;font-size:1rem;margin:10px 0}
-.train-msg{color:#cbd5e1;font-size:.8rem;margin:8px 0;min-height:40px;line-height:1.5}
-.train-progress{background:#0f172a;height:10px;border-radius:5px;overflow:hidden;margin:12px 0}
-.train-progress-fill{height:100%;background:linear-gradient(90deg,#8b5cf6,#a78bfa);transition:width .3s;border-radius:5px}
-.train-pct{font-size:1.4rem;font-weight:900;color:#a78bfa;font-family:monospace}
-.train-cancel{background:#334155;border:none;border-radius:30px;padding:8px 20px;color:#fff;font-weight:600;cursor:pointer;margin-top:12px;font-size:.8rem;font-family:inherit}
-.smart-analyze-btn{width:100%;padding:14px;background:linear-gradient(135deg,#8b5cf6,#7c3aed);border:none;border-radius:40px;font-weight:700;color:#fff;font-size:.95rem;cursor:pointer;margin:8px 0;transition:.2s;letter-spacing:.3px;display:flex;align-items:center;justify-content:center;gap:8px;font-family:inherit}
-.smart-analyze-btn:hover:not(:disabled){transform:scale(1.02);box-shadow:0 0 30px #8b5cf644}
-.smart-analyze-btn:disabled{opacity:.5;cursor:not-allowed}
 @media print{body>*:not(.report-overlay){display:none!important}.report-overlay{position:static;background:#fff;padding:0;display:block!important}.report-container{box-shadow:none;border-radius:0;max-width:100%}.report-actions{display:none!important}}
 @media(max-width:480px){
     .meta-row{font-size:.65rem;padding:4px 10px}
@@ -244,6 +199,12 @@ body{background:#0a0f1a;color:#e2e8f0;font-family:'Segoe UI',system-ui,sans-seri
     .sensor-actions{grid-template-columns:repeat(2,1fr)}
     .tool-btn{font-size:.7rem;padding:6px 10px;min-width:60px}
 }
+.pack-row{flex-direction:row}.pack-btn{padding:8px 4px;font-size:.8rem;white-space:nowrap}
+.info-btn{width:22px;height:22px;border-radius:50%;background:#2563eb;color:#fff;border:none;font:italic 700 .8rem Georgia,serif;cursor:pointer;margin-inline-start:8px;vertical-align:middle}
+.info-btn:hover{background:#1d4ed8}
+.btn-clear{background:#64748b;color:#fff}
+.btn-back-start{width:100%;padding:12px;background:#334155;border:2px solid #64748b;border-radius:40px;color:#fff;font-weight:700;cursor:pointer;margin:8px 0;font-size:.9rem;font-family:inherit}
+.btn-back-start:hover{background:#475569}
 </style>
 </head>
 <body>
@@ -275,19 +236,12 @@ body{background:#0a0f1a;color:#e2e8f0;font-family:'Segoe UI',system-ui,sans-seri
         <select id="oilSelect"></select>
     </div>
 
-    <!-- ═══ 🧠 Twin Status Bar (جديد) ═══ -->
-    <div class="twin-status" id="twinStatus" style="display:none">
-        <span id="twinIcon">🛢️</span>
-        <span id="twinText">—</span>
-        <button id="twinResetBtn" onclick="resetTwinOil()" title="Reset">🗑️</button>
-    </div>
-
     <div class="credit-section">
-        <div class="free-badge">🎁 <span id="freeLabel">—</span>: <span id="freeCount">3</span>/3</div>
+        <div class="free-badge">🎁 <span id="freeLabel">—</span>: <span id="freeCount">3</span>/3<span id="paidCount"></span></div>
         <div class="pack-row">
-            <button class="pack-btn" onclick="buyPack(1)">💵 1 / $2</button>
-            <button class="pack-btn" onclick="buyPack(5)">📦 5 / $8</button>
-            <button class="pack-btn" onclick="buyPack(15)">🏆 15 / $20</button>
+            <button class="pack-btn" onclick="buyPack(1)">1 · $2</button>
+            <button class="pack-btn" onclick="buyPack(5)">5 · $8</button>
+            <button class="pack-btn" onclick="buyPack(15)">15 · $20</button>
         </div>
         <div class="code-row">
             <input type="text" id="codeInput" placeholder="🔑" aria-label="Activation code" />
@@ -307,7 +261,7 @@ body{background:#0a0f1a;color:#e2e8f0;font-family:'Segoe UI',system-ui,sans-seri
     <div id="labArea">
         <div class="sensor-card" id="card1">
             <div class="sensor-header">
-                <span><span class="sensor-icon">📳</span> <span id="sensorLabel1">—</span></span>
+                <span><span class="sensor-icon">📳</span> <span id="sensorLabel1">—</span><button class="info-btn" onclick="openInfo(1)" aria-label="info">i</button></span>
                 <span class="tool" id="tool1">—</span>
             </div>
             <div class="sensor-instruction" id="instr1">—</div>
@@ -324,7 +278,7 @@ body{background:#0a0f1a;color:#e2e8f0;font-family:'Segoe UI',system-ui,sans-seri
 
         <div class="sensor-card" id="card2">
             <div class="sensor-header">
-                <span><span class="sensor-icon">🧲</span> <span id="sensorLabel2">—</span></span>
+                <span><span class="sensor-icon">🧲</span> <span id="sensorLabel2">—</span><button class="info-btn" onclick="openInfo(2)" aria-label="info">i</button></span>
                 <span class="tool" id="tool2">—</span>
             </div>
             <div class="sensor-instruction" id="instr2">—</div>
@@ -341,7 +295,7 @@ body{background:#0a0f1a;color:#e2e8f0;font-family:'Segoe UI',system-ui,sans-seri
 
         <div class="sensor-card" id="card3">
             <div class="sensor-header">
-                <span><span class="sensor-icon">📸</span> <span id="sensorLabel3">—</span></span>
+                <span><span class="sensor-icon">📸</span> <span id="sensorLabel3">—</span><button class="info-btn" onclick="openInfo(3)" aria-label="info">i</button></span>
                 <span class="tool" id="tool3">—</span>
             </div>
             <div class="sensor-instruction" id="instr3">—</div>
@@ -356,16 +310,12 @@ body{background:#0a0f1a;color:#e2e8f0;font-family:'Segoe UI',system-ui,sans-seri
             </div>
         </div>
 
-        <!-- ═══ 🧠 Smart Analyze Button (جديد) ═══ -->
-        <button class="smart-analyze-btn" id="smartAnalyzeBtn" onclick="runDeepAnalysis()" disabled>
-            🧠 <span id="smartAnalyzeLabel">تحليل ذكي بالتعلم العميق</span>
-        </button>
-
         <div class="note-section" id="noteSection">
             <div class="note-title">💭 <span id="noteTitle">—</span></div>
             <div class="note-buttons">
                 <button class="btn-speak" id="speakBtn" onclick="startVoiceNote()"><i class="fas fa-microphone"></i> <span id="speakLabel">—</span></button>
                 <button class="btn-write" id="writeBtn" onclick="toggleNoteText()"><i class="fas fa-keyboard"></i> <span id="writeLabel">—</span></button>
+                <button class="btn-clear" onclick="clearNote()"><i class="fas fa-eraser"></i> <span id="clearLabel">—</span></button>
             </div>
             <textarea id="noteTextArea" maxlength="300" placeholder=""></textarea>
             <div id="recordingIndicator">
@@ -374,6 +324,8 @@ body{background:#0a0f1a;color:#e2e8f0;font-family:'Segoe UI',system-ui,sans-seri
                 <button onclick="stopVoiceNote()" style="background:#ef4444;color:#fff;border:none;border-radius:30px;padding:4px 12px;font-size:.7rem;font-weight:700;cursor:pointer;font-family:inherit">⏹</button>
             </div>
         </div>
+
+        <button class="btn-back-start" id="backStartBtn" onclick="backToStart()">↩️ <span id="backStartLabel">—</span></button>
 
         <button class="final-btn" id="finalBtn" onclick="requestFinalVerdict()" disabled>📊 <span id="finalBtnLabel">—</span></button>
 
@@ -384,44 +336,8 @@ body{background:#0a0f1a;color:#e2e8f0;font-family:'Segoe UI',system-ui,sans-seri
             <div class="verdict-note" id="verdictNote" style="display:none;"></div>
             <div class="sensor-count-notice" id="sensorCountNotice"></div>
 
-            <!-- ═══ 🧠 Deep Panel (جديد) ═══ -->
-            <div class="deep-panel" id="deepPanel" style="display:none">
-                <div class="deep-header">
-                    <span class="deep-title">🧠 <span id="deepPanelTitle">تحليل عميق</span></span>
-                    <button class="deep-close" onclick="document.getElementById('deepPanel').style.display='none'">✖</button>
-                </div>
-                <div class="deep-section">
-                    <div class="deep-metric"><span id="lblConfidence">الثقة</span><span class="deep-val" id="valConfidence">—</span></div>
-                    <div class="deep-bar"><div class="deep-bar-fill oil" id="barConfidence" style="width:0%"></div></div>
-                </div>
-                <div class="deep-section">
-                    <div class="deep-metric"><span id="lblUncertainty">عدم اليقين</span><span class="deep-val" id="valUncertainty">—</span></div>
-                    <div class="deep-bar"><div class="deep-bar-fill warn" id="barUncertainty" style="width:0%"></div></div>
-                </div>
-                <div class="deep-section">
-                    <div class="deep-metric"><span id="lblSNR">جودة الإشارة</span><span class="deep-val" id="valSNR">—</span></div>
-                    <div class="deep-bar"><div class="deep-bar-fill" id="barSNR" style="width:0%"></div></div>
-                </div>
-                <div class="deep-section" id="topFamiliesSection">
-                    <div class="deep-subtitle" id="lblTopFamilies">الاحتمالات المرشحة</div>
-                    <div id="topFamiliesList"></div>
-                </div>
-                <div class="deep-section" id="xaiSection" style="display:none">
-                    <div class="deep-subtitle" id="lblXAI">لماذا هذا القرار؟</div>
-                    <div id="xaiList"></div>
-                </div>
-                <div class="deep-section" id="anomalySection" style="display:none">
-                    <div class="deep-subtitle" id="lblAnomaly">كشف الشذوذ</div>
-                    <div id="anomalyText"></div>
-                </div>
-                <div class="deep-actions">
-                    <button class="deep-btn" id="trainBtn" onclick="trainOnMyOil()" style="display:none">
-                        🎓 <span id="trainBtnLabel">تدريب على عينتي</span>
-                    </button>
-                </div>
-            </div>
-
             <div class="verdict-actions">
+                <button class="btn-return" onclick="saveBaseline()">💾 <span id="baselineLabel">—</span></button>
                 <button class="btn-return" onclick="returnFromVerdict()"><i class="fas fa-arrow-left"></i> <span id="returnLabel">—</span></button>
             </div>
             <div class="legal-line" id="legalLine">⚠️ <strong>—</strong></div>
@@ -433,7 +349,6 @@ body{background:#0a0f1a;color:#e2e8f0;font-family:'Segoe UI',system-ui,sans-seri
             <button class="tool-btn" id="shareBtn" onclick="shareAction()"><i class="fas fa-share-alt"></i> <span id="shareLabel">—</span></button>
             <button class="tool-btn" id="printBtn" onclick="printReport()" disabled><i class="fas fa-file-pdf"></i> <span id="printLabel">—</span></button>
         </div>
-    </div>
 
     <div class="rating"><span>⭐ <span id="ratingLabel">—</span>:</span> <span class="stars" id="starsDisplay"><span onclick="rate(1)">★</span><span onclick="rate(2)">★</span><span onclick="rate(3)">★</span><span onclick="rate(4)">★</span><span onclick="rate(5)">★</span></span></div>
 
@@ -442,6 +357,7 @@ body{background:#0a0f1a;color:#e2e8f0;font-family:'Segoe UI',system-ui,sans-seri
         <button class="legal-link-btn" onclick="openLegalModal('terms')">📜 <span id="legalTermsLabel">—</span></button>
         <button class="legal-link-btn" onclick="openLegalModal('refund')">💰 <span id="legalRefundLabel">—</span></button>
         <button class="legal-link-btn" onclick="openLegalModal('contact')">✉️ <span id="legalContactLabel">—</span></button>
+    </div>
     </div>
 </div>
 
@@ -458,6 +374,19 @@ body{background:#0a0f1a;color:#e2e8f0;font-family:'Segoe UI',system-ui,sans-seri
         </div>
         <div class="legal-modal-body" id="legalModalBody">—</div>
         <div class="legal-modal-footer"><button class="legal-modal-close-btn" onclick="closeLegalModal()">✖ <span id="legalModalCloseLabel">—</span></button></div>
+    </div>
+</div>
+
+<div class="legal-modal-overlay" id="infoOverlay">
+    <div class="legal-modal-box">
+        <div class="legal-modal-header">
+            <div class="legal-modal-tabs">
+                <button id="infoTabUser" onclick="switchInfo('user')">ⓘ <span id="infoTabUserLabel">—</span></button>
+                <button id="infoTabDev" onclick="switchInfo('dev')">🔬 <span id="infoTabDevLabel">—</span></button>
+            </div>
+            <button class="legal-modal-close-x" onclick="closeInfo()">✖</button>
+        </div>
+        <div class="legal-modal-body"><h4 id="infoTitle">—</h4><div id="infoBody"></div></div>
     </div>
 </div>
 
@@ -497,23 +426,11 @@ body{background:#0a0f1a;color:#e2e8f0;font-family:'Segoe UI',system-ui,sans-seri
     <div class="report-container" id="reportContainer"></div>
 </div>
 
-<!-- ═══ 🎓 Training Overlay (جديد) ═══ -->
-<div class="train-overlay" id="trainOverlay">
-    <div class="train-box">
-        <div style="font-size:2.5rem">🎓</div>
-        <h3 id="trainTitle">التدريب على عينتي</h3>
-        <div id="trainMsg" class="train-msg">—</div>
-        <div class="train-progress"><div class="train-progress-fill" id="trainProgressFill" style="width:0%"></div></div>
-        <div class="train-pct" id="trainPct">0%</div>
-        <button class="train-cancel" id="trainCloseBtn" onclick="closeTrainOverlay()" style="display:none">✖ إغلاق</button>
-    </div>
-</div>
-
 <div id="toast" class="toast-custom" role="status" aria-live="polite"></div>
 
 <script>
 // ═══════════════════════════════════════════════════════════
-// Physics Lab Oil — V-Final + Deep Layer
+// Physics Lab Oil
 // ═══════════════════════════════════════════════════════════
 
 // ═══ 1. اللغات ═══
@@ -533,25 +450,7 @@ const LANG_LIST = [
 ];
 
 // ═══ 2. بيانات الزيوت — 17 نوع ═══
-const OIL_DATA = {
-    '0W16':{label:'0W16', damping:0.09, magnetic:44, color:{r:215,g:195,b:48}},
-    '0W20':{label:'0W20', damping:0.10, magnetic:45, color:{r:210,g:190,b:45}},
-    '0W30':{label:'0W30', damping:0.11, magnetic:46, color:{r:205,g:185,b:42}},
-    '0W40':{label:'0W40', damping:0.12, magnetic:47, color:{r:200,g:180,b:40}},
-    '5W20':{label:'5W20', damping:0.11, magnetic:46, color:{r:205,g:185,b:42}},
-    '5W30':{label:'5W30', damping:0.12, magnetic:48, color:{r:200,g:180,b:40}},
-    '5W40':{label:'5W40', damping:0.14, magnetic:50, color:{r:195,g:175,b:38}},
-    '5W50':{label:'5W50', damping:0.16, magnetic:53, color:{r:185,g:165,b:35}},
-    '10W30':{label:'10W30', damping:0.13, magnetic:50, color:{r:195,g:175,b:38}},
-    '10W40':{label:'10W40', damping:0.15, magnetic:52, color:{r:190,g:170,b:35}},
-    '10W50':{label:'10W50', damping:0.17, magnetic:55, color:{r:185,g:160,b:33}},
-    '10W60':{label:'10W60', damping:0.19, magnetic:58, color:{r:180,g:155,b:30}},
-    '15W40':{label:'15W40', damping:0.17, magnetic:55, color:{r:185,g:160,b:33}},
-    '20W20':{label:'20W20', damping:0.18, magnetic:56, color:{r:182,g:158,b:32}},
-    '20W50':{label:'20W50', damping:0.20, magnetic:58, color:{r:180,g:155,b:30}},
-    '20W60':{label:'20W60', damping:0.22, magnetic:60, color:{r:175,g:150,b:28}},
-    '75W90':{label:'75W90', damping:0.24, magnetic:62, color:{r:170,g:145,b:25}}
-};
+const OIL_DATA = Object.fromEntries(['0W16','0W20','0W30','0W40','5W20','5W30','5W40','5W50','10W30','10W40','10W50','10W60','15W40','20W20','20W50','20W60','75W90'].map(k => [k, { label: k }]));
 
 // ═══ 3. المفاتيح ═══
 const T_KEYS = [
@@ -582,11 +481,6 @@ const T_KEYS = [
     'unit_damping','unit_magnetic','unit_color','unit_freq',
     'print_needs_verdict',
     'legal_privacy_tab','legal_terms_tab','legal_refund_tab','legal_contact_tab','legal_close_btn',
-    // 🧠 Deep Layer Keys (18 جديدة)
-    'deep_panel_title','deep_analyze_btn','deep_confidence','deep_uncertainty','deep_snr',
-    'deep_alternatives','deep_xai','deep_anomaly_detected','deep_train_btn','deep_train_running',
-    'deep_train_success','deep_train_need_sessions','deep_twin_ready','deep_twin_building','deep_running',
-    'deep_analyze_done','deep_analyze_error','deep_need_measure_first'
 ];
 
 // ═══ 4. القيم — العربية ═══
@@ -623,11 +517,6 @@ T_VALUES.ar = [
     'الخصائص الفيزيائية المقاسة لا تتطابق مع {0}','الإشارات ضعيفة — تحقق من قرب الزيت والظروف المحيطة',
     'β','µT','RGB','هرتز','اعرض الخلاصة أولاً',
     'سياسة الخصوصية','شروط الاستخدام','سياسة الاسترجاع','تواصل معنا','إغلاق',
-    // 🧠 Deep Layer Arabic
-    'تحليل عميق بالتعلم العميق','تحليل ذكي بالتعلم العميق','الثقة','عدم اليقين','جودة الإشارة',
-    'الاحتمالات المرشحة','لماذا هذا القرار؟','شذوذ مكتشف','تدريب على عينتي','جاري التدريب...',
-    'تم التدريب بنجاح','تحتاج 3 قياسات على الأقل','التوأم الرقمي جاهز','بناء التوأم الرقمي','جاري التحليل العميق...',
-    'اكتمل التحليل الذكي','فشل التحليل الذكي','قِس حساساً واحداً على الأقل'
 ];
 T_VALUES.en = [
     'Engine Oil Physical Measurement','Start Engine Oil Physical Check','Free Checks','Activate','Activation code',
@@ -661,11 +550,6 @@ T_VALUES.en = [
     'Measured physical properties do not match {0}','Weak signals — check proximity to oil and environment',
     'β','µT','RGB','Hz','Show verdict first',
     'Privacy Policy','Terms of Use','Refund Policy','Contact Us','Close',
-    // 🧠 Deep Layer English
-    'Deep Neural Analysis','Smart Deep-Learning Analysis','Confidence','Uncertainty','Signal Quality',
-    'Candidate Probabilities','Why this decision?','Anomaly detected','Train on my sample','Training...',
-    'Training complete','Need at least 3 measurements','Digital Twin ready','Building Digital Twin','Running deep analysis...',
-    'Deep analysis complete','Deep analysis failed','Measure at least one sensor'
 ];
 
 T_VALUES.fr = [
@@ -700,11 +584,6 @@ T_VALUES.fr = [
     'Les propriétés physiques ne correspondent pas à {0}','Signaux faibles — vérifiez la proximité',
     'β','µT','RGB','Hz','Affichez d\'abord le verdict',
     'Confidentialité','Conditions','Remboursement','Contact','Fermer',
-    // 🧠 Deep Layer French
-    'Analyse neuronale profonde','Analyse IA profonde','Confiance','Incertitude','Qualité du signal',
-    'Probabilités candidates','Pourquoi cette décision ?','Anomalie détectée','Entraîner sur mon échantillon','Entraînement...',
-    'Entraînement terminé','Au moins 3 mesures requises','Jumeau numérique prêt','Construction du jumeau','Analyse en cours...',
-    'Analyse profonde terminée','Analyse profonde échouée','Mesurez au moins un capteur'
 ];
 
 T_VALUES.es = [
@@ -739,11 +618,6 @@ T_VALUES.es = [
     'Las propiedades medidas no coinciden con {0}','Señales débiles — verifica la proximidad',
     'β','µT','RGB','Hz','Muestra el veredicto primero',
     'Privacidad','Términos','Reembolso','Contacto','Cerrar',
-    // 🧠 Deep Layer Spanish
-    'Análisis neuronal profundo','Análisis IA profundo','Confianza','Incertidumbre','Calidad de señal',
-    'Probabilidades candidatas','¿Por qué esta decisión?','Anomalía detectada','Entrenar en mi muestra','Entrenando...',
-    'Entrenamiento completo','Se requieren 3 mediciones','Gemelo digital listo','Construyendo gemelo','Análisis en curso...',
-    'Análisis completo','Análisis fallido','Mide al menos un sensor'
 ];
 T_VALUES.de = [
     'Physikalische Motorölmessung','Physikalische Prüfung starten','Kostenlose Prüfungen','Aktivieren','Aktivierungscode',
@@ -777,11 +651,6 @@ T_VALUES.de = [
     'Gemessene Eigenschaften entsprechen nicht {0}','Schwache Signale — Nähe prüfen',
     'β','µT','RGB','Hz','Erst Ergebnis anzeigen',
     'Datenschutz','Bedingungen','Rückerstattung','Kontakt','Schließen',
-    // 🧠 Deep Layer German
-    'Tiefe neuronale Analyse','Intelligente Deep-Learning-Analyse','Zuversicht','Unsicherheit','Signalqualität',
-    'Kandidatenwahrscheinlichkeiten','Warum diese Entscheidung?','Anomalie erkannt','Auf meiner Probe trainieren','Training läuft...',
-    'Training abgeschlossen','Mindestens 3 Messungen erforderlich','Digitaler Zwilling bereit','Zwilling wird erstellt','Tiefenanalyse läuft...',
-    'Tiefenanalyse abgeschlossen','Tiefenanalyse fehlgeschlagen','Messen Sie mindestens einen Sensor'
 ];
 
 T_VALUES.it = [
@@ -816,11 +685,6 @@ T_VALUES.it = [
     'Le proprietà misurate non corrispondono a {0}','Segnali deboli — verifica vicinanza',
     'β','µT','RGB','Hz','Mostra prima il verdetto',
     'Privacy','Termini','Rimborso','Contatti','Chiudi',
-    // 🧠 Deep Layer Italian
-    'Analisi neurale profonda','Analisi IA profonda intelligente','Affidabilità','Incertezza','Qualità del segnale',
-    'Probabilità candidate','Perché questa decisione?','Anomalia rilevata','Allena sul mio campione','Addestramento...',
-    'Addestramento completato','Almeno 3 misurazioni richieste','Gemello digitale pronto','Costruzione del gemello','Analisi profonda in corso...',
-    'Analisi profonda completata','Analisi profonda fallita','Misura almeno un sensore'
 ];
 
 T_VALUES.pt = [
@@ -855,11 +719,6 @@ T_VALUES.pt = [
     'As propriedades medidas não correspondem a {0}','Sinais fracos — verifique a proximidade',
     'β','µT','RGB','Hz','Mostre o veredito primeiro',
     'Privacidade','Termos','Reembolso','Contato','Fechar',
-    // 🧠 Deep Layer Portuguese
-    'Análise neural profunda','Análise IA profunda inteligente','Confiança','Incerteza','Qualidade do sinal',
-    'Probabilidades candidatas','Por que esta decisão?','Anomalia detectada','Treinar na minha amostra','Treinando...',
-    'Treinamento concluído','Pelo menos 3 medições necessárias','Gêmeo digital pronto','Construindo gêmeo','Análise profunda em andamento...',
-    'Análise profunda concluída','Análise profunda falhou','Meça pelo menos um sensor'
 ];
 T_VALUES.ru = [
     'Физическое измерение моторного масла','Начать физическую проверку','Бесплатные проверки','Активировать','Код активации',
@@ -893,11 +752,6 @@ T_VALUES.ru = [
     'Измеренные свойства не соответствуют {0}','Слабые сигналы — проверьте близость',
     'β','µT','RGB','Гц','Сначала покажите заключение',
     'Конфиденциальность','Условия','Возврат','Контакт','Закрыть',
-    // 🧠 Deep Layer Russian
-    'Глубокий нейронный анализ','Умный анализ глубокого обучения','Уверенность','Неопределённость','Качество сигнала',
-    'Вероятности кандидатов','Почему это решение?','Обнаружена аномалия','Обучить на моём образце','Обучение...',
-    'Обучение завершено','Требуется минимум 3 измерения','Цифровой двойник готов','Построение двойника','Глубокий анализ...',
-    'Глубокий анализ завершён','Глубокий анализ не удался','Измерьте хотя бы один датчик'
 ];
 
 T_VALUES.zh = [
@@ -932,11 +786,6 @@ T_VALUES.zh = [
     '测量的物理属性与 {0} 不匹配','信号弱 — 检查距离',
     'β','µT','RGB','赫兹','请先显示结果',
     '隐私政策','使用条款','退款政策','联系我们','关闭',
-    // 🧠 Deep Layer Chinese
-    '深度神经网络分析','智能深度学习分析','置信度','不确定性','信号质量',
-    '候选项概率','为什么这个决定？','检测到异常','在我的样本上训练','训练中...',
-    '训练完成','至少需要3次测量','数字孪生就绪','构建数字孪生','深度分析中...',
-    '深度分析完成','深度分析失败','至少测量一个传感器'
 ];
 
 T_VALUES.ja = [
@@ -971,11 +820,6 @@ T_VALUES.ja = [
     '測定特性が{0}と不一致','信号が弱い — 距離を確認',
     'β','µT','RGB','Hz','先に結果を表示',
     'プライバシー','利用規約','返金','お問い合わせ','閉じる',
-    // 🧠 Deep Layer Japanese
-    '深層ニューラル分析','スマート深層学習分析','信頼度','不確実性','信号品質',
-    '候補確率','なぜこの判断？','異常検出','自分のサンプルで訓練','訓練中...',
-    '訓練完了','最低3回の測定が必要','デジタルツイン準備完了','ツイン構築中','深層分析中...',
-    '深層分析完了','深層分析失敗','少なくとも1つのセンサーを測定してください'
 ];
 
 T_VALUES.ko = [
@@ -1010,11 +854,6 @@ T_VALUES.ko = [
     '측정 특성이 {0}와 불일치','신호 약함 — 거리 확인',
     'β','µT','RGB','Hz','먼저 결과 표시',
     '개인정보','약관','환불','문의','닫기',
-    // 🧠 Deep Layer Korean
-    '심층 신경망 분석','스마트 딥러닝 분석','신뢰도','불확실성','신호 품질',
-    '후보 확률','왜 이런 결정?','이상 감지','내 샘플로 훈련','훈련 중...',
-    '훈련 완료','최소 3회 측정 필요','디지털 트윈 준비','트윈 구축 중','심층 분석 중...',
-    '심층 분석 완료','심층 분석 실패','최소 하나의 센서를 측정하세요'
 ];
 T_VALUES.hi = [
     'इंजन तेल भौतिक माप','भौतिक जांच शुरू करें','मुफ्त जांच','सक्रिय करें','सक्रियण कोड',
@@ -1048,11 +887,6 @@ T_VALUES.hi = [
     'मापे गुण {0} से मेल नहीं','कमजोर सिग्नल — निकटता जांचें',
     'β','µT','RGB','Hz','पहले परिणाम दिखाएं',
     'गोपनीयता','शर्तें','धनवापसी','संपर्क','बंद',
-    // 🧠 Deep Layer Hindi
-    'गहन तंत्रिका विश्लेषण','स्मार्ट गहन शिक्षण विश्लेषण','आत्मविश्वास','अनिश्चितता','सिग्नल गुणवत्ता',
-    'उम्मीदवार संभावनाएं','यह निर्णय क्यों?','विसंगति पाई गई','मेरे नमूने पर प्रशिक्षण','प्रशिक्षण...',
-    'प्रशिक्षण पूर्ण','कम से कम 3 माप आवश्यक','डिजिटल ट्विन तैयार','ट्विन बनाया जा रहा','गहन विश्लेषण...',
-    'गहन विश्लेषण पूर्ण','गहन विश्लेषण विफल','कम से कम एक सेंसर मापें'
 ];
 
 T_VALUES.tr = [
@@ -1087,11 +921,6 @@ T_VALUES.tr = [
     'Ölçülen özellikler {0} ile eşleşmiyor','Zayıf sinyaller — yakınlığı kontrol edin',
     'β','µT','RGB','Hz','Önce sonucu göster',
     'Gizlilik','Koşullar','İade','İletişim','Kapat',
-    // 🧠 Deep Layer Turkish
-    'Derin sinirsel analiz','Akıllı derin öğrenme analizi','Güven','Belirsizlik','Sinyal kalitesi',
-    'Aday olasılıklar','Neden bu karar?','Anomali tespit edildi','Numunemde eğit','Eğitiliyor...',
-    'Eğitim tamamlandı','En az 3 ölçüm gerekli','Dijital İkiz hazır','İkiz oluşturuluyor','Derin analiz yapılıyor...',
-    'Derin analiz tamamlandı','Derin analiz başarısız','En az bir sensör ölçün'
 ];
 
 T_VALUES.id = [
@@ -1126,11 +955,6 @@ T_VALUES.id = [
     'Properti terukur tidak cocok dengan {0}','Sinyal lemah — periksa jarak',
     'β','µT','RGB','Hz','Tampilkan hasil dulu',
     'Privasi','Ketentuan','Pengembalian','Kontak','Tutup',
-    // 🧠 Deep Layer Indonesian
-    'Analisis neural mendalam','Analisis deep learning cerdas','Kepercayaan','Ketidakpastian','Kualitas sinyal',
-    'Probabilitas kandidat','Mengapa keputusan ini?','Anomali terdeteksi','Latih pada sampel saya','Melatih...',
-    'Pelatihan selesai','Minimal 3 pengukuran diperlukan','Kembar Digital siap','Membangun kembar','Analisis mendalam...',
-    'Analisis mendalam selesai','Analisis mendalam gagal','Ukur minimal satu sensor'
 ];
 
 T_VALUES.ms = [
@@ -1165,11 +989,6 @@ T_VALUES.ms = [
     'Sifat terukur tidak sepadan dengan {0}','Isyarat lemah — periksa jarak',
     'β','µT','RGB','Hz','Tunjuk keputusan dahulu',
     'Privasi','Terma','Bayaran balik','Hubungi','Tutup',
-    // 🧠 Deep Layer Malay
-    'Analisis neural mendalam','Analisis pembelajaran mendalam pintar','Keyakinan','Ketidakpastian','Kualiti isyarat',
-    'Kebarangkalian calon','Mengapa keputusan ini?','Anomali dikesan','Latih pada sampel saya','Melatih...',
-    'Latihan selesai','Sekurang-kurangnya 3 ukuran diperlukan','Kembar Digital sedia','Membina kembar','Analisis mendalam...',
-    'Analisis mendalam selesai','Analisis mendalam gagal','Ukur sekurang-kurangnya satu sensor'
 ];
 T_VALUES.vi = [
     'Đo vật lý dầu động cơ','Bắt đầu kiểm tra vật lý','Kiểm tra miễn phí','Kích hoạt','Mã kích hoạt',
@@ -1203,10 +1022,6 @@ T_VALUES.vi = [
     'Đặc tính đo không phù hợp với {0}','Tín hiệu yếu — kiểm tra khoảng cách',
     'β','µT','RGB','Hz','Hiển thị kết quả trước',
     'Quyền riêng tư','Điều khoản','Hoàn tiền','Liên hệ','Đóng',
-    'Phân tích nơ-ron sâu','Phân tích học sâu thông minh','Độ tin cậy','Không chắc chắn','Chất lượng tín hiệu',
-    'Xác suất ứng viên','Tại sao quyết định này?','Đã phát hiện bất thường','Huấn luyện trên mẫu của tôi','Đang huấn luyện...',
-    'Huấn luyện hoàn tất','Cần ít nhất 3 lần đo','Bản sao số sẵn sàng','Đang xây dựng bản sao','Đang phân tích sâu...',
-    'Phân tích sâu hoàn tất','Phân tích sâu thất bại','Đo ít nhất một cảm biến'
 ];
 
 T_VALUES.th = [
@@ -1239,10 +1054,6 @@ T_VALUES.th = [
     'คุณสมบัติไม่ตรงกับ {0}','สัญญาณอ่อน — ตรวจระยะ',
     'β','µT','RGB','Hz','แสดงผลก่อน',
     'ความเป็นส่วนตัว','ข้อกำหนด','คืนเงิน','ติดต่อ','ปิด',
-    'การวิเคราะห์โครงข่ายประสาทเชิงลึก','การวิเคราะห์การเรียนรู้เชิงลึกอัจฉริยะ','ความเชื่อมั่น','ความไม่แน่นอน','คุณภาพสัญญาณ',
-    'ความน่าจะเป็นของผู้สมัคร','ทำไมจึงตัดสินใจเช่นนี้?','ตรวจพบความผิดปกติ','ฝึกบนตัวอย่างของฉัน','กำลังฝึก...',
-    'ฝึกเสร็จสิ้น','ต้องการอย่างน้อย 3 การวัด','Digital Twin พร้อม','กำลังสร้าง Twin','กำลังวิเคราะห์เชิงลึก...',
-    'การวิเคราะห์เชิงลึกเสร็จสิ้น','การวิเคราะห์เชิงลึกล้มเหลว','วัดอย่างน้อยหนึ่งเซ็นเซอร์'
 ];
 
 T_VALUES.nl = [
@@ -1276,10 +1087,6 @@ T_VALUES.nl = [
     'Gemeten eigenschappen komen niet overeen met {0}','Zwakke signalen — controleer nabijheid',
     'β','µT','RGB','Hz','Toon eerst resultaat',
     'Privacy','Voorwaarden','Terugbetaling','Contact','Sluiten',
-    'Diepe neurale analyse','Slimme deep-learning-analyse','Vertrouwen','Onzekerheid','Signaalkwaliteit',
-    'Kandidaat-waarschijnlijkheden','Waarom deze beslissing?','Anomalie gedetecteerd','Train op mijn monster','Trainen...',
-    'Training voltooid','Minimaal 3 metingen nodig','Digitale tweeling gereed','Tweeling bouwen','Diepe analyse...',
-    'Diepe analyse voltooid','Diepe analyse mislukt','Meet minstens één sensor'
 ];
 
 T_VALUES.pl = [
@@ -1313,10 +1120,6 @@ T_VALUES.pl = [
     'Zmierzone właściwości nie pasują do {0}','Słabe sygnały — sprawdź odległość',
     'β','µT','RGB','Hz','Najpierw pokaż wynik',
     'Prywatność','Warunki','Zwrot','Kontakt','Zamknij',
-    'Głęboka analiza neuronowa','Inteligentna analiza głębokiego uczenia','Pewność','Niepewność','Jakość sygnału',
-    'Prawdopodobieństwa kandydatów','Dlaczego ta decyzja?','Wykryto anomalię','Trenuj na mojej próbce','Trenowanie...',
-    'Trening zakończony','Wymagane co najmniej 3 pomiary','Cyfrowy bliźniak gotowy','Budowanie bliźniaka','Głęboka analiza...',
-    'Głęboka analiza zakończona','Głęboka analiza nie powiodła się','Zmierz co najmniej jeden czujnik'
 ];
 
 T_VALUES.sv = [
@@ -1350,10 +1153,6 @@ T_VALUES.sv = [
     'Uppmätta egenskaper matchar inte {0}','Svaga signaler — kontrollera närhet',
     'β','µT','RGB','Hz','Visa resultatet först',
     'Integritet','Villkor','Återbetalning','Kontakt','Stäng',
-    'Djup neural analys','Smart djupinlärningsanalys','Förtroende','Osäkerhet','Signalkvalitet',
-    'Kandidatsannolikheter','Varför detta beslut?','Anomali upptäckt','Träna på mitt prov','Tränar...',
-    'Träning klar','Minst 3 mätningar krävs','Digital tvilling redo','Bygger tvilling','Djupanalys...',
-    'Djupanalys klar','Djupanalys misslyckades','Mät minst en sensor'
 ];
 
 T_VALUES.fa = [
@@ -1387,10 +1186,6 @@ T_VALUES.fa = [
     'خواص اندازه‌گیری‌شده با {0} مطابقت ندارد','سیگنال ضعیف — فاصله را بررسی کنید',
     'β','µT','RGB','هرتز','ابتدا نتیجه را نمایش دهید',
     'حریم خصوصی','شرایط','بازپرداخت','تماس','بستن',
-    'تحلیل عصبی عمیق','تحلیل هوشمند یادگیری عمیق','اطمینان','عدم قطعیت','کیفیت سیگنال',
-    'احتمالات نامزدها','چرا این تصمیم؟','ناهنجاری شناسایی شد','آموزش روی نمونه من','در حال آموزش...',
-    'آموزش کامل شد','حداقل 3 اندازه‌گیری لازم است','دوقلوی دیجیتال آماده','ساخت دوقلو','تحلیل عمیق...',
-    'تحلیل عمیق کامل شد','تحلیل عمیق شکست خورد','حداقل یک سنسور را اندازه بگیرید'
 ];
 
 T_VALUES.ur = [
@@ -1424,10 +1219,6 @@ T_VALUES.ur = [
     'پیمائش شدہ خصوصیات {0} سے مماثل نہیں','کمزور سگنل — قربت چیک کریں',
     'β','µT','RGB','ہرٹز','پہلے نتیجہ دکھائیں',
     'رازداری','شرائط','واپسی','رابطہ','بند کریں',
-    'گہری عصبی تجزیہ','سمارٹ ڈیپ لرننگ تجزیہ','اعتماد','غیر یقینی','سگنل کا معیار',
-    'امیدواروں کی امکانات','یہ فیصلہ کیوں؟','بے ضابطگی پائی گئی','میرے نمونے پر تربیت','تربیت...',
-    'تربیت مکمل','کم از کم 3 پیمائش درکار','ڈیجیٹل ٹوئن تیار','ٹوئن بنایا جا رہا','گہری تجزیہ...',
-    'گہری تجزیہ مکمل','گہری تجزیہ ناکام','کم از کم ایک سینسر ناپیں'
 ];
 
 T_VALUES.sw = [
@@ -1461,10 +1252,6 @@ T_VALUES.sw = [
     'Sifa zilizopimwa hazilingani na {0}','Ishara dhaifu — angalia umbali',
     'β','µT','RGB','Hz','Onyesha matokeo kwanza',
     'Faragha','Masharti','Kurejesha','Wasiliana','Funga',
-    'Uchambuzi wa kina wa neva','Uchambuzi wa akili wa kujifunza kwa kina','Uhakika','Kutokuwa na uhakika','Ubora wa ishara',
-    'Uwezekano wa wagombea','Kwa nini uamuzi huu?','Hitilafu imegunduliwa','Fundisha kwa sampuli yangu','Inafundisha...',
-    'Mafunzo yamekamilika','Inahitajika vipimo 3 angalau','Pacha wa Kidijitali tayari','Kujenga pacha','Uchambuzi wa kina...',
-    'Uchambuzi wa kina umekamilika','Uchambuzi wa kina umeshindikana','Pima kihisi kimoja angalau'
 ];
 
 // ═══ 5. بناء TRANSLATIONS ═══
@@ -1477,11 +1264,53 @@ LANG_LIST.forEach(lang => {
     TRANSLATIONS[lang.code] = obj;
 });
 
+
+const X = {
+ ar: { final_btn_label:'اعرض النتيجة', note_clear:'امسح', back_start:'رجوع للبداية (بدون خصم)', baseline_btn:'حفظ كمرجع لزيت جديد',
+  baseline_saved:'تم حفظ المرجع', baseline_none:'لا يوجد قياس اهتزاز لحفظه', info_user:'للمستخدم', info_dev:'للمطوّر',
+  mag_far:'ابتعد عن العلبة (≥30 سم)', mag_near:'قرّب الهاتف من العلبة الآن',
+  tool1:'محرك اهتزاز + مقياس تسارع', tool2:'مقياس المجال المغناطيسي (µT)',
+  instr1:'ضع الهاتف مسطحاً على العلبة ثم اضغط قياس: ينبض الهاتف مرة ثم يُسجَّل تلاشي الاهتزاز',
+  instr2:'اضغط قياس: ثانيتان بعيداً عن العلبة ثم قرّب الهاتف منها عند التنبيه',
+  verdict_match:'لا مؤشرات تلوّث أو تدهور في القياسات', verdict_partial:'بعض المؤشرات تستدعي الانتباه', verdict_no_match:'مؤشرات تدهور أو تلوّث ظاهرة',
+  solution_match:'استمر بالمراقبة الدورية', solution_partial:'أعد القياس وقارنه بعينة زيت جديد', solution_no_match:'يُنصح بفحص مخبري وتغيير الزيت',
+  verdict_need_baseline:'الاهتزاز وحده يحتاج مرجعاً: قِس زيتاً جديداً واحفظه كمرجع' },
+ en: { final_btn_label:'Show Result', note_clear:'Clear', back_start:'Back to start (no deduction)', baseline_btn:'Save as fresh-oil baseline',
+  baseline_saved:'Baseline saved', baseline_none:'No vibration measurement to save', info_user:'User', info_dev:'Developer',
+  mag_far:'Keep away from the container (≥30 cm)', mag_near:'Bring the phone close to the container now',
+  tool1:'Vibration motor + accelerometer', tool2:'Magnetometer (µT)',
+  instr1:'Lay the phone flat on the container and press Measure: it pulses once, then the vibration decay is recorded',
+  instr2:'Press Measure: 2 s away from the container, then bring the phone close when prompted',
+  verdict_match:'No contamination or degradation indicators', verdict_partial:'Some indicators need attention', verdict_no_match:'Degradation or contamination indicators present',
+  solution_match:'Keep monitoring periodically', solution_partial:'Re-measure and compare with a fresh-oil sample', solution_no_match:'A lab test and an oil change are advised',
+  verdict_need_baseline:'Vibration alone needs a reference: measure fresh oil and save it as baseline' }
+};
+const INFO = {
+ ar: {
+  1: { user:'<p>يعطي الهاتف نبضة اهتزاز قصيرة ثم يسجّل كيف يتلاشى الاهتزاز في العلبة. الوسط الأكثر لزوجة يمتص الاهتزاز أسرع. الرقم نسبي: قارنه بقياس زيت جديد من نفس النوع.</p>',
+    dev:'<h4>النموذج</h4><p>تذبذب حر مخمَّد: x(t)=A·e<sup>−σt</sup>·cos(ω<sub>d</sub>t+φ)، حيث σ=ζω<sub>n</sub> ومعدل الإنقاص اللوغاريتمي δ=ln(x<sub>k</sub>/x<sub>k+1</sub>)=2πζ/√(1−ζ²).</p><h4>الطريقة</h4><p>بعد انتهاء النبضة نأخذ غلاف السعة (أقصى |a| في نوافذ 0.1 s) ونُجري انحداراً خطياً: ln(env)=ln A − σt، فنقرأ σ (s⁻¹) و τ=1/σ، والجودة هي R².</p><h4>حدود</h4><p>متصفح الجوال يعطي ≈60 Hz فقط فتتعرّج التردّدات الأعلى (aliasing)؛ غلاف السعة يبقى صالحاً لكن ω<sub>n</sub> غير معلوم، لذلك نعرض σ لا ζ. القيمة تخصّ المجموعة (هاتف+علبة+زيت) وهي نسبية وليست لزوجة مطلقة (للمطلقة: ASTM D445 / ISO 3104).</p><h4>المصادر</h4><p>Inman, <i>Engineering Vibration</i>, 4th ed., Ch.1–2 · Rao, <i>Mechanical Vibrations</i>, Ch.2 · W3C DeviceMotion Event Specification.</p>' },
+  2: { user:'<p>يقيس الهاتف قوة المجال المغناطيسي بعيداً عن العلبة ثم قريباً منها. فرق واضح يعني وجود حديد (مثل برادة البلى) في الزيت أو بجواره. هذا فحص أولي لا يغني عن التحليل المخبري.</p>',
+    dev:'<h4>القياس</h4><p>|B|=√(B<sub>x</sub>²+B<sub>y</sub>²+B<sub>z</sub>²) بالميكروتسلا من Magnetometer API (W3C Generic Sensor)؛ المجال الأرضي ≈25–65 µT.</p><h4>الفرق</h4><p>ΔB=⟨|B|⟩<sub>قريب</sub>−⟨|B|⟩<sub>بعيد</sub>، وعدم اليقين σ<sub>Δ</sub>=√(s₁²/n₁+s₂²/n₂). نعدّ الفرق معنوياً إذا |ΔB|&gt;3σ<sub>Δ</sub> و|ΔB|&gt;1 µT. القياس التفاضلي يلغي انحياز مغناطيسية الهاتف نفسه والمجال الأرضي المحلي.</p><h4>الفيزياء</h4><p>المواد الحديدية ذات القابلية المغناطيسية الكبيرة تُشوّه المجال المحلي (B=μ<sub>0</sub>(H+M)) بينما الزيت نفسه شبه شفاف مغناطيسياً (χ≈−10⁻⁵).</p><h4>المصادر</h4><p>Merrill, McElhinny &amp; McFadden, <i>The Magnetic Field of the Earth</i> · Scott &amp; Westcott, <i>Predictive Maintenance by Ferrography</i> · W3C Magnetometer.</p>' },
+  3: { user:'<p>نصوّر الزيت على خلفية بيضاء ونقيس سطوعه. الزيت الجديد صافٍ فاتح، والمتدهور أو المحمّل بالسناج أغمق. أضواء متجانسة ودون فلاش تعطي نتيجة أدق.</p>',
+    dev:'<h4>الطريقة</h4><p>متوسط RGB لإطارات الكاميرا → خطّية sRGB (c≤0.04045 ? c/12.92 : ((c+0.055)/1.055)<sup>2.4</sup>) → Y=0.2126R+0.7152G+0.0722B → L*=116·f(Y)−16 (CIE Lab، نقطة بيضاء D65).</p><h4>الأساس</h4><p>الامتصاص يتبع بير–لامبرت A=−log₁₀(I/I₀)=ε·c·l؛ ازدياد الشوائب/السناج يرفع A فيهبط L*.</p><h4>حدود</h4><p>العتبة L*≥40 تجريبية، والتعريض التلقائي وتوازن الأبيض في الكاميرا يؤثّران؛ المرجع المعتمد لتدريج اللون هو ASTM D1500.</p><h4>المصادر</h4><p>CIE 15:2004 <i>Colorimetry</i> · IEC 61966-2-1 (sRGB) · ASTM D1500.</p>' } },
+ en: {
+  1: { user:'<p>The phone gives one short vibration pulse, then records how fast the vibration dies out in the container. A more viscous medium damps faster. The number is relative: compare it with a fresh-oil reading of the same grade.</p>',
+    dev:'<h4>Model</h4><p>Damped free vibration: x(t)=A·e<sup>−σt</sup>·cos(ω<sub>d</sub>t+φ), σ=ζω<sub>n</sub>, log decrement δ=ln(x<sub>k</sub>/x<sub>k+1</sub>)=2πζ/√(1−ζ²).</p><h4>Method</h4><p>After the pulse we take the amplitude envelope (peak |a| in 0.1 s windows) and fit ln(env)=ln A − σt; we report σ (s⁻¹), τ=1/σ and R² as quality.</p><h4>Limits</h4><p>Browsers sample ≈60 Hz, so higher frequencies alias; the envelope stays valid but ω<sub>n</sub> is unknown, hence σ rather than ζ. The value belongs to the phone+container+oil system and is relative, not absolute viscosity (use ASTM D445 / ISO 3104).</p><h4>Sources</h4><p>Inman, <i>Engineering Vibration</i>, 4th ed., Ch.1–2 · Rao, <i>Mechanical Vibrations</i>, Ch.2 · W3C DeviceMotion Event Specification.</p>' },
+  2: { user:'<p>The phone measures magnetic field strength away from the container, then near it. A clear difference means iron (such as wear debris) in or beside the oil. This is a screening test, not a lab analysis.</p>',
+    dev:'<h4>Measurement</h4><p>|B|=√(B<sub>x</sub>²+B<sub>y</sub>²+B<sub>z</sub>²) in µT from the Magnetometer API (W3C Generic Sensor); Earth field ≈25–65 µT.</p><h4>Difference</h4><p>ΔB=⟨|B|⟩<sub>near</sub>−⟨|B|⟩<sub>far</sub>, uncertainty σ<sub>Δ</sub>=√(s₁²/n₁+s₂²/n₂). Significant if |ΔB|&gt;3σ<sub>Δ</sub> and |ΔB|&gt;1 µT. The differential method cancels the phone’s own bias and the local geomagnetic field.</p><h4>Physics</h4><p>Ferromagnetic material (large susceptibility) distorts the local field (B=μ<sub>0</sub>(H+M)); the oil itself is nearly magnetically transparent (χ≈−10⁻⁵).</p><h4>Sources</h4><p>Merrill, McElhinny &amp; McFadden, <i>The Magnetic Field of the Earth</i> · Scott &amp; Westcott, <i>Predictive Maintenance by Ferrography</i> · W3C Magnetometer.</p>' },
+  3: { user:'<p>We photograph the oil on a white background and measure its brightness. Fresh oil is clear and light; degraded or soot-laden oil is darker. Even light without flash gives better results.</p>',
+    dev:'<h4>Method</h4><p>Mean RGB of camera frames → linear sRGB (c≤0.04045 ? c/12.92 : ((c+0.055)/1.055)<sup>2.4</sup>) → Y=0.2126R+0.7152G+0.0722B → L*=116·f(Y)−16 (CIE Lab, D65 white).</p><h4>Basis</h4><p>Absorption follows Beer–Lambert A=−log₁₀(I/I₀)=ε·c·l; more contaminants/soot raise A and lower L*.</p><h4>Limits</h4><p>The L*≥40 threshold is empirical; camera auto-exposure and white balance matter. The standard colour scale is ASTM D1500.</p><h4>Sources</h4><p>CIE 15:2004 <i>Colorimetry</i> · IEC 61966-2-1 (sRGB) · ASTM D1500.</p>' } }
+};
+
+Object.entries({"fr": {"final_btn_label": "Afficher le résultat", "note_clear": "Effacer", "back_start": "Retour au début (sans déduction)", "baseline_btn": "Enregistrer comme référence d’huile neuve", "baseline_saved": "Référence enregistrée", "baseline_none": "Aucune mesure de vibration à enregistrer", "info_user": "Utilisateur", "info_dev": "Développeur", "mag_far": "Éloignez-vous du récipient (≥30 cm)", "mag_near": "Approchez maintenant le téléphone du récipient", "tool1": "Moteur de vibration + accéléromètre", "tool2": "Magnétomètre (µT)", "instr1": "Posez le téléphone à plat sur le récipient et appuyez sur Mesurer : il vibre une fois, puis l’amortissement est enregistré", "instr2": "Appuyez sur Mesurer : 2 s loin du récipient, puis approchez le téléphone quand c’est indiqué", "verdict_match": "Aucun indice de contamination ou de dégradation", "verdict_partial": "Certains indices demandent de l’attention", "verdict_no_match": "Indices de dégradation ou de contamination présents", "solution_match": "Poursuivez la surveillance périodique", "solution_partial": "Refaites la mesure et comparez avec un échantillon d’huile neuve", "solution_no_match": "Une analyse en laboratoire et une vidange sont conseillées", "verdict_need_baseline": "La vibration seule exige une référence : mesurez une huile neuve et enregistrez-la comme référence"}, "es": {"final_btn_label": "Mostrar resultado", "note_clear": "Borrar", "back_start": "Volver al inicio (sin descuento)", "baseline_btn": "Guardar como referencia de aceite nuevo", "baseline_saved": "Referencia guardada", "baseline_none": "No hay medición de vibración que guardar", "info_user": "Usuario", "info_dev": "Desarrollador", "mag_far": "Aléjese del recipiente (≥30 cm)", "mag_near": "Acerque ahora el teléfono al recipiente", "tool1": "Motor de vibración + acelerómetro", "tool2": "Magnetómetro (µT)", "instr1": "Apoye el teléfono plano sobre el recipiente y pulse Medir: vibra una vez y se registra cómo se amortigua", "instr2": "Pulse Medir: 2 s lejos del recipiente y luego acerque el teléfono cuando se le indique", "verdict_match": "Sin indicios de contaminación ni degradación", "verdict_partial": "Algunos indicios requieren atención", "verdict_no_match": "Hay indicios de degradación o contaminación", "solution_match": "Continúe con el control periódico", "solution_partial": "Repita la medición y compárela con una muestra de aceite nuevo", "solution_no_match": "Se aconseja un análisis de laboratorio y cambiar el aceite", "verdict_need_baseline": "La vibración sola necesita una referencia: mida aceite nuevo y guárdelo como referencia"}, "de": {"final_btn_label": "Ergebnis anzeigen", "note_clear": "Löschen", "back_start": "Zurück zum Start (ohne Abzug)", "baseline_btn": "Als Referenz für Frischöl speichern", "baseline_saved": "Referenz gespeichert", "baseline_none": "Keine Vibrationsmessung zum Speichern", "info_user": "Nutzer", "info_dev": "Entwickler", "mag_far": "Halten Sie Abstand zum Behälter (≥30 cm)", "mag_near": "Halten Sie das Telefon jetzt nah an den Behälter", "tool1": "Vibrationsmotor + Beschleunigungssensor", "tool2": "Magnetometer (µT)", "instr1": "Telefon flach auf den Behälter legen und „Messen“ drücken: Es vibriert einmal, dann wird das Abklingen aufgezeichnet", "instr2": "„Messen“ drücken: 2 s Abstand zum Behälter, dann das Telefon bei der Aufforderung nah heranführen", "verdict_match": "Keine Hinweise auf Verunreinigung oder Verschleiß", "verdict_partial": "Einige Hinweise erfordern Aufmerksamkeit", "verdict_no_match": "Hinweise auf Verschleiß oder Verunreinigung vorhanden", "solution_match": "Regelmäßig weiter überwachen", "solution_partial": "Erneut messen und mit einer Frischölprobe vergleichen", "solution_no_match": "Eine Laboranalyse und ein Ölwechsel werden empfohlen", "verdict_need_baseline": "Vibration allein braucht eine Referenz: Frischöl messen und als Referenz speichern"}, "it": {"final_btn_label": "Mostra risultato", "note_clear": "Cancella", "back_start": "Torna all’inizio (senza addebito)", "baseline_btn": "Salva come riferimento olio nuovo", "baseline_saved": "Riferimento salvato", "baseline_none": "Nessuna misura di vibrazione da salvare", "info_user": "Utente", "info_dev": "Sviluppatore", "mag_far": "Allontanati dal contenitore (≥30 cm)", "mag_near": "Avvicina ora il telefono al contenitore", "tool1": "Motore di vibrazione + accelerometro", "tool2": "Magnetometro (µT)", "instr1": "Appoggia il telefono piatto sul contenitore e premi Misura: vibra una volta, poi viene registrato lo smorzamento", "instr2": "Premi Misura: 2 s lontano dal contenitore, poi avvicina il telefono quando richiesto", "verdict_match": "Nessun indizio di contaminazione o degrado", "verdict_partial": "Alcuni indizi richiedono attenzione", "verdict_no_match": "Presenti indizi di degrado o contaminazione", "solution_match": "Continua il controllo periodico", "solution_partial": "Ripeti la misura e confrontala con un campione di olio nuovo", "solution_no_match": "Si consigliano un’analisi di laboratorio e il cambio dell’olio", "verdict_need_baseline": "La sola vibrazione richiede un riferimento: misura olio nuovo e salvalo come riferimento"}, "pt": {"final_btn_label": "Mostrar resultado", "note_clear": "Limpar", "back_start": "Voltar ao início (sem desconto)", "baseline_btn": "Guardar como referência de óleo novo", "baseline_saved": "Referência guardada", "baseline_none": "Não há medição de vibração para guardar", "info_user": "Utilizador", "info_dev": "Programador", "mag_far": "Afaste-se do recipiente (≥30 cm)", "mag_near": "Aproxime agora o telemóvel do recipiente", "tool1": "Motor de vibração + acelerómetro", "tool2": "Magnetómetro (µT)", "instr1": "Pouse o telemóvel plano no recipiente e prima Medir: vibra uma vez e regista-se o amortecimento", "instr2": "Prima Medir: 2 s longe do recipiente e depois aproxime o telemóvel quando indicado", "verdict_match": "Sem indícios de contaminação ou degradação", "verdict_partial": "Alguns indícios requerem atenção", "verdict_no_match": "Existem indícios de degradação ou contaminação", "solution_match": "Continue a monitorização periódica", "solution_partial": "Repita a medição e compare com uma amostra de óleo novo", "solution_no_match": "Recomenda-se análise laboratorial e mudança de óleo", "verdict_need_baseline": "A vibração sozinha precisa de referência: meça óleo novo e guarde-o como referência"}, "ru": {"final_btn_label": "Показать результат", "note_clear": "Очистить", "back_start": "Вернуться в начало (без списания)", "baseline_btn": "Сохранить как эталон свежего масла", "baseline_saved": "Эталон сохранён", "baseline_none": "Нет измерения вибрации для сохранения", "info_user": "Пользователь", "info_dev": "Разработчик", "mag_far": "Отойдите от ёмкости (≥30 см)", "mag_near": "Теперь поднесите телефон к ёмкости", "tool1": "Вибромотор + акселерометр", "tool2": "Магнитометр (мкТл)", "instr1": "Положите телефон плашмя на ёмкость и нажмите «Измерить»: он вибрирует один раз, затем записывается затухание", "instr2": "Нажмите «Измерить»: 2 с вдали от ёмкости, затем поднесите телефон по сигналу", "verdict_match": "Признаков загрязнения или деградации нет", "verdict_partial": "Некоторые признаки требуют внимания", "verdict_no_match": "Есть признаки деградации или загрязнения", "solution_match": "Продолжайте периодический контроль", "solution_partial": "Повторите измерение и сравните со свежим маслом", "solution_no_match": "Рекомендуются лабораторный анализ и замена масла", "verdict_need_baseline": "Вибрации одной недостаточно: измерьте свежее масло и сохраните как эталон"}, "zh": {"final_btn_label": "显示结果", "note_clear": "清除", "back_start": "返回开始（不扣次数）", "baseline_btn": "保存为新机油基准", "baseline_saved": "基准已保存", "baseline_none": "没有可保存的振动测量", "info_user": "用户", "info_dev": "开发者", "mag_far": "请远离容器（≥30 厘米）", "mag_near": "现在请将手机靠近容器", "tool1": "振动马达 + 加速度计", "tool2": "磁力计（µT）", "instr1": "将手机平放在容器上并点击“测量”：手机振动一次，随后记录振动衰减", "instr2": "点击“测量”：先远离容器 2 秒，提示后再将手机靠近", "verdict_match": "未发现污染或劣化迹象", "verdict_partial": "部分指标需要注意", "verdict_no_match": "存在劣化或污染迹象", "solution_match": "继续定期监测", "solution_partial": "重新测量并与新机油样品比较", "solution_no_match": "建议进行实验室检测并更换机油", "verdict_need_baseline": "仅凭振动需要基准：请测量新机油并保存为基准"}, "ja": {"final_btn_label": "結果を表示", "note_clear": "消去", "back_start": "最初に戻る（消費なし）", "baseline_btn": "新品オイルの基準として保存", "baseline_saved": "基準を保存しました", "baseline_none": "保存できる振動測定がありません", "info_user": "ユーザー", "info_dev": "開発者", "mag_far": "容器から離れてください（30 cm 以上）", "mag_near": "今すぐスマートフォンを容器に近づけてください", "tool1": "振動モーター + 加速度センサー", "tool2": "磁力計（µT）", "instr1": "スマートフォンを容器の上に平らに置き「測定」を押します。1回振動し、その減衰を記録します", "instr2": "「測定」を押します。容器から2秒離れ、合図でスマートフォンを近づけます", "verdict_match": "汚染や劣化の兆候はありません", "verdict_partial": "一部の指標に注意が必要です", "verdict_no_match": "劣化または汚染の兆候があります", "solution_match": "定期的な確認を続けてください", "solution_partial": "再測定し、新品オイルのサンプルと比較してください", "solution_no_match": "ラボ分析とオイル交換をおすすめします", "verdict_need_baseline": "振動だけでは基準が必要です。新品オイルを測定して基準として保存してください"}, "ko": {"final_btn_label": "결과 보기", "note_clear": "지우기", "back_start": "처음으로 돌아가기(차감 없음)", "baseline_btn": "새 오일 기준값으로 저장", "baseline_saved": "기준값이 저장되었습니다", "baseline_none": "저장할 진동 측정이 없습니다", "info_user": "사용자", "info_dev": "개발자", "mag_far": "용기에서 멀리 떨어지세요(30cm 이상)", "mag_near": "이제 휴대폰을 용기에 가까이 대세요", "tool1": "진동 모터 + 가속도계", "tool2": "자력계(µT)", "instr1": "휴대폰을 용기 위에 평평하게 놓고 측정을 누르세요. 한 번 진동한 뒤 진동 감쇠가 기록됩니다", "instr2": "측정을 누르세요. 용기에서 2초간 떨어져 있다가 안내가 나오면 휴대폰을 가까이 대세요", "verdict_match": "오염이나 열화 징후가 없습니다", "verdict_partial": "일부 지표에 주의가 필요합니다", "verdict_no_match": "열화 또는 오염 징후가 있습니다", "solution_match": "정기적으로 계속 점검하세요", "solution_partial": "다시 측정하고 새 오일 샘플과 비교하세요", "solution_no_match": "실험실 분석과 오일 교환을 권장합니다", "verdict_need_baseline": "진동만으로는 기준이 필요합니다. 새 오일을 측정해 기준값으로 저장하세요"}, "hi": {"final_btn_label": "परिणाम दिखाएँ", "note_clear": "मिटाएँ", "back_start": "शुरुआत पर लौटें (कटौती नहीं)", "baseline_btn": "नए तेल के संदर्भ के रूप में सहेजें", "baseline_saved": "संदर्भ सहेजा गया", "baseline_none": "सहेजने के लिए कोई कंपन माप नहीं है", "info_user": "उपयोगकर्ता", "info_dev": "डेवलपर", "mag_far": "डिब्बे से दूर रहें (≥30 सेमी)", "mag_near": "अब फ़ोन को डिब्बे के पास लाएँ", "tool1": "कंपन मोटर + एक्सेलेरोमीटर", "tool2": "मैग्नेटोमीटर (µT)", "instr1": "फ़ोन को डिब्बे पर सपाट रखें और माप दबाएँ: वह एक बार कंपन करेगा, फिर कंपन का क्षय दर्ज होगा", "instr2": "माप दबाएँ: 2 सेकंड डिब्बे से दूर रहें, फिर संकेत मिलने पर फ़ोन पास लाएँ", "verdict_match": "दूषण या क्षरण के कोई संकेत नहीं", "verdict_partial": "कुछ संकेतकों पर ध्यान देना ज़रूरी है", "verdict_no_match": "क्षरण या दूषण के संकेत मौजूद हैं", "solution_match": "समय-समय पर निगरानी जारी रखें", "solution_partial": "दोबारा मापें और नए तेल के नमूने से तुलना करें", "solution_no_match": "प्रयोगशाला जाँच और तेल बदलने की सलाह है", "verdict_need_baseline": "केवल कंपन के लिए संदर्भ चाहिए: नया तेल मापकर संदर्भ के रूप में सहेजें"}, "tr": {"final_btn_label": "Sonucu göster", "note_clear": "Temizle", "back_start": "Başa dön (kesinti yok)", "baseline_btn": "Yeni yağ referansı olarak kaydet", "baseline_saved": "Referans kaydedildi", "baseline_none": "Kaydedilecek titreşim ölçümü yok", "info_user": "Kullanıcı", "info_dev": "Geliştirici", "mag_far": "Kaptan uzak durun (≥30 cm)", "mag_near": "Şimdi telefonu kaba yaklaştırın", "tool1": "Titreşim motoru + ivmeölçer", "tool2": "Manyetometre (µT)", "instr1": "Telefonu kabın üzerine düz koyup Ölç’e basın: bir kez titreşir, ardından sönümlenme kaydedilir", "instr2": "Ölç’e basın: kaptan 2 sn uzak durun, uyarıda telefonu yaklaştırın", "verdict_match": "Kirlenme veya bozulma belirtisi yok", "verdict_partial": "Bazı göstergeler dikkat gerektiriyor", "verdict_no_match": "Bozulma veya kirlenme belirtileri var", "solution_match": "Düzenli izlemeye devam edin", "solution_partial": "Yeniden ölçün ve yeni yağ örneğiyle karşılaştırın", "solution_no_match": "Laboratuvar testi ve yağ değişimi önerilir", "verdict_need_baseline": "Tek başına titreşim için referans gerekir: yeni yağı ölçüp referans olarak kaydedin"}, "id": {"final_btn_label": "Tampilkan hasil", "note_clear": "Hapus", "back_start": "Kembali ke awal (tanpa potongan)", "baseline_btn": "Simpan sebagai acuan oli baru", "baseline_saved": "Acuan tersimpan", "baseline_none": "Tidak ada pengukuran getaran untuk disimpan", "info_user": "Pengguna", "info_dev": "Pengembang", "mag_far": "Jauhi wadah (≥30 cm)", "mag_near": "Sekarang dekatkan ponsel ke wadah", "tool1": "Motor getar + akselerometer", "tool2": "Magnetometer (µT)", "instr1": "Letakkan ponsel datar di atas wadah lalu tekan Ukur: ponsel bergetar sekali, lalu peredaman getaran dicatat", "instr2": "Tekan Ukur: 2 detik jauh dari wadah, lalu dekatkan ponsel saat diminta", "verdict_match": "Tidak ada indikasi kontaminasi atau degradasi", "verdict_partial": "Beberapa indikator perlu diperhatikan", "verdict_no_match": "Ada indikasi degradasi atau kontaminasi", "solution_match": "Lanjutkan pemantauan berkala", "solution_partial": "Ukur ulang dan bandingkan dengan sampel oli baru", "solution_no_match": "Disarankan uji laboratorium dan ganti oli", "verdict_need_baseline": "Getaran saja butuh acuan: ukur oli baru lalu simpan sebagai acuan"}, "ms": {"final_btn_label": "Papar keputusan", "note_clear": "Padam", "back_start": "Kembali ke awal (tanpa tolakan)", "baseline_btn": "Simpan sebagai rujukan minyak baharu", "baseline_saved": "Rujukan disimpan", "baseline_none": "Tiada ukuran getaran untuk disimpan", "info_user": "Pengguna", "info_dev": "Pembangun", "mag_far": "Jauhi bekas (≥30 cm)", "mag_near": "Sekarang dekatkan telefon ke bekas", "tool1": "Motor getaran + pecutan", "tool2": "Magnetometer (µT)", "instr1": "Letakkan telefon rata di atas bekas dan tekan Ukur: telefon bergetar sekali, kemudian pereputan getaran direkodkan", "instr2": "Tekan Ukur: 2 saat jauh dari bekas, kemudian dekatkan telefon apabila diminta", "verdict_match": "Tiada petunjuk pencemaran atau kemerosotan", "verdict_partial": "Beberapa petunjuk perlu diberi perhatian", "verdict_no_match": "Terdapat petunjuk kemerosotan atau pencemaran", "solution_match": "Teruskan pemantauan berkala", "solution_partial": "Ukur semula dan bandingkan dengan sampel minyak baharu", "solution_no_match": "Ujian makmal dan penukaran minyak disarankan", "verdict_need_baseline": "Getaran sahaja perlukan rujukan: ukur minyak baharu dan simpan sebagai rujukan"}, "vi": {"final_btn_label": "Hiện kết quả", "note_clear": "Xóa", "back_start": "Quay về đầu (không trừ lượt)", "baseline_btn": "Lưu làm mốc dầu mới", "baseline_saved": "Đã lưu mốc", "baseline_none": "Không có phép đo rung để lưu", "info_user": "Người dùng", "info_dev": "Nhà phát triển", "mag_far": "Tránh xa bình chứa (≥30 cm)", "mag_near": "Bây giờ hãy đưa điện thoại lại gần bình chứa", "tool1": "Động cơ rung + gia tốc kế", "tool2": "Từ kế (µT)", "instr1": "Đặt điện thoại nằm phẳng trên bình chứa rồi bấm Đo: máy rung một lần, sau đó ghi lại độ tắt dần của dao động", "instr2": "Bấm Đo: 2 giây xa bình chứa, rồi đưa điện thoại lại gần khi có nhắc", "verdict_match": "Không có dấu hiệu nhiễm bẩn hoặc xuống cấp", "verdict_partial": "Một số chỉ báo cần chú ý", "verdict_no_match": "Có dấu hiệu xuống cấp hoặc nhiễm bẩn", "solution_match": "Tiếp tục theo dõi định kỳ", "solution_partial": "Đo lại và so sánh với mẫu dầu mới", "solution_no_match": "Nên xét nghiệm phòng thí nghiệm và thay dầu", "verdict_need_baseline": "Chỉ riêng độ rung cần có mốc: hãy đo dầu mới và lưu làm mốc"}, "th": {"final_btn_label": "แสดงผล", "note_clear": "ล้าง", "back_start": "กลับไปเริ่มต้น (ไม่หักสิทธิ์)", "baseline_btn": "บันทึกเป็นค่าอ้างอิงน้ำมันใหม่", "baseline_saved": "บันทึกค่าอ้างอิงแล้ว", "baseline_none": "ไม่มีผลวัดการสั่นให้บันทึก", "info_user": "ผู้ใช้", "info_dev": "นักพัฒนา", "mag_far": "อยู่ห่างจากภาชนะ (≥30 ซม.)", "mag_near": "ตอนนี้นำโทรศัพท์เข้าใกล้ภาชนะ", "tool1": "มอเตอร์สั่น + เซนเซอร์วัดความเร่ง", "tool2": "แมกนีโตมิเตอร์ (µT)", "instr1": "วางโทรศัพท์ราบบนภาชนะแล้วกดวัด: เครื่องสั่นหนึ่งครั้ง จากนั้นบันทึกการลดทอนของการสั่น", "instr2": "กดวัด: อยู่ห่างภาชนะ 2 วินาที แล้วนำโทรศัพท์เข้าใกล้เมื่อมีสัญญาณ", "verdict_match": "ไม่พบสัญญาณการปนเปื้อนหรือเสื่อมสภาพ", "verdict_partial": "บางตัวชี้วัดควรให้ความสนใจ", "verdict_no_match": "พบสัญญาณการเสื่อมสภาพหรือการปนเปื้อน", "solution_match": "ติดตามตรวจสอบเป็นระยะต่อไป", "solution_partial": "วัดซ้ำและเปรียบเทียบกับตัวอย่างน้ำมันใหม่", "solution_no_match": "แนะนำให้ตรวจในห้องปฏิบัติการและเปลี่ยนน้ำมัน", "verdict_need_baseline": "การสั่นอย่างเดียวต้องมีค่าอ้างอิง: วัดน้ำมันใหม่แล้วบันทึกเป็นค่าอ้างอิง"}, "nl": {"final_btn_label": "Resultaat tonen", "note_clear": "Wissen", "back_start": "Terug naar begin (zonder aftrek)", "baseline_btn": "Opslaan als referentie voor nieuwe olie", "baseline_saved": "Referentie opgeslagen", "baseline_none": "Geen trillingsmeting om op te slaan", "info_user": "Gebruiker", "info_dev": "Ontwikkelaar", "mag_far": "Houd afstand van de houder (≥30 cm)", "mag_near": "Breng de telefoon nu dicht bij de houder", "tool1": "Trilmotor + versnellingsmeter", "tool2": "Magnetometer (µT)", "instr1": "Leg de telefoon plat op de houder en druk op Meten: hij trilt één keer, daarna wordt de demping vastgelegd", "instr2": "Druk op Meten: 2 s ver van de houder, breng de telefoon daarna dichtbij zodra dat gevraagd wordt", "verdict_match": "Geen aanwijzingen voor vervuiling of slijtage", "verdict_partial": "Sommige aanwijzingen vragen aandacht", "verdict_no_match": "Aanwijzingen voor slijtage of vervuiling aanwezig", "solution_match": "Blijf periodiek controleren", "solution_partial": "Meet opnieuw en vergelijk met een monster nieuwe olie", "solution_no_match": "Een laboratoriumtest en olieverversing worden aangeraden", "verdict_need_baseline": "Trilling alleen heeft een referentie nodig: meet nieuwe olie en sla die op als referentie"}, "pl": {"final_btn_label": "Pokaż wynik", "note_clear": "Wyczyść", "back_start": "Wróć na początek (bez potrącenia)", "baseline_btn": "Zapisz jako wzorzec świeżego oleju", "baseline_saved": "Wzorzec zapisany", "baseline_none": "Brak pomiaru drgań do zapisania", "info_user": "Użytkownik", "info_dev": "Programista", "mag_far": "Odsuń się od pojemnika (≥30 cm)", "mag_near": "Teraz zbliż telefon do pojemnika", "tool1": "Silnik wibracji + akcelerometr", "tool2": "Magnetometr (µT)", "instr1": "Połóż telefon płasko na pojemniku i naciśnij Mierz: zawibruje raz, a następnie zostanie zapisane tłumienie drgań", "instr2": "Naciśnij Mierz: 2 s z dala od pojemnika, potem zbliż telefon po sygnale", "verdict_match": "Brak oznak zanieczyszczenia lub degradacji", "verdict_partial": "Niektóre wskaźniki wymagają uwagi", "verdict_no_match": "Występują oznaki degradacji lub zanieczyszczenia", "solution_match": "Kontynuuj okresową kontrolę", "solution_partial": "Zmierz ponownie i porównaj z próbką świeżego oleju", "solution_no_match": "Zalecane są badanie laboratoryjne i wymiana oleju", "verdict_need_baseline": "Same drgania wymagają wzorca: zmierz świeży olej i zapisz jako wzorzec"}, "sv": {"final_btn_label": "Visa resultat", "note_clear": "Rensa", "back_start": "Tillbaka till start (utan avdrag)", "baseline_btn": "Spara som referens för ny olja", "baseline_saved": "Referens sparad", "baseline_none": "Ingen vibrationsmätning att spara", "info_user": "Användare", "info_dev": "Utvecklare", "mag_far": "Håll avstånd från behållaren (≥30 cm)", "mag_near": "För nu telefonen nära behållaren", "tool1": "Vibrationsmotor + accelerometer", "tool2": "Magnetometer (µT)", "instr1": "Lägg telefonen plant på behållaren och tryck Mät: den vibrerar en gång, sedan registreras dämpningen", "instr2": "Tryck Mät: 2 s långt från behållaren, för sedan telefonen nära när du uppmanas", "verdict_match": "Inga tecken på förorening eller nedbrytning", "verdict_partial": "Vissa indikatorer behöver uppmärksammas", "verdict_no_match": "Tecken på nedbrytning eller förorening finns", "solution_match": "Fortsätt övervaka regelbundet", "solution_partial": "Mät igen och jämför med ett prov på ny olja", "solution_no_match": "Laboratorietest och oljebyte rekommenderas", "verdict_need_baseline": "Enbart vibration behöver en referens: mät ny olja och spara som referens"}, "fa": {"final_btn_label": "نمایش نتیجه", "note_clear": "پاک کردن", "back_start": "بازگشت به ابتدا (بدون کسر)", "baseline_btn": "ذخیره به‌عنوان مرجع روغن نو", "baseline_saved": "مرجع ذخیره شد", "baseline_none": "اندازه‌گیری لرزشی برای ذخیره وجود ندارد", "info_user": "کاربر", "info_dev": "توسعه‌دهنده", "mag_far": "از ظرف دور شوید (حداقل ۳۰ سانتی‌متر)", "mag_near": "اکنون گوشی را به ظرف نزدیک کنید", "tool1": "موتور لرزش + شتاب‌سنج", "tool2": "مغناطیس‌سنج (µT)", "instr1": "گوشی را صاف روی ظرف بگذارید و «اندازه‌گیری» را بزنید: یک‌بار می‌لرزد، سپس میرایی لرزش ثبت می‌شود", "instr2": "«اندازه‌گیری» را بزنید: ۲ ثانیه دور از ظرف، سپس با اعلان گوشی را نزدیک کنید", "verdict_match": "نشانه‌ای از آلودگی یا فرسودگی نیست", "verdict_partial": "برخی شاخص‌ها نیاز به توجه دارند", "verdict_no_match": "نشانه‌های فرسودگی یا آلودگی وجود دارد", "solution_match": "پایش دوره‌ای را ادامه دهید", "solution_partial": "دوباره اندازه بگیرید و با نمونه روغن نو مقایسه کنید", "solution_no_match": "آزمایش آزمایشگاهی و تعویض روغن توصیه می‌شود", "verdict_need_baseline": "لرزش به‌تنهایی به مرجع نیاز دارد: روغن نو را اندازه بگیرید و به‌عنوان مرجع ذخیره کنید"}, "ur": {"final_btn_label": "نتیجہ دکھائیں", "note_clear": "مٹائیں", "back_start": "شروع پر واپس (کٹوتی کے بغیر)", "baseline_btn": "نئے تیل کے حوالے کے طور پر محفوظ کریں", "baseline_saved": "حوالہ محفوظ ہو گیا", "baseline_none": "محفوظ کرنے کے لیے کوئی ارتعاش پیمائش نہیں", "info_user": "صارف", "info_dev": "ڈیولپر", "mag_far": "برتن سے دور رہیں (کم از کم 30 سینٹی میٹر)", "mag_near": "اب فون کو برتن کے قریب لائیں", "tool1": "ارتعاشی موٹر + ایکسیلرومیٹر", "tool2": "میگنیٹومیٹر (µT)", "instr1": "فون کو برتن پر سیدھا رکھیں اور پیمائش دبائیں: وہ ایک بار تھرتھرائے گا، پھر ارتعاش کا گھٹاؤ ریکارڈ ہوگا", "instr2": "پیمائش دبائیں: 2 سیکنڈ برتن سے دور رہیں، پھر اشارے پر فون قریب لائیں", "verdict_match": "آلودگی یا بگاڑ کے کوئی آثار نہیں", "verdict_partial": "کچھ اشاروں پر توجہ درکار ہے", "verdict_no_match": "بگاڑ یا آلودگی کے آثار موجود ہیں", "solution_match": "وقتاً فوقتاً نگرانی جاری رکھیں", "solution_partial": "دوبارہ پیمائش کریں اور نئے تیل کے نمونے سے موازنہ کریں", "solution_no_match": "لیبارٹری ٹیسٹ اور تیل کی تبدیلی تجویز کی جاتی ہے", "verdict_need_baseline": "صرف ارتعاش کے لیے حوالہ درکار ہے: نیا تیل ناپیں اور بطور حوالہ محفوظ کریں"}, "sw": {"final_btn_label": "Onyesha matokeo", "note_clear": "Futa", "back_start": "Rudi mwanzo (bila makato)", "baseline_btn": "Hifadhi kama kigezo cha mafuta mapya", "baseline_saved": "Kigezo kimehifadhiwa", "baseline_none": "Hakuna kipimo cha mtetemo cha kuhifadhi", "info_user": "Mtumiaji", "info_dev": "Msanidi", "mag_far": "Kaa mbali na chombo (≥30 cm)", "mag_near": "Sasa leta simu karibu na chombo", "tool1": "Injini ya mtetemo + kipima mwendokasi", "tool2": "Kipima sumaku (µT)", "instr1": "Weka simu tambarare juu ya chombo kisha bonyeza Pima: inatetemeka mara moja, kisha upunguaji wa mtetemo unarekodiwa", "instr2": "Bonyeza Pima: sekunde 2 mbali na chombo, kisha leta simu karibu unapoelekezwa", "verdict_match": "Hakuna dalili za uchafuzi au kuharibika", "verdict_partial": "Baadhi ya viashiria vinahitaji uangalifu", "verdict_no_match": "Kuna dalili za kuharibika au uchafuzi", "solution_match": "Endelea kufuatilia mara kwa mara", "solution_partial": "Pima tena na ulinganishe na sampuli ya mafuta mapya", "solution_no_match": "Inashauriwa kupima maabara na kubadilisha mafuta", "verdict_need_baseline": "Mtetemo pekee unahitaji kigezo: pima mafuta mapya na uyahifadhi kama kigezo"}}).forEach(([k, v]) => { X[k] = v; });
+Object.entries({"fr": {"1": {"user": "<p>Le téléphone émet une courte impulsion de vibration puis enregistre la vitesse à laquelle elle s’éteint dans le récipient. Un milieu plus visqueux amortit plus vite. Le chiffre est relatif : comparez-le à une mesure d’huile neuve du même grade.</p>"}, "2": {"user": "<p>Le téléphone mesure l’intensité du champ magnétique loin du récipient, puis près de lui. Une différence nette indique du fer (par exemple des particules d’usure) dans l’huile ou à côté. C’est un test de dépistage, pas une analyse de laboratoire.</p>"}, "3": {"user": "<p>On photographie l’huile sur fond blanc et on mesure sa luminosité. L’huile neuve est claire et lumineuse ; l’huile dégradée ou chargée de suie est plus sombre. Une lumière uniforme, sans flash, donne de meilleurs résultats.</p>"}}, "es": {"1": {"user": "<p>El teléfono da un breve pulso de vibración y registra con qué rapidez se apaga en el recipiente. Un medio más viscoso amortigua más rápido. La cifra es relativa: compárela con una lectura de aceite nuevo del mismo grado.</p>"}, "2": {"user": "<p>El teléfono mide la intensidad del campo magnético lejos del recipiente y luego cerca de él. Una diferencia clara indica hierro (por ejemplo, partículas de desgaste) en el aceite o junto a él. Es una prueba de cribado, no un análisis de laboratorio.</p>"}, "3": {"user": "<p>Fotografiamos el aceite sobre fondo blanco y medimos su luminosidad. El aceite nuevo es claro y brillante; el degradado o con hollín es más oscuro. Una luz uniforme y sin flash da mejores resultados.</p>"}}, "de": {"1": {"user": "<p>Das Telefon gibt einen kurzen Vibrationsimpuls ab und zeichnet auf, wie schnell die Schwingung im Behälter abklingt. Ein zäheres Medium dämpft schneller. Der Wert ist relativ: Vergleichen Sie ihn mit einer Messung von Frischöl derselben Sorte.</p>"}, "2": {"user": "<p>Das Telefon misst die Magnetfeldstärke zuerst entfernt vom Behälter, dann nah daran. Ein deutlicher Unterschied deutet auf Eisen (z. B. Abrieb) im Öl oder daneben hin. Das ist ein Vortest, keine Laboranalyse.</p>"}, "3": {"user": "<p>Wir fotografieren das Öl auf weißem Hintergrund und messen die Helligkeit. Frisches Öl ist klar und hell; verbrauchtes oder rußbeladenes Öl ist dunkler. Gleichmäßiges Licht ohne Blitz liefert bessere Ergebnisse.</p>"}}, "it": {"1": {"user": "<p>Il telefono emette un breve impulso di vibrazione e registra quanto velocemente si spegne nel contenitore. Un mezzo più viscoso smorza più in fretta. Il valore è relativo: confrontalo con una misura di olio nuovo della stessa gradazione.</p>"}, "2": {"user": "<p>Il telefono misura l’intensità del campo magnetico lontano dal contenitore e poi vicino. Una differenza netta indica ferro (ad esempio particelle d’usura) nell’olio o accanto. È un test di screening, non un’analisi di laboratorio.</p>"}, "3": {"user": "<p>Fotografiamo l’olio su sfondo bianco e misuriamo la luminosità. L’olio nuovo è limpido e chiaro; quello degradato o carico di fuliggine è più scuro. Una luce uniforme senza flash dà risultati migliori.</p>"}}, "pt": {"1": {"user": "<p>O telemóvel dá um breve impulso de vibração e regista a rapidez com que se extingue no recipiente. Um meio mais viscoso amortece mais depressa. O valor é relativo: compare-o com uma leitura de óleo novo do mesmo grau.</p>"}, "2": {"user": "<p>O telemóvel mede a intensidade do campo magnético longe do recipiente e depois perto dele. Uma diferença clara indica ferro (por exemplo, partículas de desgaste) no óleo ou junto dele. É um teste de triagem, não uma análise laboratorial.</p>"}, "3": {"user": "<p>Fotografamos o óleo sobre fundo branco e medimos o brilho. O óleo novo é claro e luminoso; o degradado ou com fuligem é mais escuro. Luz uniforme e sem flash dá melhores resultados.</p>"}}, "ru": {"1": {"user": "<p>Телефон даёт короткий импульс вибрации и записывает, как быстро колебания затухают в ёмкости. Более вязкая среда гасит быстрее. Число относительное: сравните его с замером свежего масла той же марки.</p>"}, "2": {"user": "<p>Телефон измеряет напряжённость магнитного поля вдали от ёмкости, а затем рядом с ней. Заметная разница указывает на железо (например, частицы износа) в масле или рядом. Это скрининг, а не лабораторный анализ.</p>"}, "3": {"user": "<p>Мы фотографируем масло на белом фоне и измеряем его яркость. Свежее масло прозрачное и светлое; отработанное или с сажей темнее. Ровный свет без вспышки даёт более точный результат.</p>"}}, "zh": {"1": {"user": "<p>手机发出一次短暂的振动脉冲，然后记录振动在容器中消失的快慢。越黏稠的介质衰减越快。该数值是相对的：请与同一牌号新机油的读数比较。</p>"}, "2": {"user": "<p>手机先在远离容器处、再在靠近容器处测量磁场强度。差异明显说明机油中或附近有铁（如磨损颗粒）。这是初步筛查，不能代替实验室分析。</p>"}, "3": {"user": "<p>我们在白色背景上拍摄机油并测量其亮度。新机油清澈明亮，劣化或含积碳的机油更暗。光线均匀且不开闪光灯时结果更准确。</p>"}}, "ja": {"1": {"user": "<p>スマートフォンが短い振動パルスを出し、容器内で振動がどれだけ速く減衰するかを記録します。粘度が高い媒体ほど速く減衰します。数値は相対的なものなので、同じグレードの新品オイルの測定値と比較してください。</p>"}, "2": {"user": "<p>スマートフォンが、容器から離れた場所と近くで磁場の強さを測定します。差がはっきり出れば、オイル中または近くに鉄（摩耗粉など）があることを示します。これは簡易スクリーニングで、ラボ分析の代わりにはなりません。</p>"}, "3": {"user": "<p>白い背景でオイルを撮影し、明るさを測定します。新品オイルは澄んで明るく、劣化したオイルやすすを含むオイルは暗くなります。フラッシュなしの均一な光のほうが精度が上がります。</p>"}}, "ko": {"1": {"user": "<p>휴대폰이 짧은 진동 펄스를 내고 용기 안에서 진동이 얼마나 빨리 사그라드는지 기록합니다. 점도가 높은 매질일수록 더 빨리 감쇠합니다. 수치는 상대적이므로 같은 등급 새 오일의 측정값과 비교하세요.</p>"}, "2": {"user": "<p>휴대폰이 용기에서 멀리 떨어진 곳과 가까운 곳에서 자기장 세기를 측정합니다. 차이가 뚜렷하면 오일 속이나 근처에 철(마모 입자 등)이 있다는 뜻입니다. 간이 선별 검사이며 실험실 분석을 대체하지 않습니다.</p>"}, "3": {"user": "<p>흰 배경에서 오일을 촬영해 밝기를 측정합니다. 새 오일은 맑고 밝으며, 열화되었거나 그을음이 많은 오일은 더 어둡습니다. 플래시 없이 고른 조명에서 더 정확합니다.</p>"}}, "hi": {"1": {"user": "<p>फ़ोन कंपन का एक छोटा झटका देता है और दर्ज करता है कि डिब्बे में कंपन कितनी जल्दी ख़त्म होता है। अधिक गाढ़ा माध्यम कंपन को जल्दी घटाता है। यह संख्या सापेक्ष है: इसकी तुलना उसी ग्रेड के नए तेल की रीडिंग से करें।</p>"}, "2": {"user": "<p>फ़ोन पहले डिब्बे से दूर और फिर उसके पास चुंबकीय क्षेत्र की तीव्रता मापता है। स्पष्ट अंतर का मतलब है तेल में या उसके पास लोहा (जैसे घिसाव के कण) है। यह प्रारंभिक जाँच है, प्रयोगशाला विश्लेषण नहीं।</p>"}, "3": {"user": "<p>हम सफ़ेद पृष्ठभूमि पर तेल की तस्वीर लेकर उसकी चमक मापते हैं। नया तेल साफ़ और हल्का होता है; ख़राब या कालिख वाला तेल गहरा होता है। फ़्लैश के बिना समान रोशनी में बेहतर नतीजे मिलते हैं।</p>"}}, "tr": {"1": {"user": "<p>Telefon kısa bir titreşim darbesi verir ve titreşimin kapta ne kadar hızlı söndüğünü kaydeder. Daha viskoz ortam daha hızlı sönümler. Değer göreceli: aynı derecedeki yeni yağ ölçümüyle karşılaştırın.</p>"}, "2": {"user": "<p>Telefon manyetik alan şiddetini önce kaptan uzakta, sonra yakınında ölçer. Belirgin fark, yağda veya yanında demir (örneğin aşınma parçacıkları) olduğunu gösterir. Bu bir ön tarama testidir, laboratuvar analizi değildir.</p>"}, "3": {"user": "<p>Yağı beyaz zeminde fotoğraflar ve parlaklığını ölçeriz. Yeni yağ berrak ve açıktır; bozulmuş veya is yüklü yağ daha koyudur. Flaşsız, düzgün ışık daha iyi sonuç verir.</p>"}}, "id": {"1": {"user": "<p>Ponsel memberi satu denyut getaran singkat lalu mencatat seberapa cepat getaran meredam di dalam wadah. Medium yang lebih kental meredam lebih cepat. Angkanya relatif: bandingkan dengan hasil ukur oli baru dengan grade yang sama.</p>"}, "2": {"user": "<p>Ponsel mengukur kekuatan medan magnet jauh dari wadah, lalu dekat dengannya. Perbedaan yang jelas berarti ada besi (misalnya serpihan keausan) di dalam atau di dekat oli. Ini uji penyaringan, bukan analisis laboratorium.</p>"}, "3": {"user": "<p>Kami memotret oli di atas latar putih dan mengukur kecerahannya. Oli baru jernih dan terang; oli yang rusak atau berjelaga lebih gelap. Cahaya merata tanpa lampu kilat memberi hasil lebih baik.</p>"}}, "ms": {"1": {"user": "<p>Telefon memberi satu denyutan getaran ringkas dan merekod kelajuan getaran reda di dalam bekas. Medium yang lebih likat meredam lebih cepat. Nilainya relatif: bandingkan dengan bacaan minyak baharu bagi gred yang sama.</p>"}, "2": {"user": "<p>Telefon mengukur kekuatan medan magnet jauh dari bekas, kemudian dekat dengannya. Perbezaan jelas bermakna ada besi (contohnya serpihan haus) dalam atau berhampiran minyak. Ini ujian saringan, bukan analisis makmal.</p>"}, "3": {"user": "<p>Kami merakam foto minyak di atas latar putih dan mengukur kecerahannya. Minyak baharu jernih dan cerah; minyak yang merosot atau berjelaga lebih gelap. Cahaya sekata tanpa denyar memberi hasil lebih baik.</p>"}}, "vi": {"1": {"user": "<p>Điện thoại tạo một xung rung ngắn rồi ghi lại dao động tắt nhanh hay chậm trong bình chứa. Môi trường nhớt hơn sẽ tắt dần nhanh hơn. Con số mang tính tương đối: hãy so với kết quả đo dầu mới cùng cấp.</p>"}, "2": {"user": "<p>Điện thoại đo cường độ từ trường khi ở xa bình chứa rồi khi ở gần. Chênh lệch rõ rệt cho thấy có sắt (ví dụ mạt mài mòn) trong dầu hoặc bên cạnh. Đây là bước sàng lọc, không thay thế phân tích phòng thí nghiệm.</p>"}, "3": {"user": "<p>Chúng tôi chụp dầu trên nền trắng và đo độ sáng. Dầu mới trong và sáng; dầu xuống cấp hoặc nhiều muội than sẽ tối hơn. Ánh sáng đều, không dùng đèn flash cho kết quả tốt hơn.</p>"}}, "th": {"1": {"user": "<p>โทรศัพท์สั่นเป็นจังหวะสั้นหนึ่งครั้งแล้วบันทึกว่าการสั่นในภาชนะลดลงเร็วแค่ไหน ของเหลวที่ข้นกว่าจะลดทอนเร็วกว่า ตัวเลขเป็นค่าสัมพัทธ์ ควรเทียบกับค่าที่วัดจากน้ำมันใหม่เกรดเดียวกัน</p>"}, "2": {"user": "<p>โทรศัพท์วัดความแรงของสนามแม่เหล็กขณะอยู่ห่างจากภาชนะ แล้ววัดอีกครั้งขณะอยู่ใกล้ ถ้าต่างกันชัดเจนแสดงว่ามีเหล็ก (เช่น ผงโลหะจากการสึกหรอ) ในน้ำมันหรืออยู่ใกล้ นี่เป็นการตรวจคัดกรอง ไม่ใช่การวิเคราะห์ในห้องปฏิบัติการ</p>"}, "3": {"user": "<p>เราถ่ายภาพน้ำมันบนพื้นหลังสีขาวแล้ววัดความสว่าง น้ำมันใหม่ใสและสว่าง น้ำมันที่เสื่อมสภาพหรือมีเขม่าจะเข้มกว่า แสงสม่ำเสมอโดยไม่ใช้แฟลชให้ผลดีกว่า</p>"}}, "nl": {"1": {"user": "<p>De telefoon geeft één korte trillingspuls en registreert hoe snel de trilling in de houder uitdooft. Een stroperiger medium dempt sneller. Het getal is relatief: vergelijk het met een meting van nieuwe olie van dezelfde klasse.</p>"}, "2": {"user": "<p>De telefoon meet de magnetische veldsterkte eerst ver van de houder en daarna dichtbij. Een duidelijk verschil wijst op ijzer (zoals slijtagedeeltjes) in of naast de olie. Dit is een voorscreening, geen laboratoriumanalyse.</p>"}, "3": {"user": "<p>We fotograferen de olie op een witte achtergrond en meten de helderheid. Nieuwe olie is helder en licht; verouderde of roetbeladen olie is donkerder. Gelijkmatig licht zonder flits geeft betere resultaten.</p>"}}, "pl": {"1": {"user": "<p>Telefon wysyła krótki impuls drgań i zapisuje, jak szybko drgania wygasają w pojemniku. Bardziej lepki ośrodek tłumi szybciej. Wartość jest względna: porównaj ją z pomiarem świeżego oleju tej samej klasy.</p>"}, "2": {"user": "<p>Telefon mierzy natężenie pola magnetycznego z dala od pojemnika, a potem blisko niego. Wyraźna różnica oznacza żelazo (np. cząstki zużycia) w oleju lub obok. To test przesiewowy, a nie analiza laboratoryjna.</p>"}, "3": {"user": "<p>Fotografujemy olej na białym tle i mierzymy jasność. Świeży olej jest klarowny i jasny; zużyty lub zasadzony sadzą jest ciemniejszy. Równomierne światło bez lampy błyskowej daje lepsze wyniki.</p>"}}, "sv": {"1": {"user": "<p>Telefonen ger en kort vibrationspuls och registrerar hur snabbt vibrationen klingar av i behållaren. Ett segare medium dämpar snabbare. Värdet är relativt: jämför det med en mätning av ny olja av samma klass.</p>"}, "2": {"user": "<p>Telefonen mäter magnetfältets styrka först långt från behållaren och sedan nära den. En tydlig skillnad betyder järn (t.ex. slitagepartiklar) i eller intill oljan. Det är ett förtest, inte en laboratorieanalys.</p>"}, "3": {"user": "<p>Vi fotograferar oljan mot vit bakgrund och mäter ljusheten. Ny olja är klar och ljus; nedbruten eller sotbelastad olja är mörkare. Jämnt ljus utan blixt ger bättre resultat.</p>"}}, "fa": {"1": {"user": "<p>گوشی یک پالس لرزش کوتاه می‌دهد و ثبت می‌کند که لرزش در ظرف با چه سرعتی محو می‌شود. محیط غلیظ‌تر سریع‌تر میرا می‌کند. عدد نسبی است: آن را با اندازه‌گیری روغن نو همان درجه مقایسه کنید.</p>"}, "2": {"user": "<p>گوشی شدت میدان مغناطیسی را ابتدا دور از ظرف و سپس نزدیک آن اندازه می‌گیرد. اختلاف آشکار یعنی آهن (مثلاً ذرات سایش) در روغن یا کنار آن هست. این یک آزمون غربالگری است، نه تحلیل آزمایشگاهی.</p>"}, "3": {"user": "<p>روغن را روی زمینه سفید عکس می‌گیریم و روشنایی آن را می‌سنجیم. روغن نو شفاف و روشن است؛ روغن فرسوده یا پر از دوده تیره‌تر است. نور یکنواخت و بدون فلاش نتیجه بهتری می‌دهد.</p>"}}, "ur": {"1": {"user": "<p>فون ایک مختصر ارتعاشی جھٹکا دیتا ہے اور ریکارڈ کرتا ہے کہ برتن میں ارتعاش کتنی جلدی ختم ہوتا ہے۔ زیادہ گاڑھا واسطہ ارتعاش کو جلد گھٹاتا ہے۔ عدد اضافی ہے: اس کا موازنہ اسی گریڈ کے نئے تیل کی ریڈنگ سے کریں۔</p>"}, "2": {"user": "<p>فون پہلے برتن سے دور اور پھر اس کے قریب مقناطیسی میدان کی شدت ناپتا ہے۔ واضح فرق کا مطلب ہے تیل میں یا اس کے پاس لوہا (مثلاً گھساؤ کے ذرات) موجود ہے۔ یہ ابتدائی جانچ ہے، لیبارٹری تجزیہ نہیں۔</p>"}, "3": {"user": "<p>ہم تیل کو سفید پس منظر پر تصویر بنا کر اس کی روشنی ناپتے ہیں۔ نیا تیل صاف اور ہلکا ہوتا ہے؛ خراب یا کاجل والا تیل گہرا ہوتا ہے۔ فلیش کے بغیر یکساں روشنی بہتر نتیجہ دیتی ہے۔</p>"}}, "sw": {"1": {"user": "<p>Simu inatoa mtetemo mfupi mara moja kisha inarekodi jinsi mtetemo unavyokufa haraka ndani ya chombo. Kimiminika kizito zaidi hupunguza mtetemo haraka zaidi. Namba ni ya kulinganisha: ilinganishe na kipimo cha mafuta mapya ya daraja hilo hilo.</p>"}, "2": {"user": "<p>Simu inapima nguvu ya uga wa sumaku mbali na chombo kisha karibu nacho. Tofauti dhahiri inamaanisha kuna chuma (kama chembe za uchakavu) ndani ya mafuta au karibu nayo. Huu ni uchunguzi wa awali, si uchambuzi wa maabara.</p>"}, "3": {"user": "<p>Tunapiga picha ya mafuta kwenye mandhari nyeupe na kupima mwangaza wake. Mafuta mapya ni safi na mepesi; yaliyoharibika au yenye masizi ni meusi zaidi. Mwanga sawia bila flash hutoa matokeo bora.</p>"}}}).forEach(([k, v]) => { INFO[k] = v; });
+
 // ═══ 6. دالة الترجمة ═══
 let currentLang = localStorage.getItem('oilLang') || 'ar';
 function t(key) {
     const dict = TRANSLATIONS[currentLang] || TRANSLATIONS.en;
-    let str = dict[key] !== undefined ? dict[key] : (TRANSLATIONS.en[key] || key);
+    const xd = X[currentLang];
+    let str = (xd && xd[key] !== undefined) ? xd[key] : (dict[key] !== undefined ? dict[key] : (X.en[key] !== undefined ? X.en[key] : (TRANSLATIONS.en[key] || key)));
     for (let i = 1; i < arguments.length; i++) {
         str = str.replace(new RegExp('\\{' + (i - 1) + '\\}', 'g'), arguments[i]);
     }
@@ -1491,18 +1320,19 @@ function t(key) {
 // ═══ 7. النصوص القانونية ═══
 const LEGAL_TEXTS = {
     ar: { privacy_tab:'سياسة الخصوصية', terms_tab:'شروط الاستخدام', refund_tab:'سياسة الاسترجاع', contact_tab:'تواصل معنا', close:'إغلاق',
-        privacy_body:'<h4>📍 خصوصيتك أولاً</h4><p>جميع القياسات (المغناطيسية، الكاميرا، الاهتزاز) تُعالج محلياً داخل متصفح هاتفك. لا يتم رفع أي بيانات إلى أي خادم خارجي.</p><h4>🗂️ ما نخزّنه</h4><p>النتائج تُحفظ مشفّرة داخل جهازك فقط عبر localStorage.</p><h4>💳 الدفع</h4><p>عمليات الشراء تتم عبر Gumroad؛ لا نرى رقم بطاقتك.</p><h4>✉️ تواصل</h4><p><a href="mailto:moulkamali@gmail.com">moulkamali@gmail.com</a></p>',
+        privacy_body:'<h4>📍 خصوصيتك أولاً</h4><p>جميع القياسات (المغناطيسية، الكاميرا، الاهتزاز) تُعالج محلياً داخل متصفح هاتفك. لا يتم رفع أي بيانات إلى أي خادم خارجي.</p><h4>🗂️ ما نخزّنه</h4><p>الأرصدة والإعدادات والمراجع تُحفظ على جهازك فقط (localStorage للمتصفح).</p><h4>💳 الدفع</h4><p>عمليات الشراء تتم عبر Gumroad؛ لا نرى رقم بطاقتك.</p><h4>✉️ تواصل</h4><p><a href="mailto:moulkamali@gmail.com">moulkamali@gmail.com</a></p>',
         terms_body:'<h4>⚠️ طبيعة الخدمة</h4><p>هذا التطبيق أداة قياس فيزيائية بحتة عبر مستشعرات الهاتف.</p><h4>🧾 الباقات</h4><p>3 تقييمات مجانية، وأرصدة إضافية قابلة للشراء.</p><h4>© حقوق النشر</h4><p>© 2026 Physics Lab Oil.</p>',
         refund_body:'<h4>💰 الاسترجاع</h4><p>الأرصدة رقمية ولا تُسترجع بعد الاستخدام. إن لم تُفعَّل خلال 24 ساعة راسلنا.</p>',
         contact_body:'<h4>✉️ تواصل</h4><ul><li>📧 <a href="mailto:moulkamali@gmail.com">moulkamali@gmail.com</a></li></ul>'
     },
     en: { privacy_tab:'Privacy Policy', terms_tab:'Terms of Use', refund_tab:'Refund Policy', contact_tab:'Contact Us', close:'Close',
-        privacy_body:'<h4>📍 Your Privacy First</h4><p>All measurements are processed locally. No data uploaded to external servers.</p><h4>🗂️ What We Store</h4><p>Results encrypted on your device only.</p><h4>💳 Payment</h4><p>Via Gumroad; we never see your card.</p><h4>✉️ Contact</h4><p><a href="mailto:moulkamali@gmail.com">moulkamali@gmail.com</a></p>',
+        privacy_body:'<h4>📍 Your Privacy First</h4><p>All measurements are processed locally. No data uploaded to external servers.</p><h4>🗂️ What We Store</h4><p>Credits, settings and baselines are stored only on your device (browser localStorage).</p><h4>💳 Payment</h4><p>Via Gumroad; we never see your card.</p><h4>✉️ Contact</h4><p><a href="mailto:moulkamali@gmail.com">moulkamali@gmail.com</a></p>',
         terms_body:'<h4>⚠️ Nature</h4><p>Purely physical measurement tool via phone sensors.</p><h4>🧾 Packs</h4><p>3 free, additional purchasable.</p><h4>© Copyright</h4><p>© 2026 Physics Lab Oil.</p>',
         refund_body:'<h4>💰 Refund</h4><p>Digital credits. Contact within 24 hours if not activated.</p>',
         contact_body:'<h4>✉️ Contact</h4><ul><li>📧 <a href="mailto:moulkamali@gmail.com">moulkamali@gmail.com</a></li></ul>'
     }
 };
+Object.assign(LEGAL_TEXTS, {"fr": {"privacy_tab": "Confidentialité", "terms_tab": "Conditions d’utilisation", "refund_tab": "Remboursement", "contact_tab": "Contact", "close": "Fermer", "privacy_body": "<h4>📍 Votre vie privée d’abord</h4><p>Toutes les mesures sont traitées localement sur votre téléphone. Aucune donnée de mesure n’est envoyée à un serveur.</p><h4>🗂️ Ce que nous stockons</h4><p>Crédits, réglages et références sont conservés uniquement sur votre appareil (localStorage du navigateur).</p><h4>💳 Paiement</h4><p>Les achats passent par Gumroad ; nous ne voyons jamais votre carte.</p><h4>✉️ Contact</h4><p><a href=\"mailto:moulkamali@gmail.com\">moulkamali@gmail.com</a></p>", "terms_body": "<h4>⚠️ Nature du service</h4><p>Outil de mesure purement physique via les capteurs du téléphone.</p><h4>🧾 Forfaits</h4><p>3 vérifications gratuites, crédits supplémentaires achetables.</p><h4>© Droits d’auteur</h4><p>© 2026 Physics Lab Oil.</p>", "refund_body": "<h4>💰 Remboursement</h4><p>Crédits numériques non remboursables après utilisation. Écrivez-nous sous 24 h s’ils n’ont pas été activés.</p>", "contact_body": "<h4>✉️ Contact</h4><ul><li>📧 <a href=\"mailto:moulkamali@gmail.com\">moulkamali@gmail.com</a></li></ul>"}, "es": {"privacy_tab": "Privacidad", "terms_tab": "Términos de uso", "refund_tab": "Reembolsos", "contact_tab": "Contacto", "close": "Cerrar", "privacy_body": "<h4>📍 Su privacidad primero</h4><p>Todas las mediciones se procesan localmente en su teléfono. Ningún dato de medición se envía a ningún servidor.</p><h4>🗂️ Qué almacenamos</h4><p>Créditos, ajustes y referencias se guardan solo en su dispositivo (localStorage del navegador).</p><h4>💳 Pago</h4><p>Las compras se gestionan con Gumroad; nunca vemos su tarjeta.</p><h4>✉️ Contacto</h4><p><a href=\"mailto:moulkamali@gmail.com\">moulkamali@gmail.com</a></p>", "terms_body": "<h4>⚠️ Naturaleza del servicio</h4><p>Herramienta de medición puramente física mediante los sensores del teléfono.</p><h4>🧾 Paquetes</h4><p>3 comprobaciones gratuitas y créditos adicionales de pago.</p><h4>© Derechos de autor</h4><p>© 2026 Physics Lab Oil.</p>", "refund_body": "<h4>💰 Reembolso</h4><p>Los créditos son digitales y no se reembolsan tras su uso. Escríbanos en 24 h si no se activaron.</p>", "contact_body": "<h4>✉️ Contacto</h4><ul><li>📧 <a href=\"mailto:moulkamali@gmail.com\">moulkamali@gmail.com</a></li></ul>"}, "de": {"privacy_tab": "Datenschutz", "terms_tab": "Nutzungsbedingungen", "refund_tab": "Rückerstattung", "contact_tab": "Kontakt", "close": "Schließen", "privacy_body": "<h4>📍 Ihre Privatsphäre zuerst</h4><p>Alle Messungen werden lokal auf Ihrem Telefon verarbeitet. Es werden keine Messdaten an Server übertragen.</p><h4>🗂️ Was wir speichern</h4><p>Guthaben, Einstellungen und Referenzen werden nur auf Ihrem Gerät gespeichert (localStorage des Browsers).</p><h4>💳 Zahlung</h4><p>Käufe laufen über Gumroad; wir sehen Ihre Karte nie.</p><h4>✉️ Kontakt</h4><p><a href=\"mailto:moulkamali@gmail.com\">moulkamali@gmail.com</a></p>", "terms_body": "<h4>⚠️ Art des Dienstes</h4><p>Rein physikalisches Messwerkzeug über die Sensoren des Telefons.</p><h4>🧾 Pakete</h4><p>3 kostenlose Prüfungen, zusätzliche Guthaben kaufbar.</p><h4>© Urheberrecht</h4><p>© 2026 Physics Lab Oil.</p>", "refund_body": "<h4>💰 Rückerstattung</h4><p>Digitale Guthaben werden nach Nutzung nicht erstattet. Schreiben Sie uns innerhalb von 24 Stunden, falls sie nicht aktiviert wurden.</p>", "contact_body": "<h4>✉️ Kontakt</h4><ul><li>📧 <a href=\"mailto:moulkamali@gmail.com\">moulkamali@gmail.com</a></li></ul>"}, "it": {"privacy_tab": "Privacy", "terms_tab": "Condizioni d’uso", "refund_tab": "Rimborsi", "contact_tab": "Contatti", "close": "Chiudi", "privacy_body": "<h4>📍 La tua privacy prima di tutto</h4><p>Tutte le misure sono elaborate localmente sul telefono. Nessun dato di misura viene inviato a un server.</p><h4>🗂️ Cosa memorizziamo</h4><p>Crediti, impostazioni e riferimenti sono salvati solo sul dispositivo (localStorage del browser).</p><h4>💳 Pagamento</h4><p>Gli acquisti passano da Gumroad; non vediamo mai la tua carta.</p><h4>✉️ Contatti</h4><p><a href=\"mailto:moulkamali@gmail.com\">moulkamali@gmail.com</a></p>", "terms_body": "<h4>⚠️ Natura del servizio</h4><p>Strumento di misura puramente fisico tramite i sensori del telefono.</p><h4>🧾 Pacchetti</h4><p>3 controlli gratuiti, crediti aggiuntivi acquistabili.</p><h4>© Copyright</h4><p>© 2026 Physics Lab Oil.</p>", "refund_body": "<h4>💰 Rimborso</h4><p>I crediti digitali non sono rimborsabili dopo l’uso. Scrivici entro 24 ore se non sono stati attivati.</p>", "contact_body": "<h4>✉️ Contatti</h4><ul><li>📧 <a href=\"mailto:moulkamali@gmail.com\">moulkamali@gmail.com</a></li></ul>"}, "pt": {"privacy_tab": "Privacidade", "terms_tab": "Termos de uso", "refund_tab": "Reembolso", "contact_tab": "Contacto", "close": "Fechar", "privacy_body": "<h4>📍 A sua privacidade primeiro</h4><p>Todas as medições são processadas localmente no seu telemóvel. Nenhum dado de medição é enviado para servidores.</p><h4>🗂️ O que guardamos</h4><p>Créditos, definições e referências ficam guardados apenas no seu dispositivo (localStorage do navegador).</p><h4>💳 Pagamento</h4><p>As compras são feitas via Gumroad; nunca vemos o seu cartão.</p><h4>✉️ Contacto</h4><p><a href=\"mailto:moulkamali@gmail.com\">moulkamali@gmail.com</a></p>", "terms_body": "<h4>⚠️ Natureza do serviço</h4><p>Ferramenta de medição puramente física através dos sensores do telemóvel.</p><h4>🧾 Pacotes</h4><p>3 verificações gratuitas e créditos adicionais para compra.</p><h4>© Direitos de autor</h4><p>© 2026 Physics Lab Oil.</p>", "refund_body": "<h4>💰 Reembolso</h4><p>Os créditos são digitais e não reembolsáveis após o uso. Contacte-nos em 24 horas se não foram ativados.</p>", "contact_body": "<h4>✉️ Contacto</h4><ul><li>📧 <a href=\"mailto:moulkamali@gmail.com\">moulkamali@gmail.com</a></li></ul>"}, "ru": {"privacy_tab": "Конфиденциальность", "terms_tab": "Условия использования", "refund_tab": "Возврат", "contact_tab": "Связь", "close": "Закрыть", "privacy_body": "<h4>📍 Ваша конфиденциальность</h4><p>Все измерения обрабатываются локально на вашем телефоне. Данные измерений не отправляются на серверы.</p><h4>🗂️ Что мы храним</h4><p>Кредиты, настройки и эталоны хранятся только на вашем устройстве (localStorage браузера).</p><h4>💳 Оплата</h4><p>Покупки проходят через Gumroad; мы не видим вашу карту.</p><h4>✉️ Связь</h4><p><a href=\"mailto:moulkamali@gmail.com\">moulkamali@gmail.com</a></p>", "terms_body": "<h4>⚠️ Характер сервиса</h4><p>Чисто физический инструмент измерения с помощью датчиков телефона.</p><h4>🧾 Пакеты</h4><p>3 бесплатные проверки, дополнительные кредиты можно купить.</p><h4>© Авторские права</h4><p>© 2026 Physics Lab Oil.</p>", "refund_body": "<h4>💰 Возврат</h4><p>Цифровые кредиты не возвращаются после использования. Напишите нам в течение 24 часов, если они не активировались.</p>", "contact_body": "<h4>✉️ Связь</h4><ul><li>📧 <a href=\"mailto:moulkamali@gmail.com\">moulkamali@gmail.com</a></li></ul>"}, "zh": {"privacy_tab": "隐私政策", "terms_tab": "使用条款", "refund_tab": "退款政策", "contact_tab": "联系我们", "close": "关闭", "privacy_body": "<h4>📍 隐私优先</h4><p>所有测量都在您的手机本地处理，不会向任何服务器上传测量数据。</p><h4>🗂️ 我们存储什么</h4><p>次数、设置和基准值仅保存在您的设备上（浏览器 localStorage）。</p><h4>💳 付款</h4><p>购买通过 Gumroad 完成，我们看不到您的银行卡信息。</p><h4>✉️ 联系我们</h4><p><a href=\"mailto:moulkamali@gmail.com\">moulkamali@gmail.com</a></p>", "terms_body": "<h4>⚠️ 服务性质</h4><p>通过手机传感器进行的纯物理测量工具。</p><h4>🧾 套餐</h4><p>3 次免费检测，可购买更多次数。</p><h4>© 版权</h4><p>© 2026 Physics Lab Oil.</p>", "refund_body": "<h4>💰 退款</h4><p>数字次数使用后不予退款。如 24 小时内未激活，请联系我们。</p>", "contact_body": "<h4>✉️ 联系我们</h4><ul><li>📧 <a href=\"mailto:moulkamali@gmail.com\">moulkamali@gmail.com</a></li></ul>"}, "ja": {"privacy_tab": "プライバシー", "terms_tab": "利用規約", "refund_tab": "返金", "contact_tab": "お問い合わせ", "close": "閉じる", "privacy_body": "<h4>📍 プライバシー最優先</h4><p>すべての測定はお使いのスマートフォン上でローカル処理されます。測定データがサーバーに送信されることはありません。</p><h4>🗂️ 保存する情報</h4><p>残り回数・設定・基準値は、お使いの端末内（ブラウザの localStorage）にのみ保存されます。</p><h4>💳 お支払い</h4><p>購入は Gumroad を通じて行われ、カード情報は当方には見えません。</p><h4>✉️ お問い合わせ</h4><p><a href=\"mailto:moulkamali@gmail.com\">moulkamali@gmail.com</a></p>", "terms_body": "<h4>⚠️ サービスの性質</h4><p>スマートフォンのセンサーを使った純粋な物理測定ツールです。</p><h4>🧾 パック</h4><p>無料チェック3回、追加は購入できます。</p><h4>© 著作権</h4><p>© 2026 Physics Lab Oil.</p>", "refund_body": "<h4>💰 返金</h4><p>デジタルクレジットは使用後の返金はできません。24時間以内に有効化されない場合はご連絡ください。</p>", "contact_body": "<h4>✉️ お問い合わせ</h4><ul><li>📧 <a href=\"mailto:moulkamali@gmail.com\">moulkamali@gmail.com</a></li></ul>"}, "ko": {"privacy_tab": "개인정보 처리방침", "terms_tab": "이용 약관", "refund_tab": "환불 정책", "contact_tab": "문의", "close": "닫기", "privacy_body": "<h4>📍 개인정보 우선</h4><p>모든 측정은 휴대폰에서 로컬로 처리됩니다. 측정 데이터는 어떤 서버로도 전송되지 않습니다.</p><h4>🗂️ 저장하는 정보</h4><p>잔여 횟수, 설정, 기준값은 기기 내(브라우저 localStorage)에만 저장됩니다.</p><h4>💳 결제</h4><p>구매는 Gumroad를 통해 이루어지며 카드 정보는 보이지 않습니다.</p><h4>✉️ 문의</h4><p><a href=\"mailto:moulkamali@gmail.com\">moulkamali@gmail.com</a></p>", "terms_body": "<h4>⚠️ 서비스 성격</h4><p>휴대폰 센서를 이용한 순수 물리 측정 도구입니다.</p><h4>🧾 패키지</h4><p>무료 검사 3회, 추가 횟수는 구매할 수 있습니다.</p><h4>© 저작권</h4><p>© 2026 Physics Lab Oil.</p>", "refund_body": "<h4>💰 환불</h4><p>디지털 크레딧은 사용 후 환불되지 않습니다. 24시간 내 활성화되지 않으면 문의해 주세요.</p>", "contact_body": "<h4>✉️ 문의</h4><ul><li>📧 <a href=\"mailto:moulkamali@gmail.com\">moulkamali@gmail.com</a></li></ul>"}, "hi": {"privacy_tab": "गोपनीयता नीति", "terms_tab": "उपयोग की शर्तें", "refund_tab": "धनवापसी नीति", "contact_tab": "संपर्क करें", "close": "बंद करें", "privacy_body": "<h4>📍 आपकी गोपनीयता सर्वोपरि</h4><p>सभी माप आपके फ़ोन पर ही स्थानीय रूप से संसाधित होते हैं। कोई माप डेटा किसी सर्वर पर नहीं भेजा जाता।</p><h4>🗂️ हम क्या सहेजते हैं</h4><p>क्रेडिट, सेटिंग और संदर्भ मान केवल आपके डिवाइस में (ब्राउज़र localStorage) सहेजे जाते हैं।</p><h4>💳 भुगतान</h4><p>खरीदारी Gumroad के ज़रिए होती है; हम आपका कार्ड कभी नहीं देखते।</p><h4>✉️ संपर्क</h4><p><a href=\"mailto:moulkamali@gmail.com\">moulkamali@gmail.com</a></p>", "terms_body": "<h4>⚠️ सेवा की प्रकृति</h4><p>फ़ोन के सेंसरों से भौतिक माप का विशुद्ध उपकरण।</p><h4>🧾 पैक</h4><p>3 निःशुल्क जाँच, अतिरिक्त क्रेडिट ख़रीदे जा सकते हैं।</p><h4>© कॉपीराइट</h4><p>© 2026 Physics Lab Oil.</p>", "refund_body": "<h4>💰 धनवापसी</h4><p>डिजिटल क्रेडिट उपयोग के बाद वापस नहीं होते। 24 घंटे में सक्रिय न हों तो हमें लिखें।</p>", "contact_body": "<h4>✉️ संपर्क</h4><ul><li>📧 <a href=\"mailto:moulkamali@gmail.com\">moulkamali@gmail.com</a></li></ul>"}, "tr": {"privacy_tab": "Gizlilik", "terms_tab": "Kullanım Şartları", "refund_tab": "İade", "contact_tab": "İletişim", "close": "Kapat", "privacy_body": "<h4>📍 Önce gizliliğiniz</h4><p>Tüm ölçümler telefonunuzda yerel olarak işlenir. Hiçbir ölçüm verisi sunucuya gönderilmez.</p><h4>🗂️ Neleri saklıyoruz</h4><p>Krediler, ayarlar ve referanslar yalnızca cihazınızda (tarayıcı localStorage) saklanır.</p><h4>💳 Ödeme</h4><p>Satın almalar Gumroad üzerinden yapılır; kartınızı hiç görmeyiz.</p><h4>✉️ İletişim</h4><p><a href=\"mailto:moulkamali@gmail.com\">moulkamali@gmail.com</a></p>", "terms_body": "<h4>⚠️ Hizmetin niteliği</h4><p>Telefon sensörleriyle çalışan tamamen fiziksel bir ölçüm aracı.</p><h4>🧾 Paketler</h4><p>3 ücretsiz kontrol, ek krediler satın alınabilir.</p><h4>© Telif hakkı</h4><p>© 2026 Physics Lab Oil.</p>", "refund_body": "<h4>💰 İade</h4><p>Dijital krediler kullanımdan sonra iade edilmez. 24 saat içinde etkinleşmezse bize yazın.</p>", "contact_body": "<h4>✉️ İletişim</h4><ul><li>📧 <a href=\"mailto:moulkamali@gmail.com\">moulkamali@gmail.com</a></li></ul>"}, "id": {"privacy_tab": "Kebijakan Privasi", "terms_tab": "Ketentuan Penggunaan", "refund_tab": "Kebijakan Pengembalian", "contact_tab": "Hubungi Kami", "close": "Tutup", "privacy_body": "<h4>📍 Privasi Anda yang utama</h4><p>Semua pengukuran diproses secara lokal di ponsel Anda. Tidak ada data pengukuran yang dikirim ke server.</p><h4>🗂️ Yang kami simpan</h4><p>Kredit, pengaturan, dan acuan disimpan hanya di perangkat Anda (localStorage browser).</p><h4>💳 Pembayaran</h4><p>Pembelian melalui Gumroad; kami tidak pernah melihat kartu Anda.</p><h4>✉️ Kontak</h4><p><a href=\"mailto:moulkamali@gmail.com\">moulkamali@gmail.com</a></p>", "terms_body": "<h4>⚠️ Sifat layanan</h4><p>Alat ukur fisika murni melalui sensor ponsel.</p><h4>🧾 Paket</h4><p>3 pemeriksaan gratis, kredit tambahan dapat dibeli.</p><h4>© Hak cipta</h4><p>© 2026 Physics Lab Oil.</p>", "refund_body": "<h4>💰 Pengembalian</h4><p>Kredit digital tidak dapat dikembalikan setelah dipakai. Hubungi kami dalam 24 jam jika belum aktif.</p>", "contact_body": "<h4>✉️ Kontak</h4><ul><li>📧 <a href=\"mailto:moulkamali@gmail.com\">moulkamali@gmail.com</a></li></ul>"}, "ms": {"privacy_tab": "Dasar Privasi", "terms_tab": "Syarat Penggunaan", "refund_tab": "Dasar Bayaran Balik", "contact_tab": "Hubungi Kami", "close": "Tutup", "privacy_body": "<h4>📍 Privasi anda diutamakan</h4><p>Semua ukuran diproses secara setempat pada telefon anda. Tiada data ukuran dihantar ke pelayan.</p><h4>🗂️ Apa yang kami simpan</h4><p>Kredit, tetapan dan rujukan disimpan pada peranti anda sahaja (localStorage pelayar).</p><h4>💳 Pembayaran</h4><p>Pembelian melalui Gumroad; kami tidak pernah melihat kad anda.</p><h4>✉️ Hubungi</h4><p><a href=\"mailto:moulkamali@gmail.com\">moulkamali@gmail.com</a></p>", "terms_body": "<h4>⚠️ Sifat perkhidmatan</h4><p>Alat ukuran fizik tulen melalui sensor telefon.</p><h4>🧾 Pakej</h4><p>3 semakan percuma, kredit tambahan boleh dibeli.</p><h4>© Hak cipta</h4><p>© 2026 Physics Lab Oil.</p>", "refund_body": "<h4>💰 Bayaran balik</h4><p>Kredit digital tidak boleh dikembalikan selepas digunakan. Hubungi kami dalam masa 24 jam jika tidak diaktifkan.</p>", "contact_body": "<h4>✉️ Hubungi</h4><ul><li>📧 <a href=\"mailto:moulkamali@gmail.com\">moulkamali@gmail.com</a></li></ul>"}, "vi": {"privacy_tab": "Chính sách bảo mật", "terms_tab": "Điều khoản sử dụng", "refund_tab": "Chính sách hoàn tiền", "contact_tab": "Liên hệ", "close": "Đóng", "privacy_body": "<h4>📍 Quyền riêng tư trên hết</h4><p>Mọi phép đo được xử lý cục bộ trên điện thoại của bạn. Không dữ liệu đo nào được gửi lên máy chủ.</p><h4>🗂️ Chúng tôi lưu gì</h4><p>Lượt dùng, cài đặt và mốc tham chiếu chỉ được lưu trên thiết bị của bạn (localStorage của trình duyệt).</p><h4>💳 Thanh toán</h4><p>Giao dịch qua Gumroad; chúng tôi không bao giờ thấy thẻ của bạn.</p><h4>✉️ Liên hệ</h4><p><a href=\"mailto:moulkamali@gmail.com\">moulkamali@gmail.com</a></p>", "terms_body": "<h4>⚠️ Bản chất dịch vụ</h4><p>Công cụ đo vật lý thuần túy qua cảm biến điện thoại.</p><h4>🧾 Gói</h4><p>3 lượt kiểm tra miễn phí, có thể mua thêm lượt.</p><h4>© Bản quyền</h4><p>© 2026 Physics Lab Oil.</p>", "refund_body": "<h4>💰 Hoàn tiền</h4><p>Lượt dùng kỹ thuật số không hoàn lại sau khi sử dụng. Hãy liên hệ trong 24 giờ nếu chưa được kích hoạt.</p>", "contact_body": "<h4>✉️ Liên hệ</h4><ul><li>📧 <a href=\"mailto:moulkamali@gmail.com\">moulkamali@gmail.com</a></li></ul>"}, "th": {"privacy_tab": "นโยบายความเป็นส่วนตัว", "terms_tab": "เงื่อนไขการใช้งาน", "refund_tab": "นโยบายคืนเงิน", "contact_tab": "ติดต่อเรา", "close": "ปิด", "privacy_body": "<h4>📍 ความเป็นส่วนตัวมาก่อน</h4><p>การวัดทั้งหมดประมวลผลในโทรศัพท์ของคุณ ไม่มีข้อมูลการวัดถูกส่งไปยังเซิร์ฟเวอร์</p><h4>🗂️ สิ่งที่เราเก็บ</h4><p>สิทธิ์ที่เหลือ การตั้งค่า และค่าอ้างอิง เก็บไว้ในอุปกรณ์ของคุณเท่านั้น (localStorage ของเบราว์เซอร์)</p><h4>💳 การชำระเงิน</h4><p>การซื้อทำผ่าน Gumroad เราไม่เห็นบัตรของคุณ</p><h4>✉️ ติดต่อ</h4><p><a href=\"mailto:moulkamali@gmail.com\">moulkamali@gmail.com</a></p>", "terms_body": "<h4>⚠️ ลักษณะของบริการ</h4><p>เครื่องมือวัดทางฟิสิกส์ล้วนผ่านเซนเซอร์ของโทรศัพท์</p><h4>🧾 แพ็กเกจ</h4><p>ตรวจฟรี 3 ครั้ง ซื้อสิทธิ์เพิ่มได้</p><h4>© ลิขสิทธิ์</h4><p>© 2026 Physics Lab Oil.</p>", "refund_body": "<h4>💰 การคืนเงิน</h4><p>เครดิตดิจิทัลไม่คืนเงินหลังใช้งาน หากไม่ถูกเปิดใช้ภายใน 24 ชั่วโมงโปรดติดต่อเรา</p>", "contact_body": "<h4>✉️ ติดต่อ</h4><ul><li>📧 <a href=\"mailto:moulkamali@gmail.com\">moulkamali@gmail.com</a></li></ul>"}, "nl": {"privacy_tab": "Privacybeleid", "terms_tab": "Gebruiksvoorwaarden", "refund_tab": "Terugbetaling", "contact_tab": "Contact", "close": "Sluiten", "privacy_body": "<h4>📍 Uw privacy eerst</h4><p>Alle metingen worden lokaal op uw telefoon verwerkt. Er worden geen meetgegevens naar servers gestuurd.</p><h4>🗂️ Wat we opslaan</h4><p>Tegoeden, instellingen en referenties worden alleen op uw apparaat bewaard (localStorage van de browser).</p><h4>💳 Betaling</h4><p>Aankopen verlopen via Gumroad; we zien uw kaart nooit.</p><h4>✉️ Contact</h4><p><a href=\"mailto:moulkamali@gmail.com\">moulkamali@gmail.com</a></p>", "terms_body": "<h4>⚠️ Aard van de dienst</h4><p>Puur fysiek meetinstrument via de sensoren van de telefoon.</p><h4>🧾 Pakketten</h4><p>3 gratis controles, extra tegoed is te koop.</p><h4>© Auteursrecht</h4><p>© 2026 Physics Lab Oil.</p>", "refund_body": "<h4>💰 Terugbetaling</h4><p>Digitaal tegoed wordt na gebruik niet terugbetaald. Neem binnen 24 uur contact op als het niet geactiveerd is.</p>", "contact_body": "<h4>✉️ Contact</h4><ul><li>📧 <a href=\"mailto:moulkamali@gmail.com\">moulkamali@gmail.com</a></li></ul>"}, "pl": {"privacy_tab": "Prywatność", "terms_tab": "Warunki użytkowania", "refund_tab": "Zwroty", "contact_tab": "Kontakt", "close": "Zamknij", "privacy_body": "<h4>📍 Twoja prywatność przede wszystkim</h4><p>Wszystkie pomiary są przetwarzane lokalnie na telefonie. Dane pomiarowe nie są wysyłane na żaden serwer.</p><h4>🗂️ Co przechowujemy</h4><p>Kredyty, ustawienia i wzorce są zapisywane wyłącznie na Twoim urządzeniu (localStorage przeglądarki).</p><h4>💳 Płatność</h4><p>Zakupy odbywają się przez Gumroad; nigdy nie widzimy Twojej karty.</p><h4>✉️ Kontakt</h4><p><a href=\"mailto:moulkamali@gmail.com\">moulkamali@gmail.com</a></p>", "terms_body": "<h4>⚠️ Charakter usługi</h4><p>Czysto fizyczne narzędzie pomiarowe wykorzystujące czujniki telefonu.</p><h4>🧾 Pakiety</h4><p>3 bezpłatne kontrole, dodatkowe kredyty można kupić.</p><h4>© Prawa autorskie</h4><p>© 2026 Physics Lab Oil.</p>", "refund_body": "<h4>💰 Zwrot</h4><p>Kredyty cyfrowe nie podlegają zwrotowi po użyciu. Napisz do nas w ciągu 24 godzin, jeśli nie zostały aktywowane.</p>", "contact_body": "<h4>✉️ Kontakt</h4><ul><li>📧 <a href=\"mailto:moulkamali@gmail.com\">moulkamali@gmail.com</a></li></ul>"}, "sv": {"privacy_tab": "Integritet", "terms_tab": "Användarvillkor", "refund_tab": "Återbetalning", "contact_tab": "Kontakt", "close": "Stäng", "privacy_body": "<h4>📍 Din integritet först</h4><p>Alla mätningar bearbetas lokalt på din telefon. Inga mätdata skickas till någon server.</p><h4>🗂️ Vad vi lagrar</h4><p>Krediter, inställningar och referenser sparas bara på din enhet (webbläsarens localStorage).</p><h4>💳 Betalning</h4><p>Köp sker via Gumroad; vi ser aldrig ditt kort.</p><h4>✉️ Kontakt</h4><p><a href=\"mailto:moulkamali@gmail.com\">moulkamali@gmail.com</a></p>", "terms_body": "<h4>⚠️ Tjänstens natur</h4><p>Ett rent fysikaliskt mätverktyg via telefonens sensorer.</p><h4>🧾 Paket</h4><p>3 gratis kontroller, extra krediter kan köpas.</p><h4>© Upphovsrätt</h4><p>© 2026 Physics Lab Oil.</p>", "refund_body": "<h4>💰 Återbetalning</h4><p>Digitala krediter återbetalas inte efter användning. Kontakta oss inom 24 timmar om de inte aktiverats.</p>", "contact_body": "<h4>✉️ Kontakt</h4><ul><li>📧 <a href=\"mailto:moulkamali@gmail.com\">moulkamali@gmail.com</a></li></ul>"}, "fa": {"privacy_tab": "حریم خصوصی", "terms_tab": "شرایط استفاده", "refund_tab": "سیاست بازپرداخت", "contact_tab": "تماس با ما", "close": "بستن", "privacy_body": "<h4>📍 حریم خصوصی شما در اولویت است</h4><p>همه اندازه‌گیری‌ها به‌صورت محلی روی گوشی شما پردازش می‌شود. هیچ داده اندازه‌گیری‌ای به سرور ارسال نمی‌شود.</p><h4>🗂️ چه چیزی ذخیره می‌کنیم</h4><p>اعتبارها، تنظیمات و مقادیر مرجع فقط روی دستگاه شما ذخیره می‌شود (localStorage مرورگر).</p><h4>💳 پرداخت</h4><p>خریدها از طریق Gumroad انجام می‌شود؛ ما هرگز کارت شما را نمی‌بینیم.</p><h4>✉️ تماس</h4><p><a href=\"mailto:moulkamali@gmail.com\">moulkamali@gmail.com</a></p>", "terms_body": "<h4>⚠️ ماهیت سرویس</h4><p>ابزار اندازه‌گیری صرفاً فیزیکی با حسگرهای گوشی.</p><h4>🧾 بسته‌ها</h4><p>۳ بررسی رایگان، اعتبار اضافه قابل خرید است.</p><h4>© حق نشر</h4><p>© 2026 Physics Lab Oil.</p>", "refund_body": "<h4>💰 بازپرداخت</h4><p>اعتبارهای دیجیتال پس از استفاده بازپرداخت نمی‌شوند. اگر ظرف ۲۴ ساعت فعال نشدند به ما پیام دهید.</p>", "contact_body": "<h4>✉️ تماس</h4><ul><li>📧 <a href=\"mailto:moulkamali@gmail.com\">moulkamali@gmail.com</a></li></ul>"}, "ur": {"privacy_tab": "رازداری کی پالیسی", "terms_tab": "استعمال کی شرائط", "refund_tab": "واپسی کی پالیسی", "contact_tab": "ہم سے رابطہ", "close": "بند کریں", "privacy_body": "<h4>📍 آپ کی رازداری سب سے پہلے</h4><p>تمام پیمائشیں آپ کے فون پر مقامی طور پر پروسیس ہوتی ہیں۔ کوئی پیمائشی ڈیٹا کسی سرور پر نہیں بھیجا جاتا۔</p><h4>🗂️ ہم کیا محفوظ کرتے ہیں</h4><p>کریڈٹس، ترتیبات اور حوالہ جاتی اقدار صرف آپ کے آلے میں (براؤزر localStorage) محفوظ ہوتی ہیں۔</p><h4>💳 ادائیگی</h4><p>خریداری Gumroad کے ذریعے ہوتی ہے؛ ہم آپ کا کارڈ کبھی نہیں دیکھتے۔</p><h4>✉️ رابطہ</h4><p><a href=\"mailto:moulkamali@gmail.com\">moulkamali@gmail.com</a></p>", "terms_body": "<h4>⚠️ سروس کی نوعیت</h4><p>فون کے سینسرز کے ذریعے خالص طبیعیاتی پیمائش کا آلہ۔</p><h4>🧾 پیکجز</h4><p>3 مفت جانچ، اضافی کریڈٹس خریدے جا سکتے ہیں۔</p><h4>© کاپی رائٹ</h4><p>© 2026 Physics Lab Oil.</p>", "refund_body": "<h4>💰 واپسی</h4><p>ڈیجیٹل کریڈٹس استعمال کے بعد واپس نہیں ہوتے۔ 24 گھنٹوں میں فعال نہ ہوں تو ہمیں لکھیں۔</p>", "contact_body": "<h4>✉️ رابطہ</h4><ul><li>📧 <a href=\"mailto:moulkamali@gmail.com\">moulkamali@gmail.com</a></li></ul>"}, "sw": {"privacy_tab": "Faragha", "terms_tab": "Masharti ya Matumizi", "refund_tab": "Kurejesha Pesa", "contact_tab": "Wasiliana Nasi", "close": "Funga", "privacy_body": "<h4>📍 Faragha yako kwanza</h4><p>Vipimo vyote vinachakatwa ndani ya simu yako. Hakuna data ya vipimo inayotumwa kwenye seva.</p><h4>🗂️ Tunachohifadhi</h4><p>Mikopo, mipangilio na vigezo vinahifadhiwa kwenye kifaa chako pekee (localStorage ya kivinjari).</p><h4>💳 Malipo</h4><p>Manunuzi yanafanyika kupitia Gumroad; hatuoni kadi yako kamwe.</p><h4>✉️ Wasiliana</h4><p><a href=\"mailto:moulkamali@gmail.com\">moulkamali@gmail.com</a></p>", "terms_body": "<h4>⚠️ Asili ya huduma</h4><p>Zana safi ya kupima fizikia kupitia vihisi vya simu.</p><h4>🧾 Vifurushi</h4><p>Ukaguzi 3 bila malipo, mikopo ya ziada inaweza kununuliwa.</p><h4>© Hakimiliki</h4><p>© 2026 Physics Lab Oil.</p>", "refund_body": "<h4>💰 Kurejesha</h4><p>Mikopo ya kidijitali hairudishwi baada ya matumizi. Tuandikie ndani ya saa 24 ikiwa haikuwashwa.</p>", "contact_body": "<h4>✉️ Wasiliana</h4><ul><li>📧 <a href=\"mailto:moulkamali@gmail.com\">moulkamali@gmail.com</a></li></ul>"}});
 LANG_LIST.forEach(l => { if (!LEGAL_TEXTS[l.code]) LEGAL_TEXTS[l.code] = LEGAL_TEXTS.en; });
 // ═══ 8. الأمان ═══
 const ADMIN_HASH_KEY = 'oilAdminHash';
@@ -1576,17 +1406,22 @@ function checkAdminPasswordSubmit() {
 }
 
 // ═══ 9. الرصيد ═══
-let freeCredits = 3, paidCredits = 0, isAdmin = false;
+const FREE_TOTAL = 3;
+let freeCredits = FREE_TOTAL, paidCredits = 0, isAdmin = false;
 function getTotalCredits() { return isAdmin ? 999 : (freeCredits + paidCredits); }
-function updateCreditsDisplay() { document.getElementById('freeCount').textContent = getTotalCredits(); }
-function saveCredits() { try { localStorage.setItem(CREDITS_KEY, JSON.stringify({ free: freeCredits, paid: paidCredits })); } catch (e) {} }
+function updateCreditsDisplay() {
+    document.getElementById('freeCount').textContent = isAdmin ? '∞' : freeCredits;
+    document.getElementById('paidCount').textContent = (!isAdmin && paidCredits > 0) ? ' + 💎 ' + paidCredits : '';
+}
+function saveCredits() { try { localStorage.setItem(CREDITS_KEY, JSON.stringify({ used: FREE_TOTAL - freeCredits, paid: paidCredits })); } catch (e) {} }
 function loadCredits() {
     try {
         const raw = localStorage.getItem(CREDITS_KEY);
         if (raw) {
             const d = JSON.parse(raw);
-            freeCredits = typeof d.free === 'number' ? Math.min(Math.max(d.free, 0), 50) : 3;
-            paidCredits = typeof d.paid === 'number' ? Math.min(Math.max(d.paid, 0), 500) : 0;
+            const used = typeof d.used === 'number' ? d.used : (typeof d.free === 'number' ? FREE_TOTAL - d.free : 0);
+            freeCredits = FREE_TOTAL - Math.min(Math.max(Math.round(used), 0), FREE_TOTAL);
+            paidCredits = typeof d.paid === 'number' ? Math.min(Math.max(Math.round(d.paid), 0), 500) : 0;
         }
     } catch (e) {}
 }
@@ -1705,6 +1540,10 @@ function applyTranslations() {
         document.getElementById('skipLabel' + i).textContent = '⏭ ' + t('skip');
     }
     document.getElementById('noteTitle').textContent = t('note_title');
+    document.getElementById('clearLabel').textContent = t('note_clear');
+    document.getElementById('backStartLabel').textContent = t('back_start');
+    document.getElementById('baselineLabel').textContent = t('baseline_btn');
+    if (document.getElementById('infoOverlay').classList.contains('show')) renderInfo();
     document.getElementById('speakLabel').textContent = t('note_speak');
     document.getElementById('writeLabel').textContent = t('note_write');
     document.getElementById('recordingLabel').textContent = t('note_recording');
@@ -1722,16 +1561,6 @@ function applyTranslations() {
     document.getElementById('ppTitle').textContent = '⚠️ ' + t('no_credits');
     document.getElementById('ppMsg').textContent = t('no_credits_msg');
     document.getElementById('legalLine').innerHTML = '⚠️ <strong>' + t('legal') + '</strong>';
-    // Deep Layer
-    document.getElementById('deepPanelTitle').textContent = t('deep_panel_title');
-    document.getElementById('smartAnalyzeLabel').textContent = t('deep_analyze_btn');
-    document.getElementById('lblConfidence').textContent = t('deep_confidence');
-    document.getElementById('lblUncertainty').textContent = t('deep_uncertainty');
-    document.getElementById('lblSNR').textContent = t('deep_snr');
-    document.getElementById('lblTopFamilies').textContent = t('deep_alternatives');
-    document.getElementById('lblXAI').textContent = t('deep_xai');
-    document.getElementById('lblAnomaly').textContent = t('deep_anomaly_detected');
-    document.getElementById('trainBtnLabel').textContent = t('deep_train_btn');
     const locEl = document.getElementById('locationDisplay');
     if (locEl) {
         if (locationStatus === 'denied') locEl.textContent = t('location_denied');
@@ -1742,8 +1571,8 @@ function applyTranslations() {
     applyLegalTranslations();
     updateAllSensorUIs();
     updateCreditsDisplay();
-    updateTwinStatus();
-    updateSmartAnalyzeBtn();
+   
+   
     updateFinalBtnState();
 }
 
@@ -1785,7 +1614,6 @@ let finalShown = false, consentGiven = false, locationStatus = null, userNote = 
 let recognition = null, isRecording = false, recordingTimeout = null;
 let logoClickCount = 0, logoClickTimer = null;
 let streams = { video: null }, motionHandler = null;
-let currentDeepResult = null, autoDeepRan = false;
 
 function updateAllSensorUIs() { for (let id = 1; id <= 3; id++) updateSensorUI(id); }
 function updateSensorUI(id) {
@@ -1821,10 +1649,8 @@ function measureSensor(id) {
         sensorState[id] = { status: 'done', value: r.value, sub: r.sub, raw: r.raw, samples: r.samples || null, imageData: r.imageData || null, quality: r.quality || 0, confirmed: false };
         updateSensorUI(id);
         updateFinalBtnState();
-        updateSmartAnalyzeBtn();
-        autoDeepRan = false;
+       
         const measured = getMeasuredCount();
-        if (measured >= 2) setTimeout(() => runDeepAnalysis(true), 600);
     }).catch(() => {
         sensorState[id] = { status: 'failed', value: null, sub: null, raw: null, samples: null, imageData: null, quality: 0, confirmed: false };
         updateSensorUI(id);
@@ -1833,8 +1659,8 @@ function measureSensor(id) {
 function retrySensor(id) {
     cleanupStreams(id);
     sensorState[id] = { status: 'idle', value: null, sub: null, raw: null, samples: null, imageData: null, quality: 0, confirmed: false };
-    updateSensorUI(id); updateFinalBtnState(); updateSmartAnalyzeBtn();
-    currentDeepResult = null; autoDeepRan = false;
+    updateSensorUI(id); updateFinalBtnState();
+   
 }
 function confirmSensor(id) {
     if (sensorState[id].status !== 'done') { showToast('⚠️ ' + t('not_measured')); return; }
@@ -1844,7 +1670,7 @@ function confirmSensor(id) {
 function skipSensor(id) {
     cleanupStreams(id);
     sensorState[id] = { status: 'skipped', value: null, sub: null, raw: null, samples: null, imageData: null, quality: 0, confirmed: false };
-    updateSensorUI(id); updateFinalBtnState(); updateSmartAnalyzeBtn();
+    updateSensorUI(id); updateFinalBtnState();
 }
 function cleanupStreams(id) {
     if (id === 3 && streams.video) { try { streams.video.getTracks().forEach(t => t.stop()); } catch(e) {} streams.video = null; }
@@ -1855,59 +1681,57 @@ function updateFinalBtnState() {
     const done = [1,2,3].filter(i => sensorState[i].status === 'done' || sensorState[i].status === 'skipped').length;
     btn.disabled = done === 0;
 }
-function updateSmartAnalyzeBtn() {
-    const btn = document.getElementById('smartAnalyzeBtn');
-    if (!btn) return;
-    const measured = getMeasuredCount();
-    btn.disabled = measured === 0;
-    btn.textContent = '🧠 ' + t('deep_analyze_btn');
-}
-
 // ═══ 18. القياسات (مع بيانات خام) ═══
 function measureVibration() {
     return new Promise(resolve => {
         if (typeof DeviceMotionEvent === 'undefined') { resolve(null); return; }
-        const samples = [];
-        const startTime = Date.now();
+        const s = [], ts = []; let t0 = null;
         const handler = e => {
-            const acc = e.accelerationIncludingGravity || e.acceleration;
-            if (!acc) return;
-            samples.push(Math.sqrt((acc.x||0)**2 + (acc.y||0)**2 + (acc.z||0)**2));
+            const a = e.accelerationIncludingGravity || e.acceleration;
+            if (!a || a.x == null) return;
+            const now = performance.now(); if (t0 === null) t0 = now;
+            ts.push((now - t0) / 1000); s.push(Math.sqrt(a.x * a.x + a.y * a.y + a.z * a.z));
         };
-        motionHandler = handler;
-        window.addEventListener('devicemotion', handler);
+        motionHandler = handler; window.addEventListener('devicemotion', handler);
+        setTimeout(() => { try { if (navigator.vibrate) navigator.vibrate(300); } catch (e) {} }, 500);
         setTimeout(() => {
             window.removeEventListener('devicemotion', handler); motionHandler = null;
-            if (samples.length < 10) { resolve(null); return; }
-            const mean = samples.reduce((a,b) => a+b, 0) / samples.length;
-            const variance = samples.reduce((a,b) => a + Math.pow(b-mean, 2), 0) / samples.length;
-            const std = Math.sqrt(variance);
-            if (std < 0.05) { resolve(null); return; }
-            const damping = Math.min(0.35, Math.max(0.05, 0.2 / (std + 0.5)));
-            const rounded = Math.round(damping * 1000) / 1000;
-            const quality = Math.min(1, std / 0.3);
-            resolve({ value: rounded + ' ' + t('unit_damping'), sub: 'σ = ' + std.toFixed(3), raw: rounded, quality: quality, samples: samples.slice(), sampleRate: 60 });
-        }, 2500);
+            if (s.length < 60) { resolve(null); return; }
+            const mean = s.reduce((p, c) => p + c, 0) / s.length, x = s.map(v => v - mean), W = 0.1, pts = [];
+            for (let w = 0.8; w + W <= 3.5; w += W) {
+                let p = 0; for (let i = 0; i < x.length; i++) if (ts[i] >= w && ts[i] < w + W && Math.abs(x[i]) > p) p = Math.abs(x[i]);
+                if (p > 0.02) pts.push([w + W / 2, Math.log(p)]);
+            }
+            if (pts.length < 5) { resolve(null); return; }
+            const n = pts.length, mx = pts.reduce((p, c) => p + c[0], 0) / n, my = pts.reduce((p, c) => p + c[1], 0) / n;
+            let sxy = 0, sxx = 0, syy = 0; pts.forEach(q => { sxy += (q[0] - mx) * (q[1] - my); sxx += (q[0] - mx) ** 2; syy += (q[1] - my) ** 2; });
+            const slope = sxy / sxx, r2 = syy > 0 ? (sxy * sxy) / (sxx * syy) : 0, sigma = -slope;
+            if (!(sigma > 0) || r2 < 0.5) { resolve(null); return; }
+            resolve({ value: 'σ = ' + sigma.toFixed(2) + ' s⁻¹', sub: 'τ = ' + (1 / sigma).toFixed(2) + ' s · R² = ' + r2.toFixed(2), raw: sigma, quality: r2, samples: s });
+        }, 3600);
     });
 }
 function measureMagnetic() {
     return new Promise(resolve => {
-        if (typeof DeviceOrientationEvent === 'undefined') { resolve(null); return; }
-        const samples = [];
-        const startTime = Date.now();
-        const handler = e => {
-            const h = (e.webkitCompassHeading !== undefined) ? e.webkitCompassHeading : e.alpha;
-            if (h !== undefined && h !== null) samples.push(h);
-        };
-        window.addEventListener('deviceorientation', handler);
+        if (typeof Magnetometer === 'undefined') { resolve(null); return; }
+        let sensor; try { sensor = new Magnetometer({ frequency: 20 }); } catch (e) { resolve(null); return; }
+        let buf = [], failed = false; const pv = document.getElementById('previewText2');
+        const stat = a => { const n = a.length, m = a.reduce((p, c) => p + c, 0) / n, v = a.reduce((p, c) => p + (c - m) * (c - m), 0) / Math.max(1, n - 1); return { n: n, m: m, s: Math.sqrt(v) }; };
+        sensor.addEventListener('reading', () => { buf.push(Math.sqrt(sensor.x * sensor.x + sensor.y * sensor.y + sensor.z * sensor.z)); });
+        sensor.addEventListener('error', () => { failed = true; try { sensor.stop(); } catch (e) {} resolve(null); });
+        sensor.start(); pv.textContent = '🧲 1/2 · ' + t('mag_far');
         setTimeout(() => {
-            window.removeEventListener('deviceorientation', handler);
-            if (samples.length < 3) { resolve(null); return; }
-            const mean = samples.reduce((a,b) => a+b, 0) / samples.length;
-            const magnetic = 30 + (mean % 360) / 360 * 40;
-            const rounded = Math.round(magnetic * 10) / 10;
-            const quality = Math.min(1, samples.length / 20);
-            resolve({ value: rounded + ' ' + t('unit_magnetic'), sub: 'n = ' + samples.length, raw: rounded, quality: quality, samples: samples.slice() });
+            if (failed) return;
+            const far = buf.slice(); buf = []; pv.textContent = '🧲 2/2 · ' + t('mag_near'); showToast('🧲 ' + t('mag_near'));
+            setTimeout(() => { buf = []; }, 3000);
+            setTimeout(() => {
+                if (failed) return;
+                const near = buf.slice(); try { sensor.stop(); } catch (e) {}
+                if (far.length < 10 || near.length < 10) { resolve(null); return; }
+                const a = stat(far), b = stat(near), delta = b.m - a.m, sigma = Math.sqrt(a.s * a.s / a.n + b.s * b.s / b.n);
+                resolve({ value: 'ΔB = ' + (delta >= 0 ? '+' : '') + delta.toFixed(2) + ' µT', sub: '|B| ' + a.m.toFixed(1) + ' → ' + b.m.toFixed(1) + ' µT · σΔ = ' + sigma.toFixed(2),
+                    raw: { delta: delta, sigma: sigma, far: a.m, near: b.m }, quality: Math.min(1, (far.length + near.length) / 80), samples: far.concat(near) });
+            }, 5000);
         }, 2500);
     });
 }
@@ -1939,7 +1763,10 @@ function measureColor() {
                             const brightness = (avgR + avgG + avgB) / 3;
                             if (brightness < 30 || brightness > 245) { resolve(null); return; }
                             const quality = 1 - Math.abs(brightness - 128) / 128;
-                            resolve({ value: 'RGB(' + avgR + ', ' + avgG + ', ' + avgB + ')', sub: t('unit_color'), raw: { r: avgR, g: avgG, b: avgB }, quality: Math.max(0, quality), imageData: lastImg ? Array.from(lastImg.slice(0, 4096)) : null });
+                            const lin = c => { c /= 255; return c <= 0.04045 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4); };
+                            const Y = 0.2126 * lin(avgR) + 0.7152 * lin(avgG) + 0.0722 * lin(avgB);
+                            const L = 116 * (Y > 0.008856 ? Math.cbrt(Y) : 7.787 * Y + 16 / 116) - 16;
+                            resolve({ value: 'RGB(' + avgR + ', ' + avgG + ', ' + avgB + ')', sub: 'L* = ' + L.toFixed(1), raw: { r: avgR, g: avgG, b: avgB, L: L }, quality: Math.max(0, quality), imageData: lastImg ? Array.from(lastImg.slice(0, 4096)) : null });
                         }
                     }, 100);
                 }).catch(() => { cleanupStreams(3); resolve(null); });
@@ -1947,381 +1774,24 @@ function measureColor() {
     });
 }
 
-// ═══ 19. DSP ═══
-const DSP = {
-    fft(re, im) {
-        const n = re.length; if (n <= 1) return;
-        const eR = new Float32Array(n/2), eI = new Float32Array(n/2), oR = new Float32Array(n/2), oI = new Float32Array(n/2);
-        for (let i = 0; i < n/2; i++) { eR[i]=re[2*i]; eI[i]=im[2*i]; oR[i]=re[2*i+1]; oI[i]=im[2*i+1]; }
-        this.fft(eR, eI); this.fft(oR, oI);
-        for (let k = 0; k < n/2; k++) {
-            const a = -2 * Math.PI * k / n;
-            const tR = Math.cos(a)*oR[k] - Math.sin(a)*oI[k], tI = Math.sin(a)*oR[k] + Math.cos(a)*oI[k];
-            re[k]=eR[k]+tR; im[k]=eI[k]+tI; re[k+n/2]=eR[k]-tR; im[k+n/2]=eI[k]-tI;
-        }
-    },
-    stats(s) {
-        const n = s.length; if (!n) return { mean: 0, std: 0, rms: 0, crest: 0, kurtosis: 3 };
-        let mean = 0; for (let i = 0; i < n; i++) mean += s[i]; mean /= n;
-        let m2 = 0, m4 = 0, peak = 0, rms = 0;
-        for (let i = 0; i < n; i++) { const d = s[i]-mean; m2 += d*d; m4 += d*d*d*d; if (Math.abs(s[i])>peak) peak=Math.abs(s[i]); rms += s[i]*s[i]; }
-        m2 /= n; m4 /= n; rms = Math.sqrt(rms/n);
-        const std = Math.sqrt(m2);
-        return { mean: mean, std: std, rms: rms, peak: peak, crest: std > 0 ? peak/std : 0, kurtosis: m2 > 0 ? m4/(m2*m2) : 3 };
-    },
-    spectrum(signal) {
-        let N = 1; while (N < signal.length) N *= 2;
-        const re = new Float32Array(N), im = new Float32Array(N);
-        let mean = 0; for (let i = 0; i < signal.length; i++) mean += signal[i]; mean /= signal.length;
-        for (let i = 0; i < signal.length; i++) re[i] = signal[i]-mean;
-        this.fft(re, im);
-        const mag = new Float32Array(N/2);
-        for (let i = 0; i < N/2; i++) mag[i] = Math.sqrt(re[i]*re[i]+im[i]*im[i]);
-        return { mag: mag, size: N };
-    }
-};
-
-// ═══ 20. Feature Extractors ═══
-function extractVibFeatures() {
-    return new Promise(resolve => {
-        const st = sensorState[1];
-        if (st.status !== 'done' || !st.samples) { resolve({ ok: false }); return; }
-        const s = DSP.stats(st.samples);
-        const sp = DSP.spectrum(st.samples);
-        const fv = new Float32Array(48);
-        fv[0] = s.rms / 20; fv[1] = s.crest / 5; fv[2] = s.kurtosis / 10;
-        fv[3] = Math.min(1, s.std / 5);
-        resolve({ ok: true, featureVec: Array.from(fv), stats: s });
-    });
-}
-function extractMagFeatures() {
-    return new Promise(resolve => {
-        const st = sensorState[2];
-        if (st.status !== 'done' || st.raw === null) { resolve({ ok: false }); return; }
-        const fv = new Float32Array(48);
-        fv[0] = st.raw / 80;
-        fv[1] = (st.raw % 360) / 360;
-        resolve({ ok: true, featureVec: Array.from(fv), magnetic: st.raw });
-    });
-}
-function extractColorFeatures() {
-    return new Promise(resolve => {
-        const st = sensorState[3];
-        if (st.status !== 'done' || !st.raw) { resolve({ ok: false }); return; }
-        const c = st.raw;
-        const fv = new Float32Array(48);
-        fv[0] = c.r / 255; fv[1] = c.g / 255; fv[2] = c.b / 255;
-        fv[3] = (c.r - c.g) / 255; fv[4] = (c.g - c.b) / 255;
-        fv[5] = Math.max(c.r, c.g, c.b) / 255;
-        fv[6] = Math.min(c.r, c.g, c.b) / 255;
-        resolve({ ok: true, featureVec: Array.from(fv), color: c });
-    });
-}
-
-// ═══ 21. AI Engine ═══
-const AI_ENGINE_OIL = {
-    mobilenet: null, fusionNet: null, autoencoder: null, ready: false, loading: false,
-    NUM_CLASSES: 17, INPUT_DIM: 144, MC_SAMPLES: 30,
-    load() {
-        const self = this;
-        if (self.ready || self.loading) return Promise.resolve(self.ready);
-        self.loading = true;
-        return new Promise(resolve => {
-            if (typeof tf === 'undefined') { self.loading = false; resolve(false); return; }
-            let chain = Promise.resolve();
-            if (typeof mobilenet !== 'undefined' && mobilenet.load) {
-                chain = chain.then(() => mobilenet.load({ version: 2, alpha: 0.5 }).then(m => { self.mobilenet = m; }).catch(() => {}));
-            }
-            chain.then(() => {
-                self.fusionNet = self.buildFusion();
-                self.autoencoder = self.buildAE();
-                return self.loadWeights();
-            }).then(() => { self.ready = true; self.loading = false; console.log('🧠 Oil AI ready'); resolve(true); })
-              .catch(e => { console.warn('AI load:', e); self.loading = false; resolve(false); });
-        });
-    },
-    buildFusion() {
-        const self = this;
-        const input = tf.input({ shape: [self.INPUT_DIM] });
-        const attn = tf.layers.dense({ units: self.INPUT_DIM, activation: 'sigmoid' }).apply(input);
-        const att = tf.layers.multiply().apply([input, attn]);
-        let h = tf.layers.dense({ units: 256, activation: 'relu' }).apply(att);
-        h = tf.layers.dropout({ rate: 0.4 }).apply(h);
-        h = tf.layers.dense({ units: 128, activation: 'relu' }).apply(h);
-        h = tf.layers.dropout({ rate: 0.3 }).apply(h);
-        h = tf.layers.dense({ units: 64, activation: 'relu' }).apply(h);
-        const fam = tf.layers.dense({ units: self.NUM_CLASSES, activation: 'softmax' }).apply(h);
-        const conf = tf.layers.dense({ units: 1, activation: 'sigmoid' }).apply(h);
-        return tf.model({ inputs: input, outputs: [fam, conf, attn] });
-    },
-    buildAE() {
-        const m = tf.sequential();
-        m.add(tf.layers.dense({ units: 64, activation: 'relu', inputShape: [this.INPUT_DIM] }));
-        m.add(tf.layers.dense({ units: 16, activation: 'relu' }));
-        m.add(tf.layers.dense({ units: 8, activation: 'relu' }));
-        m.add(tf.layers.dense({ units: 16, activation: 'relu' }));
-        m.add(tf.layers.dense({ units: 64, activation: 'relu' }));
-        m.add(tf.layers.dense({ units: this.INPUT_DIM, activation: 'sigmoid' }));
-        m.compile({ optimizer: tf.train.adam(0.001), loss: 'meanSquaredError' });
-        return m;
-    },
-    saveWeights() { return Promise.all([this.fusionNet.save('indexeddb://oil-fusion').catch(()=>{}), this.autoencoder.save('indexeddb://oil-ae').catch(()=>{})]); },
-    loadWeights() { return Promise.all([tf.loadLayersModel('indexeddb://oil-fusion').then(m => { this.fusionNet = m; }).catch(()=>{}), tf.loadLayersModel('indexeddb://oil-ae').then(m => { this.autoencoder = m; }).catch(()=>{})]); },
-    mcDropoutPredict(features) {
-        const self = this;
-        if (!self.fusionNet) return Promise.resolve(null);
-        return new Promise(resolve => {
-            const inputTensor = tf.tensor2d([features]);
-            const famS = [], confS = [], attnAcc = new Float32Array(features.length);
-            for (let i = 0; i < self.MC_SAMPLES; i++) {
-                const r = tf.tidy(() => {
-                    const p = self.fusionNet.apply(inputTensor, { training: true });
-                    return { fam: Array.from(p[0].dataSync()), conf: p[1].dataSync()[0], attn: Array.from(p[2].dataSync()) };
-                });
-                famS.push(r.fam); confS.push(r.conf);
-                for (let j = 0; j < r.attn.length; j++) attnAcc[j] += r.attn[j] / self.MC_SAMPLES;
-            }
-            inputTensor.dispose();
-            const means = new Float32Array(self.NUM_CLASSES), stds = new Float32Array(self.NUM_CLASSES);
-            for (let k = 0; k < self.NUM_CLASSES; k++) {
-                let s = 0; for (let a = 0; a < self.MC_SAMPLES; a++) s += famS[a][k]; means[k] = s / self.MC_SAMPLES;
-                let v = 0; for (let b = 0; b < self.MC_SAMPLES; b++) v += Math.pow(famS[b][k] - means[k], 2);
-                stds[k] = Math.sqrt(v / self.MC_SAMPLES);
-            }
-            const cM = confS.reduce((a,b) => a+b, 0) / confS.length;
-            const cS = Math.sqrt(confS.reduce((a,b) => a + Math.pow(b-cM, 2), 0) / confS.length);
-            const ranking = Array.from(means).map((v, i) => ({ id: i, mean: v, std: stds[i] })).sort((a,b) => b.mean - a.mean);
-            resolve({ classes: Array.from(means), classesStd: Array.from(stds), confidence: Math.min(0.92, cM), confidenceStd: cS, attention: Array.from(attnAcc), top3: ranking.slice(0, 3) });
-        });
-    },
-    anomalyScore(features) {
-        const self = this;
-        if (!self.autoencoder) return Promise.resolve(null);
-        return new Promise(resolve => {
-            const inputTensor = tf.tensor2d([features]);
-            const recon = tf.tidy(() => Array.from(self.autoencoder.predict(inputTensor).dataSync()));
-            inputTensor.dispose();
-            let mse = 0; for (let i = 0; i < features.length; i++) mse += Math.pow(features[i] - recon[i], 2);
-            mse /= features.length;
-            resolve({ score: mse, isAnomaly: mse > 0.08, severity: mse > 0.15 ? 'high' : mse > 0.08 ? 'medium' : 'low' });
-        });
-    },
-    buildFeatureVector(a, b, c) {
-        const f = new Float32Array(this.INPUT_DIM);
-        if (a) for (let i = 0; i < Math.min(a.length, 48); i++) f[i] = a[i];
-        if (b) for (let j = 0; j < Math.min(b.length, 48); j++) f[48+j] = b[j];
-        if (c) for (let k = 0; k < Math.min(c.length, 48); k++) f[96+k] = c[k];
-        let n = 0; for (let m = 0; m < f.length; m++) n += f[m]*f[m];
-        n = Math.sqrt(n) || 1;
-        for (let p = 0; p < f.length; p++) f[p] /= n;
-        return Array.from(f);
-    }
-};
-
-// ═══ 22. Digital Twin ═══
-const TWIN_KEY = 'oilTwinV1';
-const DIGITAL_TWIN_OIL = {
-    MIN_SESSIONS: 3,
-    get() { try { const r = localStorage.getItem(TWIN_KEY); return r ? JSON.parse(r) : null; } catch(e) { return null; } },
-    save(t) { try { localStorage.setItem(TWIN_KEY, JSON.stringify(t)); } catch(e) {} },
-    update(feat) {
-        const t = this.get() || { created: Date.now(), sessions: 0, features: { damping: [], magnetic: [], colorR: [] } };
-        t.sessions++;
-        if (feat.vibration && feat.vibration.stats) t.features.damping.push(feat.vibration.stats.rms);
-        if (feat.magnetic && feat.magnetic.magnetic) t.features.magnetic.push(feat.magnetic.magnetic);
-        if (feat.color && feat.color.color) t.features.colorR.push(feat.color.color.r);
-        Object.keys(t.features).forEach(k => { if (t.features[k].length > 50) t.features[k].shift(); });
-        this.save(t);
-        return t;
-    },
-    deviation(name, val) {
-        const t = this.get();
-        if (!t || !t.features[name]) return null;
-        const arr = t.features[name];
-        if (arr.length < this.MIN_SESSIONS) return null;
-        const mean = arr.reduce((a,b) => a+b, 0) / arr.length;
-        const v = arr.reduce((a,b) => a + Math.pow(b-mean, 2), 0) / arr.length;
-        const std = Math.sqrt(v) || 1e-6;
-        return { z: Math.round((val-mean)/std * 100) / 100, baseline: Math.round(mean * 1000) / 1000 };
-    },
-    stats() { const t = this.get(); if (!t) return { sessions: 0, ready: false }; return { sessions: t.sessions, ready: t.sessions >= this.MIN_SESSIONS }; },
-    reset() { localStorage.removeItem(TWIN_KEY); }
-};
-
-function resetTwinOil() { if (confirm('Reset Digital Twin?')) { DIGITAL_TWIN_OIL.reset(); updateTwinStatus(); showToast('🔄 Reset'); } }
-function updateTwinStatus() {
-    const stats = DIGITAL_TWIN_OIL.stats();
-    const el = document.getElementById('twinStatus'); if (!el) return;
-    if (stats.sessions === 0) { el.style.display = 'none'; return; }
-    el.style.display = 'flex';
-    const ic = document.getElementById('twinIcon'); if (ic) ic.textContent = stats.ready ? '🛢️' : '⏳';
-    const tx = document.getElementById('twinText');
-    if (tx) tx.textContent = stats.ready ? t('deep_twin_ready') + ' · ' + stats.sessions : t('deep_twin_building') + ' · ' + stats.sessions + '/3';
-}
-
-// ═══ 23. Pipeline & runDeepAnalysis ═══
+// ═══ 25. تقييم فيزيائي ═══
 function getMeasuredCount() { return [1,2,3].filter(i => sensorState[i].status === 'done').length; }
 function getConfirmedCount() { return [1,2,3].filter(i => sensorState[i].status === 'done' && sensorState[i].confirmed).length; }
-
-function runDeepAnalysis(silent) {
-    const measured = getMeasuredCount();
-    if (measured === 0) { if (!silent) showToast('⚠️ ' + t('deep_need_measure_first')); return; }
-    const btn = document.getElementById('smartAnalyzeBtn');
-    if (btn) { btn.disabled = true; btn.textContent = '⏳ ' + t('deep_running'); }
-    if (!silent) showToast('🧠 ' + t('deep_running'));
-
-    const loadPromise = AI_ENGINE_OIL.ready ? Promise.resolve(true) : AI_ENGINE_OIL.load();
-
-    Promise.all([extractVibFeatures(), extractMagFeatures(), extractColorFeatures()]).then(([vib, mag, col]) => {
-        return loadPromise.then(() => {
-            const feat = {};
-            if (vib.ok) feat.vibration = vib;
-            if (mag.ok) feat.magnetic = mag;
-            if (col.ok) feat.color = col;
-            const validCount = Object.keys(feat).length;
-            if (validCount === 0) return { ok: false };
-            const twin = DIGITAL_TWIN_OIL.update(feat);
-            const twinDev = {};
-            if (feat.vibration && feat.vibration.stats) twinDev.damping = DIGITAL_TWIN_OIL.deviation('damping', feat.vibration.stats.rms);
-            if (feat.magnetic) twinDev.magnetic = DIGITAL_TWIN_OIL.deviation('magnetic', feat.magnetic.magnetic);
-
-            const fv = AI_ENGINE_OIL.buildFeatureVector(feat.vibration ? feat.vibration.featureVec : null, feat.magnetic ? feat.magnetic.featureVec : null, feat.color ? feat.color.featureVec : null);
-            const aiP = AI_ENGINE_OIL.ready ? AI_ENGINE_OIL.mcDropoutPredict(fv).then(ai => {
-                if (ai) return AI_ENGINE_OIL.anomalyScore(fv).then(a => { ai.anomaly = a; return ai; });
-                return null;
-            }) : Promise.resolve(null);
-
-            return aiP.then(ai => {
-                // مقارنة فيزيائية مع جميع الزيوت
-                const ranking = Object.keys(OIL_DATA).map(key => {
-                    const oil = OIL_DATA[key];
-                    let score = 0, total = 0;
-                    if (feat.vibration && feat.vibration.stats) {
-                        const d = Math.abs(feat.vibration.stats.rms * 0.5 - oil.damping) / oil.damping;
-                        score += Math.max(0, 1 - d); total++;
-                    }
-                    if (feat.magnetic) {
-                        const d = Math.abs(feat.magnetic.magnetic - oil.magnetic) / oil.magnetic;
-                        score += Math.max(0, 1 - d); total++;
-                    }
-                    if (feat.color) {
-                        const dc = (Math.abs(feat.color.color.r - oil.color.r) + Math.abs(feat.color.color.g - oil.color.g) + Math.abs(feat.color.color.b - oil.color.b)) / 3;
-                        score += Math.max(0, 1 - dc/100); total++;
-                    }
-                    return { oilKey: key, oilData: oil, physical: total > 0 ? score/total : 0 };
-                }).sort((a,b) => b.physical - a.physical);
-                return { ok: true, feat: feat, ranking: ranking.slice(0, 5), ai: ai, twin: twin, twinDev: twinDev, validCount: validCount };
-            });
-        });
-    }).then(result => {
-        if (btn) { btn.disabled = false; btn.textContent = '🧠 ' + t('deep_analyze_btn'); }
-        if (!result || !result.ok) { if (!silent) showToast('❌ ' + t('deep_analyze_error')); return; }
-        currentDeepResult = result; autoDeepRan = true;
-        renderDeepPanel(result);
-        updateTwinStatus();
-        if (!silent) showToast('✅ ' + t('deep_analyze_done'));
-    }).catch(e => {
-        console.warn('Deep:', e);
-        if (btn) { btn.disabled = false; btn.textContent = '🧠 ' + t('deep_analyze_btn'); }
-        if (!silent) showToast('❌ ' + t('deep_analyze_error'));
-    });
+function getBaseline() { try { const v = parseFloat(localStorage.getItem(BASELINE_KEY + ':' + selectedOil)); return v > 0 ? v : null; } catch (e) { return null; } }
+function saveBaseline() {
+    const st = sensorState[1];
+    if (st.status !== 'done' || !(st.raw > 0)) { showToast('⚠️ ' + t('baseline_none')); return; }
+    try { localStorage.setItem(BASELINE_KEY + ':' + selectedOil, String(st.raw)); } catch (e) {}
+    showToast('💾 ' + t('baseline_saved') + ' (' + selectedOil + ')');
 }
-
-// ═══ 24. Render Deep Panel ═══
-function renderDeepPanel(deep) {
-    if (!deep || !deep.ok) return;
-    const panel = document.getElementById('deepPanel'); if (!panel) return;
-    panel.style.display = 'block';
-    const conf = deep.ai ? Math.round(deep.ai.confidence * 100) : Math.round(deep.ranking[0].physical * 100);
-    const unc = deep.ai ? Math.round(deep.ai.confidenceStd * 100) : 0;
-    const snr = deep.validCount === 3 ? 95 : deep.validCount === 2 ? 65 : 35;
-    document.getElementById('valConfidence').textContent = conf + '%';
-    document.getElementById('barConfidence').style.width = conf + '%';
-    document.getElementById('valUncertainty').textContent = '± ' + unc + '%';
-    document.getElementById('barUncertainty').style.width = Math.min(100, unc*4) + '%';
-    document.getElementById('valSNR').textContent = snr + '%';
-    document.getElementById('barSNR').style.width = snr + '%';
-    const list = document.getElementById('topFamiliesList'); list.innerHTML = '';
-    deep.ranking.slice(0, 3).forEach((item, idx) => {
-        const row = document.createElement('div');
-        row.className = 'family-row' + (idx === 0 ? ' primary' : '');
-        const pct = Math.round(item.physical * 100);
-        row.innerHTML = '<span class="fam-icon">🛢️</span><span class="fam-name">' + item.oilData.label + '</span><div class="fam-mini-bar"><div class="fam-mini-fill" style="width:' + pct + '%"></div></div><span class="fam-pct">' + pct + '%</span>';
-        list.appendChild(row);
-    });
-    if (deep.ai && deep.ai.attention) {
-        const groups = { 'Vibration': [0, 10], 'Magnetic': [48, 58], 'Color': [96, 106] };
-        const xai = [];
-        Object.keys(groups).forEach(name => {
-            const r = groups[name];
-            let s = 0; for (let i = r[0]; i < r[1]; i++) s += Math.abs(deep.ai.attention[i] || 0);
-            xai.push({ name: name, score: s / (r[1] - r[0]) });
-        });
-        xai.sort((a,b) => b.score - a.score);
-        const xSec = document.getElementById('xaiSection'); xSec.style.display = 'block';
-        const xl = document.getElementById('xaiList'); xl.innerHTML = '';
-        xai.forEach(x => {
-            const row = document.createElement('div');
-            row.className = 'xai-row';
-            row.innerHTML = '<span>' + x.name + '</span><span>' + Math.round(x.score*100) + '</span>';
-            xl.appendChild(row);
-        });
-        if (deep.ai.anomaly && deep.ai.anomaly.isAnomaly) {
-            const aSec = document.getElementById('anomalySection'); aSec.style.display = 'block';
-            const at = document.getElementById('anomalyText');
-            const sev = deep.ai.anomaly.severity;
-            const cls = sev === 'high' ? 'high' : sev === 'medium' ? 'medium' : '';
-            at.innerHTML = '<div class="anomaly-box ' + cls + '">⚠️ ' + t('deep_anomaly_detected') + ' — Score: ' + deep.ai.anomaly.score.toFixed(4) + '</div>';
-        }
-    }
-    const stats = DIGITAL_TWIN_OIL.stats();
-    if (stats.sessions >= 3) {
-        const tb = document.getElementById('trainBtn'); tb.style.display = 'inline-block';
-        document.getElementById('trainBtnLabel').textContent = t('deep_train_btn') + ' (' + stats.sessions + ')';
-    }
+function evaluateChecks() {
+    let ok = 0, tot = 0, needBase = false;
+    const m = sensorState[2], c = sensorState[3], v = sensorState[1], b = getBaseline();
+    if (m.status === 'done' && m.raw) { tot++; if (!(Math.abs(m.raw.delta) > 3 * m.raw.sigma && Math.abs(m.raw.delta) > 1)) ok++; }
+    if (c.status === 'done' && c.raw) { tot++; if (c.raw.L >= 40) ok++; }
+    if (v.status === 'done') { if (b) { tot++; if (Math.abs(v.raw - b) / b < 0.15) ok++; } else needBase = true; }
+    return { ok: ok, tot: tot, needBase: needBase };
 }
-
-// ═══ 25. Train on My Oil ═══
-function trainOnMyOil() {
-    const stats = DIGITAL_TWIN_OIL.stats();
-    if (stats.sessions < 3) { showToast('⚠️ ' + t('deep_train_need_sessions')); return; }
-    const ov = document.getElementById('trainOverlay'); ov.classList.add('show');
-    const msg = document.getElementById('trainMsg'), fill = document.getElementById('trainProgressFill'), pct = document.getElementById('trainPct');
-    document.getElementById('trainCloseBtn').style.display = 'none';
-    msg.textContent = t('deep_train_running');
-    const loadP = AI_ENGINE_OIL.ready ? Promise.resolve(true) : AI_ENGINE_OIL.load();
-    loadP.then(() => {
-        const twin = DIGITAL_TWIN_OIL.get();
-        if (!twin) throw new Error('No twin');
-        const maxN = Math.min(twin.features.damping.length, twin.features.magnetic.length, twin.features.colorR.length);
-        if (maxN < 3) throw new Error('Not enough');
-        const samples = [];
-        for (let i = 0; i < maxN; i++) {
-            const fv = new Float32Array(AI_ENGINE_OIL.INPUT_DIM);
-            fv[0] = twin.features.damping[i] / 20;
-            fv[48] = twin.features.magnetic[i] / 80;
-            fv[96] = twin.features.colorR[i] / 255;
-            let n = 0; for (let j = 0; j < fv.length; j++) n += fv[j]*fv[j];
-            n = Math.sqrt(n) || 1; for (let k = 0; k < fv.length; k++) fv[k] /= n;
-            samples.push(Array.from(fv));
-        }
-        msg.textContent = '🎓 ' + t('deep_train_running') + ' (' + samples.length + ')';
-        const xs = tf.tensor2d(samples);
-        let ep = 0; const total = 50;
-        return AI_ENGINE_OIL.autoencoder.fit(xs, xs, {
-            epochs: total, batchSize: Math.min(4, samples.length), verbose: 0,
-            callbacks: { onEpochEnd: (e, l) => {
-                ep++; const p = Math.round((ep/total)*100);
-                fill.style.width = p + '%'; pct.textContent = p + '%';
-                msg.textContent = t('deep_train_running') + ' · ' + ((l && l.loss) || 0).toFixed(4);
-                return new Promise(r => setTimeout(r, 5));
-            }}
-        }).then(() => { xs.dispose(); return AI_ENGINE_OIL.saveWeights(); })
-          .then(() => { msg.textContent = '✅ ' + t('deep_train_success'); fill.style.width='100%'; pct.textContent='100%'; document.getElementById('trainCloseBtn').style.display='inline-block'; showToast('✅ ' + t('deep_train_success')); });
-    }).catch(e => { msg.textContent = '❌ ' + e.message; document.getElementById('trainCloseBtn').style.display = 'inline-block'; });
-}
-function closeTrainOverlay() { document.getElementById('trainOverlay').classList.remove('show'); }
-
 // ═══ 26. الخلاصة ═══
 function requestFinalVerdict() {
     const measured = getMeasuredCount();
@@ -2372,68 +1842,30 @@ function renderFinalVerdict() {
           sentence = document.getElementById('verdictSentence'), solDiv = document.getElementById('verdictSolution'),
           noteDiv = document.getElementById('verdictNote'), countNotice = document.getElementById('sensorCountNotice');
     fv.className = 'final-verdict show';
-    if (measured === 0) {
-        fv.classList.add('gray'); icon.textContent = '⚠️'; sentence.textContent = t('no_data');
-        sentence.style.color = '#f59e0b'; solDiv.textContent = t('solution_weak'); solDiv.style.display = 'block';
-        solDiv.style.color = '#94a3b8'; countNotice.className = 'sensor-count-notice none'; countNotice.textContent = t('sensor_count_0');
-        noteDiv.style.display = 'none'; return;
-    }
-    if (confirmed === 3) { countNotice.className = 'sensor-count-notice good'; countNotice.textContent = t('sensor_count_3'); }
-    else if (confirmed === 2) { countNotice.className = 'sensor-count-notice partial'; countNotice.textContent = t('sensor_count_2'); }
-    else if (confirmed === 1) { countNotice.className = 'sensor-count-notice limited'; countNotice.textContent = t('sensor_count_1'); }
-    else { countNotice.className = 'sensor-count-notice none'; countNotice.textContent = t('sensor_count_0'); }
-
-    const oil = getCurrentOilData();
-    const vib = sensorState[1].status === 'done' ? sensorState[1].raw : null;
-    const mag = sensorState[2].status === 'done' ? sensorState[2].raw : null;
-    const col = sensorState[3].status === 'done' ? sensorState[3].raw : null;
-    let matchCount = 0, totalChecks = 0;
-    if (vib !== null) { totalChecks++; if (Math.abs(vib - oil.damping) / oil.damping < 0.15) matchCount++; }
-    if (mag !== null) { totalChecks++; if (Math.abs(mag - oil.magnetic) / oil.magnetic < 0.15) matchCount++; }
-    if (col !== null) { totalChecks++; if (Math.abs(col.r - oil.color.r) < 40 && Math.abs(col.g - oil.color.g) < 40 && Math.abs(col.b - oil.color.b) < 40) matchCount++; }
-
-    // ملاحظة = 5% إضافية قصوى بصمت
+    const cls = ['none', 'limited', 'partial', 'good'][confirmed];
+    countNotice.className = 'sensor-count-notice ' + cls; countNotice.textContent = t('sensor_count_' + confirmed);
+    const ev = evaluateChecks(), r = ev.tot ? ev.ok / ev.tot : 0;
+    if (measured === 0 || ev.tot === 0) {
+        fv.classList.add('gray'); icon.textContent = '⚠️';
+        sentence.textContent = measured === 0 ? t('no_data') : t('verdict_need_baseline');
+        solDiv.textContent = t('solution_weak'); solDiv.style.color = '#94a3b8';
+    } else if (r >= 0.95) { fv.classList.add('green'); icon.textContent = '🟢'; sentence.textContent = t('verdict_match'); solDiv.textContent = '🔧 ' + t('solution_match'); solDiv.style.color = '#4ade80'; }
+    else if (r >= 0.5) { fv.classList.add('yellow'); icon.textContent = '🟡'; sentence.textContent = t('verdict_partial'); solDiv.textContent = '🔧 ' + t('solution_partial'); solDiv.style.color = '#f5b81b'; }
+    else { fv.classList.add('orange'); icon.textContent = '🟠'; sentence.textContent = t('verdict_no_match'); solDiv.textContent = '🔧 ' + t('solution_no_match'); solDiv.style.color = '#fb923c'; }
+    sentence.style.color = '#fff'; solDiv.style.display = 'block';
     const noteText = (document.getElementById('noteTextArea').value || '').trim();
-    const noteBonus = noteText.length >= 4 ? 0.05 : 0;
-    const matchRatio = totalChecks > 0 ? Math.min(1, matchCount / totalChecks + noteBonus) : 0;
-
-    // 🧠 إن وُجد Deep Result: نستخدم تصنيفه
-    const deep = currentDeepResult;
-    if (deep && deep.ok) {
-        const deepConf = deep.ai ? deep.ai.confidence : deep.ranking[0].physical;
-        // دمج Deep مع الفيزيائي
-        const combined = (matchRatio + deepConf) / 2;
-        if (combined >= 0.7) { fv.classList.add('green'); icon.textContent = '🟢'; }
-        else if (combined >= 0.4) { fv.classList.add('yellow'); icon.textContent = '🟡'; }
-        else { fv.classList.add('orange'); icon.textContent = '🟠'; }
-        // نستخدم أفضل زيت من Deep
-        const topOil = deep.ranking[0].oilData;
-        const deepMatch = topOil.label === oil.label;
-        sentence.textContent = deepMatch ? '✅ ' + t('verdict_match') : (combined >= 0.4 ? '⚠️ ' + t('verdict_partial') : '❌ ' + t('verdict_no_match'));
-        sentence.style.color = '#fff';
-        solDiv.textContent = '🔧 ' + (deepMatch ? t('solution_match', oil.label) : t('solution_partial', oil.label));
-        solDiv.style.display = 'block';
-        solDiv.style.color = combined >= 0.7 ? '#4ade80' : combined >= 0.4 ? '#f5b81b' : '#fb923c';
-    } else {
-        if (matchRatio >= 0.95) { fv.classList.add('green'); icon.textContent = '🟢'; sentence.textContent = t('verdict_match'); solDiv.textContent = '🔧 ' + t('solution_match', oil.label); solDiv.style.color = '#4ade80'; }
-        else if (matchRatio >= 0.5) { fv.classList.add('yellow'); icon.textContent = '🟡'; sentence.textContent = t('verdict_partial'); solDiv.textContent = '🔧 ' + t('solution_partial', oil.label); solDiv.style.color = '#f5b81b'; }
-        else { fv.classList.add('orange'); icon.textContent = '🟠'; sentence.textContent = t('verdict_no_match'); solDiv.textContent = '🔧 ' + t('solution_no_match', oil.label); solDiv.style.color = '#fb923c'; }
-        sentence.style.color = '#fff';
-        solDiv.style.display = 'block';
-    }
-    if (noteText.length >= 4) { noteDiv.textContent = '💭 ' + noteText; noteDiv.style.display = 'block'; }
-    else { noteDiv.style.display = 'none'; }
+    if (noteText.length >= 4) { noteDiv.textContent = '💭 ' + noteText; noteDiv.style.display = 'block'; } else noteDiv.style.display = 'none';
     fv.scrollIntoView({ behavior: 'smooth', block: 'center' });
 }
 function returnFromVerdict() {
     document.getElementById('finalVerdict').classList.remove('show');
-    document.getElementById('deepPanel').style.display = 'none';
+   
     document.getElementById('labArea').style.display = 'none';
     document.getElementById('startBtn').style.display = 'block';
     document.getElementById('startBtn').disabled = false;
     document.getElementById('startBtn').style.opacity = '1';
     for (let i = 1; i <= 3; i++) { cleanupStreams(i); sensorState[i] = { status: 'idle', value: null, sub: null, raw: null, samples: null, imageData: null, quality: 0, confirmed: false }; updateSensorUI(i); }
-    finalShown = false; userNote = ''; currentDeepResult = null; autoDeepRan = false;
+    finalShown = false; userNote = '';
     document.getElementById('noteTextArea').value = ''; document.getElementById('noteTextArea').style.display = 'none';
     document.getElementById('printBtn').disabled = true; document.getElementById('finalBtn').disabled = true;
     if (getTotalCredits() <= 0) document.getElementById('purchasePrompt').classList.add('show');
@@ -2459,16 +1891,34 @@ function startLab() {
         sensorState[i] = { status: 'idle', value: null, sub: null, raw: null, samples: null, imageData: null, quality: 0, confirmed: false };
         updateSensorUI(i);
     }
-    finalShown = false; userNote = ''; currentDeepResult = null; autoDeepRan = false;
+    finalShown = false; userNote = '';
     document.getElementById('noteTextArea').value = ''; document.getElementById('noteTextArea').style.display = 'none';
     document.getElementById('finalVerdict').classList.remove('show');
-    document.getElementById('deepPanel').style.display = 'none';
+   
     document.getElementById('printBtn').disabled = true;
-    updateFinalBtnState(); updateSmartAnalyzeBtn();
+    updateFinalBtnState();
     if (window._pendingSensor) { const id = window._pendingSensor; window._pendingSensor = null; setTimeout(() => measureSensor(id), 300); }
 }
 
 // ═══ 28. الملاحظات ═══
+function clearNote() { const ta = document.getElementById('noteTextArea'); ta.value = ''; userNote = ''; ta.style.display = 'none'; }
+function backToStart() { showToast('↩️ ' + t('confirm_no_deduct')); returnFromVerdict(); }
+let infoSensor = 1, infoTab = 'user';
+function openInfo(id) { infoSensor = id; infoTab = 'user'; document.getElementById('infoOverlay').classList.add('show'); renderInfo(); }
+function closeInfo() { document.getElementById('infoOverlay').classList.remove('show'); }
+function switchInfo(tab) { infoTab = (tab === 'dev' && !isAdmin) ? 'user' : tab; renderInfo(); }
+function renderInfo() {
+    const L = INFO[currentLang] || {}, id = infoSensor;
+    if (!isAdmin) infoTab = 'user';
+    document.querySelector('#infoOverlay .legal-modal-tabs').style.display = isAdmin ? 'flex' : 'none';
+    const d = (L[id] && L[id][infoTab]) || INFO.en[id][infoTab];
+    document.getElementById('infoTitle').textContent = t('sensor' + id);
+    document.getElementById('infoTabUserLabel').textContent = t('info_user');
+    document.getElementById('infoTabDevLabel').textContent = t('info_dev');
+    document.getElementById('infoTabUser').classList.toggle('active', infoTab === 'user');
+    document.getElementById('infoTabDev').classList.toggle('active', infoTab === 'dev');
+    document.getElementById('infoBody').innerHTML = d;
+}
 function toggleNoteText() { const ta = document.getElementById('noteTextArea'); if (ta.style.display === 'block') { ta.style.display = 'none'; userNote = ta.value; } else { ta.style.display = 'block'; ta.focus(); } }
 function startVoiceNote() {
     const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -2522,7 +1972,6 @@ function getReportText() {
         const sol = document.getElementById('verdictSolution').textContent;
         if (sol && sol.length > 3) { lines.push(''); lines.push('🔧 ' + t('report_solution') + ':'); lines.push(sol); }
         lines.push(''); lines.push(document.getElementById('sensorCountNotice').textContent);
-        if (currentDeepResult && currentDeepResult.ai) lines.push('🧠 ' + t('deep_confidence') + ': ' + Math.round(currentDeepResult.ai.confidence*100) + '%');
     } else lines.push('⚠️ ' + t('no_data'));
     lines.push('━━━━━━━━━━━━━━━━━━━━');
     lines.push('⚠️ ' + t('legal')); lines.push('');
@@ -2609,7 +2058,7 @@ function init() {
     console.log('🛢️ Physics Lab Oil init');
     sanitizeLegacyHash();
     let id = localStorage.getItem(DEVICE_KEY);
-    if (!id) { id = 'OIL-' + Math.random().toString(36).slice(2, 10).toUpperCase(); localStorage.setItem(DEVICE_KEY, id); }
+    if (!id) { id = 'OIL-' + Array.from(crypto.getRandomValues(new Uint8Array(5))).map(b => b.toString(36).padStart(2, '0')).join('').slice(0, 8).toUpperCase(); localStorage.setItem(DEVICE_KEY, id); }
     document.getElementById('deviceId').textContent = id;
     loadCredits();
     buildLangSelect();
@@ -2621,20 +2070,17 @@ function init() {
     initLocation();
     attachLogoEvents();
     updateAllSensorUIs();
-    updateTwinStatus();
+   
     document.getElementById('noteTextArea').addEventListener('input', function() { userNote = this.value; });
     if (getTotalCredits() <= 0) document.getElementById('purchasePrompt').classList.add('show');
     document.getElementById('secretModal').addEventListener('click', e => { if (e.target.id === 'secretModal') closeAdminModal(); });
     document.getElementById('reportOverlay').addEventListener('click', e => { if (e.target.id === 'reportOverlay') closeReport(); });
     document.getElementById('finalConfirmOverlay').addEventListener('click', e => { if (e.target.id === 'finalConfirmOverlay') cancelFinalVerdict(); });
     document.getElementById('legalModalOverlay').addEventListener('click', e => { if (e.target.id === 'legalModalOverlay') closeLegalModal(); });
+    document.getElementById('infoOverlay').addEventListener('click', e => { if (e.target.id === 'infoOverlay') closeInfo(); });
     document.addEventListener('keydown', e => {
-        if (e.key === 'Escape') { closeAdminModal(); closeReport(); closeLegalModal(); cancelFinalVerdict(); closeTrainOverlay(); }
+        if (e.key === 'Escape') { closeAdminModal(); closeReport(); closeLegalModal(); closeInfo(); cancelFinalVerdict(); }
     });
-    setTimeout(() => { AI_ENGINE_OIL.load().then(ok => { if (ok) console.log('✅ Oil AI ready'); }); }, 1500);
-    console.log('🛢️ Physics Lab Oil — V-Final + Deep Layer');
-    console.log('📊 3 sensors · 17 oils · 23 languages');
-    console.log('🧠 TensorFlow.js + MC Dropout + Autoencoder + Digital Twin');
     console.log('👆 انقر 🛢️ 5 مرات لفتح وضع المطور');
 }
 if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
